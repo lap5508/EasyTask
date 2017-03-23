@@ -116,12 +116,12 @@ public class TaskUIv2 extends javax.swing.JFrame{
         editTaskButton.setFont(new java.awt.Font("Century Schoolbook", 0, 14)); // NOI18N
         editTaskButton.setText("Edit Task");
         jPanel1.add(editTaskButton);
-        editTaskButton.setBounds(450, 770, 190, 25);
+        editTaskButton.setBounds(10, 620, 110, 25);
 
         deleteTaskButton.setFont(new java.awt.Font("Century Schoolbook", 0, 14)); // NOI18N
         deleteTaskButton.setText("Delete Task");
         jPanel1.add(deleteTaskButton);
-        deleteTaskButton.setBounds(670, 770, 190, 25);
+        deleteTaskButton.setBounds(10, 660, 110, 25);
 
         mainMenuButton.setFont(new java.awt.Font("Century Schoolbook", 0, 14)); // NOI18N
         mainMenuButton.setText("Main Menu");
@@ -136,7 +136,7 @@ public class TaskUIv2 extends javax.swing.JFrame{
         addTaskButton.setFont(new java.awt.Font("Century Schoolbook", 0, 14)); // NOI18N
         addTaskButton.setText("Add Task");
         jPanel1.add(addTaskButton);
-        addTaskButton.setBounds(220, 770, 190, 25);
+        addTaskButton.setBounds(10, 580, 110, 25);
 
         notificationLabel.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
         notificationLabel.setForeground(new java.awt.Color(255, 255, 255));
