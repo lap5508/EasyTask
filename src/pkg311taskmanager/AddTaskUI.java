@@ -36,7 +36,7 @@ public class AddTaskUI extends javax.swing.JFrame{
     private JLabel timeLabel;
     private JTextField titleField;
     private JLabel titleLabel;
-    TaskList tasklist;
+    TaskList tasklist = null;
     
     public AddTaskUI(TaskCntl newParentTaskCntl) {
         parentTaskCntl = newParentTaskCntl;
@@ -230,11 +230,15 @@ public class AddTaskUI extends javax.swing.JFrame{
     }
     private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
         System.out.println("In Event Handler");
+        //TaskList taskList = new TaskList();
         long startTime = 0;
         long endTime = 0;
-        Task newTask = new Task(titleField.getText(), descriptionField.getText(), "", startTime, endTime, true);
-        tasklist.setTheListOfTasks(newTask);
-        System.out.print(tasklist.getTheListOfTasks());
+        Task theTask = new Task(titleField.getText(), descriptionField.getText(), "", startTime, endTime, true);
+        AddTaskUI.this.parentTaskCntl.addNewTask(theTask);
+        //taskList.setTheListOfTasks(newTask);
+        
+        
+        //MediaUI.this.parentMediaCntl.editSongInfo2(index, theSong.getText(),theArtist.getText(),theGenre.getText(),theYear.getText(),theURL.getText());
     }
 
     /**
