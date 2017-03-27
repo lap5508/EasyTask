@@ -32,12 +32,15 @@ public class NavigationCntl {
         theTaskCntl = new TaskCntl(this);
     }
     
+    
+    
     public void requestCalendarCntl(){
         theMainMenuUIv2.setVisible(false);
         //theCalendarCntl = new CalendarCntl(this);
     }
 
     public void getNavigationCntl(){
+        
         theMainMenuUIv2.setVisible(true);
     }
 }
