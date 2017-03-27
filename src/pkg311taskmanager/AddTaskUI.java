@@ -6,13 +6,15 @@
 package pkg311taskmanager;
 
 import javax.swing.*;
-import java.awt.*;
+import java.util.ArrayList;
 /**
  *
  * @author lap5508
  */
 public class AddTaskUI extends javax.swing.JFrame{
     
+    //private TaskList theTaskList = null;
+    private ArrayList<Task> newTaskList = null;
     private TaskCntl parentTaskCntl = null;
     private JButton backgroundButton;
     private JButton cancelButton;
@@ -34,6 +36,7 @@ public class AddTaskUI extends javax.swing.JFrame{
     private JLabel timeLabel;
     private JTextField titleField;
     private JLabel titleLabel;
+    TaskList tasklist;
     
     public AddTaskUI(TaskCntl newParentTaskCntl) {
         parentTaskCntl = newParentTaskCntl;
@@ -167,7 +170,12 @@ public class AddTaskUI extends javax.swing.JFrame{
         submitButton.setText("Submit");
         jPanel1.add(submitButton);
         submitButton.setBounds(430, 560, 210, 25);
-
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitButtonActionPerformed(evt);
+            }
+        });
+        
         cancelButton.setFont(new java.awt.Font("Century Schoolbook", 0, 14)); // NOI18N
         cancelButton.setText("Cancel");
         jPanel1.add(cancelButton);
@@ -219,7 +227,15 @@ public class AddTaskUI extends javax.swing.JFrame{
 
     private void timeFieldActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
-    }                                         
+    }
+    private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        System.out.println("In Event Handler");
+        long startTime = 0;
+        long endTime = 0;
+        Task newTask = new Task(titleField.getText(), descriptionField.getText(), "", startTime, endTime, true);
+        tasklist.setTheListOfTasks(newTask);
+        System.out.print(tasklist.getTheListOfTasks());
+    }
 
     /**
      * @param args the command line arguments

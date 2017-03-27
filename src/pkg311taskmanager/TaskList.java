@@ -11,21 +11,35 @@ import java.util.ArrayList;
  * @author Luke
  */
 public class TaskList {
-    private ArrayList<Task> theListOfTasks = null;
+    private ArrayList<Task> theListOfTasks;
     
-    public void buildTestTaskList(){
-            theListOfTasks = new ArrayList<Task>();
-            for (int i = 0; i < 100; i++){
-            String taskTitle = "Task Title "+i;
-            String taskDescription = "Description"+i;
-            String taskCategory = "Work";
-            long startTime = 0;
-            long endTime = 0;
-            boolean enabled = false;
-            Task newTask = new Task(taskTitle, taskDescription, taskCategory, startTime, endTime, enabled);
-            theListOfTasks.add(newTask);
-        }
-       
-       
+//    public void buildTestTaskList(){
+//            setTheListOfTasks(new ArrayList<Task>());
+//            for (int i = 0; i < 5; i++){
+//            String taskTitle = "Task Title "+i;
+//            String taskDescription = "Description"+i;
+//            String taskCategory = "Work";
+//            long startTime = 0;
+//            long endTime = 0;
+//            boolean enabled = false;
+//            Task newTask = new Task(taskTitle, taskDescription, taskCategory, startTime, endTime, enabled);
+//            getTheListOfTasks().add(newTask);
+//        }
+//       
+//       
+//    }
+
+    /**
+     * @return the theListOfTasks
+     */
+    public ArrayList<Task> getTheListOfTasks() {
+        return theListOfTasks;
+    }
+
+    /**
+     * @param theListOfTasks the theListOfTasks to set
+     */
+    public void setTheListOfTasks(Task newTask) {
+        theListOfTasks.add(newTask);
     }
 }
