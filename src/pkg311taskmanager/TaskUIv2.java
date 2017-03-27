@@ -7,6 +7,12 @@ package pkg311taskmanager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.border.EmptyBorder;
 /**
  *
  * @author Luke
@@ -14,15 +20,36 @@ import java.awt.*;
 public class TaskUIv2 extends javax.swing.JFrame{
     
     private TaskCntl parentTaskCntl = null;
+    private JButton BackGround;
+    private JLabel Logo;
+    private JLabel TaskLogo;
+    private ButtonGroup buttonGroup1;
+    private JRadioButton familyButton;
+    private JButton editTaskButton;
+    private JButton deleteTaskButton;
+    private JButton mainMenuButton;
+    private JButton addTaskButton;
+    private JButton backGroundButton;
+    private JComboBox<String> jComboBox1;
+    private JLabel notificationLabel;
+    private JLabel priorityLabel;
+    private JPanel jPanel1;
+    private JScrollPane jScrollPane1;
+    private JScrollPane jScrollPane2;
+    private JTextArea jTextArea1;
+    private JTextPane jTextPane1;
+    private JToggleButton notificationToggle;
+    private JRadioButton otherButton;
+    private JRadioButton recreationButton;
+    private JRadioButton schoolButton;
+    private JRadioButton workButton;
     
     public TaskUIv2(TaskCntl newParentTaskCntl) {
         parentTaskCntl = newParentTaskCntl;
         initCustomComponents();
     }
   
-    public TaskUIv2() {
-        initCustomComponents();
-    }
+
     
     private void initCustomComponents() {
 
@@ -135,6 +162,13 @@ public class TaskUIv2 extends javax.swing.JFrame{
 
         addTaskButton.setFont(new java.awt.Font("Century Schoolbook", 0, 14)); // NOI18N
         addTaskButton.setText("Add Task");
+
+        addTaskButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addTaskButtonActionPerformed(evt);
+            }
+        });
+        
         jPanel1.add(addTaskButton);
         addTaskButton.setBounds(10, 580, 110, 25);
 
@@ -182,37 +216,22 @@ public class TaskUIv2 extends javax.swing.JFrame{
     }// </editor-fold>                        
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        this.setVisible(false);
+        
         TaskUIv2.this.parentTaskCntl.requestNavigationCntl();
-    }                                        
+    }      
+    
+    private void addTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        //MediaListUI.this.theMediaCntl.getMediaUI(selectedModelRow);
+        System.out.println("In Event Handler");
+        TaskUIv2.this.parentTaskCntl.requestAddTaskUI();
+    }  
 
+//MainMenuUIv2.this.parentNavCntl.requestTaskCntl();  AddTaskButtonActionPerformed
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify                     
-    private javax.swing.JButton BackGround;
-    private javax.swing.JLabel Logo;
-    private javax.swing.JLabel TaskLogo;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JRadioButton familyButton;
-    private javax.swing.JButton editTaskButton;
-    private javax.swing.JButton deleteTaskButton;
-    private javax.swing.JButton mainMenuButton;
-    private javax.swing.JButton addTaskButton;
-    private javax.swing.JButton backGroundButton;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel notificationLabel;
-    private javax.swing.JLabel priorityLabel;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JToggleButton notificationToggle;
-    private javax.swing.JRadioButton otherButton;
-    private javax.swing.JRadioButton recreationButton;
-    private javax.swing.JRadioButton schoolButton;
-    private javax.swing.JRadioButton workButton;
+    
     // End of variables declaration                   
 }
