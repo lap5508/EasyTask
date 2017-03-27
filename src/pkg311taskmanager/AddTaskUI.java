@@ -230,11 +230,12 @@ public class AddTaskUI extends javax.swing.JFrame{
     }
     private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
         System.out.println("In Event Handler");
+        ArrayList<Task> tempList = new ArrayList();
         long startTime = 0;
         long endTime = 0;
         Task newTask = new Task(titleField.getText(), descriptionField.getText(), "", startTime, endTime, true);
-        tasklist.setTheListOfTasks(newTask);
-        System.out.print(tasklist.getTheListOfTasks());
+        tempList.add(newTask);
+        
     }
 
     /**

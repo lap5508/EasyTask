@@ -27,7 +27,7 @@ public class Task extends ScheduledEvent{
         taskDescription = newDescription;
         taskCategory = newCategory;
         
-        System.out.println("Called: Song(String newTitle, int newLength, String newArtist)");
+        
     }
     
     public String getTitle(){
