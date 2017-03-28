@@ -43,6 +43,8 @@ public class TaskUIv2 extends javax.swing.JFrame{
     private JRadioButton recreationButton;
     private JRadioButton schoolButton;
     private JRadioButton workButton;
+    private String tasksList;
+    private String previousTasks;
     
     public TaskUIv2(TaskCntl newParentTaskCntl) {
         parentTaskCntl = newParentTaskCntl;
@@ -132,9 +134,31 @@ public class TaskUIv2 extends javax.swing.JFrame{
         jComboBox1.setBounds(310, 430, 490, 30);
 
         jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Century Schoolbook", 0, 14)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setText("This is where task information will go.");
+            jTextArea1.setFont(new java.awt.Font("Century Schoolbook", 0, 14)); // NOI18N
+            jTextArea1.setRows(8);
+            //jTextArea1.setText("This is where task information will go.");
+            previousTasks = TaskUIv2.this.parentTaskCntl.returnListOfTitles();
+            TaskUIv2.this.jTextArea1.setText(previousTasks);
+            //tasksList = this.parentTaskCntl.computeListOfTasks();
+            //jTextArea1.setText(tasksList);
+        
+        
+        /*
+  commentListPanel = new JPanel();
+            previousCommentsLabel = new JLabel("Previous Comments:");
+            selectedComment = new JLabel();
+            previousComments = RatingUI2.this.parentMediaCntl.returnListOfComments();
+            RatingUI2.this.selectedComment.setText(previousComments);
+            commentListPanel.add(previousCommentsLabel);
+            commentListPanel.add(selectedComment);  
+*/
+        /*userRatingsPanel = new JPanel();
+            allRatings = new JLabel("      Previous Ratings:");
+            avgRatingField = new JLabel();
+                ratingsList = this.parentMediaCntl.computeListOfRatings();
+                avgRatingField.setText(ratingsList);
+            userRatingsPanel.add(allRatings);
+            userRatingsPanel.add(avgRatingField);*/
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel1.add(jScrollPane1);
@@ -168,6 +192,8 @@ public class TaskUIv2 extends javax.swing.JFrame{
                 addTaskButtonActionPerformed(evt);
             }
         });
+        
+        
         
         jPanel1.add(addTaskButton);
         addTaskButton.setBounds(10, 580, 110, 25);
