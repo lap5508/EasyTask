@@ -14,7 +14,6 @@ import java.util.ArrayList;
 public class AddTaskUI extends javax.swing.JFrame{
     
     //private TaskList theTaskList = null;
-    private ArrayList<Task> newTaskList = null;
     private TaskCntl parentTaskCntl = null;
     private JButton backgroundButton;
     private JButton cancelButton;
@@ -229,18 +228,59 @@ public class AddTaskUI extends javax.swing.JFrame{
         // TODO add your handling code here:
     }
     private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        System.out.println("In Event Handler");
-        //TaskList taskList = new TaskList();
+        String title = titleField.getText();
+        String date = dateField.getText();
+        String time = timeField.getText();
+        String location = locationField.getText();
+        String description = descriptionField.getText();
+        
         long startTime = 0;
         long endTime = 0;
-        Task theTask = new Task(titleField.getText(), descriptionField.getText(), "", startTime, endTime, true);
+        Task theTask = new Task(title, date, time, location, description, "", "", startTime, endTime, true);
         AddTaskUI.this.parentTaskCntl.addNewTask(theTask);
-        //taskList.setTheListOfTasks(newTask);
+        AddTaskUI.this.parentTaskCntl.returnNewTaskUI();
+        System.out.println(title);
         
         
         //MediaUI.this.parentMediaCntl.editSongInfo2(index, theSong.getText(),theArtist.getText(),theGenre.getText(),theYear.getText(),theURL.getText());
     }
-
+    /*
+     class RatingListener implements ActionListener{
+        public void actionPerformed(ActionEvent event){
+            String comment = userComment.getText();
+            String rating = "0";
+            
+            if(group.getSelection() != null){
+                if(rate1.isSelected()){
+                    rating = "1";
+                }
+                else if(rate2.isSelected()){
+                    rating = "2";
+                }
+                else if(rate3.isSelected()){
+                    rating = "3";
+                }
+                else if(rate4.isSelected()){
+                    rating = "4";
+                }
+                else if(rate5.isSelected()){
+                    rating = "5";
+                }
+                System.out.println(rating);
+                System.out.println(comment);
+   
+                Rating ratingToPass = new Rating(parentMediaCntl.getUsername(), comment, rating);
+                RatingUI2.this.parentMediaCntl.addNewRating(ratingToPass);
+                RatingUI2.this.parentMediaCntl.returnMediaListUI();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "You must enter a rating!");
+            }
+            SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+            
+        }
+    */
+    
     /**
      * @param args the command line arguments
      */
