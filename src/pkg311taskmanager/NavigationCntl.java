@@ -14,6 +14,7 @@ public class NavigationCntl {
     private String navUsername = "";
     private TaskCntl theTaskCntl = null;
     private CalendarCntl theCalendarCntl = null;
+    private ContactController theContactControl = null;
     
     public NavigationCntl(String username){
         System.out.println("Made it to NavigationCntl");
@@ -25,6 +26,11 @@ public class NavigationCntl {
     
     public String getTheUsername(){
         return navUsername;
+    }
+    
+    public void requestContactCntl(){
+        theMainMenuUIv2.setVisible(false);
+        theContactControl = new ContactController(this);
     }
     
     public void requestTaskCntl(){
