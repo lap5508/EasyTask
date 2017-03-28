@@ -32,7 +32,10 @@ public class TaskList {
     /**
      * @return the theListOfTasks
      */
-    public ArrayList<Task> getTheListOfTasks() {
+    public ArrayList<Task> getListOfTasks() {
+        if (theListOfTasks == null){
+            theListOfTasks = new ArrayList<Task>();
+        }
         return theListOfTasks;
     }
 
@@ -40,6 +43,9 @@ public class TaskList {
      * @param theListOfTasks the theListOfTasks to set
      */
     public void setTheListOfTasks(Task newTask) {
+        if (theListOfTasks == null){
+            theListOfTasks = new ArrayList<Task>();
+        }
         theListOfTasks.add(newTask);
     }
 }
