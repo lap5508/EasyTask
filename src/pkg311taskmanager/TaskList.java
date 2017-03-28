@@ -11,8 +11,11 @@ import java.util.ArrayList;
  * @author Luke
  */
 public class TaskList {
-    private ArrayList<Task> theListOfTasks;
+    private ArrayList<Task> theListOfTasks = new ArrayList();
     
+//    public TaskList(ArrayList<Task> listofTasks){
+//        theListOfTasks = listofTasks;
+//    }
 //    public void buildTestTaskList(){
 //            setTheListOfTasks(new ArrayList<Task>());
 //            for (int i = 0; i < 5; i++){
