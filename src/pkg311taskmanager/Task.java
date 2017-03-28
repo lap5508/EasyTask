@@ -25,15 +25,15 @@ public class Task extends ScheduledEvent{
         System.out.println("Called: Task()");
     }
     
-    public Task(String newTitle, String newDate, String newTime, String newLocation, String newDescription, String newCategory, String newPriority, Long newStartTime, Long newEndTime, Boolean newEnabled){
-        super(newStartTime, newEndTime, newEnabled);
+    public Task(String newTitle, String newDate, String newTime, String newLocation, String newDescription){
+        //super(newStartTime, newEndTime, newEnabled);
         taskTitle = newTitle;
         taskDate = newDate;
         taskTime = newTime;
         taskLocation = newLocation;
         taskDescription = newDescription;
-        taskCategory = newCategory;
-        taskPriority = newPriority;
+        //taskCategory = newCategory;
+        //taskPriority = newPriority;
         
         
     }
@@ -78,4 +78,11 @@ public class Task extends ScheduledEvent{
         return super.getTaskEnabled();
     }
     
+    public void changeInfo(String newTitle, String newDate, String newTime, String newLocation, String newDescription){
+        this.taskTitle = newTitle;
+        this.taskDate = newDate;
+        this.taskTime = newTime;
+        this.taskLocation = newLocation;
+        this.taskDescription = newDescription;
+    }
 }

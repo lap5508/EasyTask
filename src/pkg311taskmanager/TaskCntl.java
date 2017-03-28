@@ -13,63 +13,59 @@ import java.util.ArrayList;
  */
 public class TaskCntl {
     private NavigationCntl theNavigationCntl = null;
-    private TaskUIv2 theTaskUI = null;
-    private TaskUIv2 newTaskUI = null;
+    private TaskUI theTaskUI = null;
     private TaskList theTaskList = null;
     private MainMenuUIv2 theMainMenuUI = null;
     private AddTaskUI theAddTaskUI = null;
     private ArrayList<Task> theListOfTasks;
     private Task tempTask;
     private int tempIndex = 0;
+    private TaskTableModel taskTableModel = null;
     
     public TaskCntl(NavigationCntl parentNavCntl){
         System.out.println("MADE IT TO TaskCNTL"); //test line
         theNavigationCntl = parentNavCntl;
         theTaskList = new TaskList();
-        theTaskUI = new TaskUIv2(this);
+        taskTableModel = new TaskTableModel(theTaskList.getListOfTasks());
+        theTaskUI = new TaskUI(this);
         theTaskUI.setVisible(true);
-        newTaskUI = new TaskUIv2(this);
         
     }
     
-    public void requestAddTaskUI(){
-        theAddTaskUI = new AddTaskUI(this);
-        theTaskUI.setVisible(false);
-        theAddTaskUI.setVisible(true);
+    public TaskList getTaskList(){
+        return theTaskList;
     }
+    
+    public TaskTableModel getTaskTableModel(){
+        return taskTableModel;
+    }
+    
+ 
     public void returnTaskUI(){
+        theAddTaskUI.setVisible(false);
         theAddTaskUI.dispose();
-        theTaskUI.dispose();
-        newTaskUI = new TaskUIv2(this);
-        newTaskUI.setVisible(false);
+        theTaskUI.setVisible(true);
     }
     
     public ArrayList<Task> getTheListOfTasks() {
         return theListOfTasks;
     }
     
-    /*
-    public String returnListOfComments(){
-        String theComment = "";
-        //SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getMediaList().getListOfMedia()
-        ArrayList<Rating> list = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getMediaList().getListOfMedia().get(tempIndex).getTheListOfRatings();
-        
-        theComment="<html>";
-        for(int i=0; i < list.size(); i++){
-            
-            if(list.get(i).getComment().isEmpty()){
-                System.out.println("comment is null");
-            }else{
-                theComment = theComment.concat("\"" + list.get(i).getComment() + "\""+
-                        "  -"+list.get(i).getUsername()+ "<br>");
-            }
-            
-        }
-        theComment.concat("</html>");
-        return theComment;
-        
+    public void keepTaskUI(){
+        theTaskUI.setVisible(false);
+        theTaskUI.dispose();
+        theTaskUI = new TaskUI(this);
+        theTaskUI.setVisible(true);
     }
-    */
+    
+    public void getAddTaskUINoInfo(){
+        theAddTaskUI = new AddTaskUI(this);
+    }
+    
+    public void getAddTaskUI(int taskRowToGet){
+        theTaskUI.setVisible(false);
+        theAddTaskUI = new AddTaskUI(this, taskRowToGet);
+    }
     
     public String returnListOfTitles(){
         String theTitle = "";
@@ -85,6 +81,16 @@ public class TaskCntl {
             
         }
         return theTitle;
+    }
+    
+    public void addNewTask(String newTitle, String newDate, String newTime, String newLocation, String newDescription){
+        Task newTask = new Task(newTitle, newDate, newTime, newLocation, newDescription);
+        theTaskList.getListOfTasks().add(newTask);
+    }
+    
+    public void editTaskInfo(int index, String newTitle, String newDate, String newTime, String newLocation, String newDescription){
+        tempTask = this.getTaskList().getListOfTasks().get(index);
+        tempTask.changeInfo(newTitle, newDate, newTime, newLocation, newDescription);
     }
     
     public String computeListOfTasks(){
@@ -105,29 +111,11 @@ public class TaskCntl {
     
     public void returnNewTaskUI(){
         theTaskUI.dispose();
-        newTaskUI.setVisible(true);
+        //newTaskUI.setVisible(true);
     }
-    /*public String computeListOfRatings(){
-        String ratingOutput = "";
-        ArrayList<Rating> list = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getMediaList().getListOfMedia().get(tempIndex).getTheListOfRatings();
-        
-        for(int i=0; i < list.size(); i++){
-            if(i==0){
-                ratingOutput = ratingOutput.concat(list.get(i).getRating());
-            }
-            else{
-                ratingOutput = ratingOutput.concat(", " + list.get(i).getRating());
-            }
-            
+    
 
-        }
-        return ratingOutput;
-        
-    }*/
-
-    /**
-     * @param theListOfTasks the theListOfTasks to set
-     */
+    
     public void setTheListOfTasks(Task newTask) {
         tempTask = newTask;
         theListOfTasks.add(tempTask);
@@ -170,6 +158,10 @@ public class TaskCntl {
         theTaskUI.setVisible(false);
         theNavigationCntl.getNavigationCntl();
     }
+
+    //void addNewTask(String text, String text0, String text1, String text2, String text3) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     
     
 }
