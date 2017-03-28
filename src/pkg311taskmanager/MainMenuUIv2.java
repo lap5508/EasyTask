@@ -125,7 +125,7 @@ public class MainMenuUIv2 extends javax.swing.JFrame {
     }//GEN-LAST:event_closeButtonActionPerformed
 
     private void contactButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactButton1ActionPerformed
-        // TODO add your handling code here:
+        MainMenuUIv2.this.parentNavCntl.requestContactCntl();
     }//GEN-LAST:event_contactButton1ActionPerformed
 
     /**
