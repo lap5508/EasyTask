@@ -40,6 +40,13 @@ public class NotificationController {
         theAddNotificationUI = new AddNotificationUI(this);
     }
     
+    public void backButtonPressed(){
+        theAddNotificationUI.setVisible(false);
+        theNotificationUI.setVisible(false);
+        theNotificationUI.dispose();
+        theNotificationUI.setLocationRelativeTo(null);
+        theNotificationUI.setVisible(true);
+    }
     
     public void requestNavigationCntl(){
         theNotificationUI.setVisible(false);

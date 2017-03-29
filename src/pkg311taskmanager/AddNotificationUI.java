@@ -57,6 +57,12 @@ public class AddNotificationUI extends JFrame{
         
         JPanel buttonsPanel = new JPanel();
         JButton backButton = new JButton("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        
         JButton addNotificationButton = new JButton("Add");
         
         buttonsPanel.setLayout(new GridLayout(1,1));
@@ -125,4 +131,10 @@ public class AddNotificationUI extends JFrame{
         add(comboBoxPanel, BorderLayout.CENTER);
         add(buttonsPanel, BorderLayout.SOUTH);
     }
+    
+     private void backButtonActionPerformed(java.awt.event.ActionEvent evt){
+        
+        n_control.backButtonPressed();
+    }
+    
 }

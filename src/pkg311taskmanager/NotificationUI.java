@@ -57,7 +57,14 @@ public class NotificationUI extends JFrame{
         scrollPanel.add(notifications);
         
         JPanel buttonsPanel = new JPanel();
+        
         JButton mainMenuButton = new JButton("Main Menu");
+        mainMenuButton.addActionListener(new java.awt.event.ActionListener(){
+                public void actionPerformed(java.awt.event.ActionEvent evt){
+                    mainMenuButtonActionPerformed(evt);
+                }
+            });
+        
         JButton addNotificationButton = new JButton("Add Notifiaction");
         addNotificationButton.addActionListener(new java.awt.event.ActionListener(){
                 public void actionPerformed(java.awt.event.ActionEvent evt){
@@ -83,6 +90,10 @@ public class NotificationUI extends JFrame{
     
     private void addNotificationButtonActionPerformed(java.awt.event.ActionEvent evt){
         n_control.getAddNotificationUI();
+    }
+    
+    private void mainMenuButtonActionPerformed(java.awt.event.ActionEvent evt){
+        n_control.requestNavigationCntl();
     }
     
     
