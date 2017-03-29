@@ -15,6 +15,7 @@ public class NavigationCntl {
     private TaskCntl theTaskCntl = null;
     private CalendarCntl theCalendarCntl = null;
     private ContactController theContactControl = null;
+    private NotificationController theNotificationCntl = null;
     
     public NavigationCntl(String username){
         System.out.println("Made it to NavigationCntl");
@@ -44,9 +45,15 @@ public class NavigationCntl {
         theMainMenuUIv2.setVisible(false);
         //theCalendarCntl = new CalendarCntl(this);
     }
+    
+    public void requestNotificationCntl(){
+        theMainMenuUIv2.setVisible(false);
+        theNotificationCntl = new NotificationController(this);
+    }
 
     public void getNavigationCntl(){
         
         theMainMenuUIv2.setVisible(true);
+    
     }
 }
