@@ -17,6 +17,7 @@ public abstract class ScheduledEvent{
     private long endTime = 0;
     private boolean enabled = false;
     
+    
     public ScheduledEvent(){
         System.out.println("Called: ScheduledEvent()");
     }
@@ -38,4 +39,6 @@ public abstract class ScheduledEvent{
     public Boolean getTaskEnabled(){
         return enabled;
     }
+    
+ 
 }

@@ -11,38 +11,32 @@ import java.util.ArrayList;
  * @author Luke
  */
 public class TaskList {
-    private ArrayList<Task> theListOfTasks = new ArrayList();
+    private ArrayList<Task> theListOfTasks = null;
     
-//    public TaskList(ArrayList<Task> listofTasks){
-//        theListOfTasks = listofTasks;
-//    }
-//    public void buildTestTaskList(){
-//            setTheListOfTasks(new ArrayList<Task>());
-//            for (int i = 0; i < 5; i++){
-//            String taskTitle = "Task Title "+i;
-//            String taskDescription = "Description"+i;
-//            String taskCategory = "Work";
-//            long startTime = 0;
-//            long endTime = 0;
-//            boolean enabled = false;
-//            Task newTask = new Task(taskTitle, taskDescription, taskCategory, startTime, endTime, enabled);
-//            getTheListOfTasks().add(newTask);
-//        }
-//       
-//       
-//    }
+    
+    public TaskList (){
+        if(theListOfTasks == null){
+            buildTestTaskList();
+        }
+    }
 
-    /**
-     * @return the theListOfTasks
-     */
-    public ArrayList<Task> getTheListOfTasks() {
+    public void buildTestTaskList(){
+        theListOfTasks = new ArrayList();
+        for(int i = 0; i < 50; i++){
+            String taskTitle = "Task " +i;
+            String taskDate = "10/12/17";
+            String taskTime = "3:00";
+            String taskLocation = "IST" + i;
+            String taskDescription = "" + i;
+            Task newTask = new Task(taskTitle, taskDate, taskTime, taskLocation, taskDescription);
+            theListOfTasks.add(newTask);
+        }
+        System.out.println(theListOfTasks);
+    }
+    
+    public ArrayList<Task> getListOfTasks() {
+
         return theListOfTasks;
     }
 
-    /**
-     * @param theListOfTasks the theListOfTasks to set
-     */
-    public void setTheListOfTasks(Task newTask) {
-        theListOfTasks.add(newTask);
-    }
 }
