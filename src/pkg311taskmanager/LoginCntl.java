@@ -11,7 +11,7 @@ package pkg311taskmanager;
  */
 public class LoginCntl {
     private UserList theUserList;
-    private LoginUIv2 theLoginUIv2;
+    private LoginUI theLoginUI;
     private NavigationCntl theNavigationCntl;
     //private SerializedDataCntl theSerializedDataCntl;
     
@@ -20,15 +20,15 @@ public class LoginCntl {
         if(theUserList == null){
             theUserList = new UserList();
         }    
-        theLoginUIv2 = new LoginUIv2(this);
-        theLoginUIv2.setLocationRelativeTo(null);
-        theLoginUIv2.setVisible(true);
+        theLoginUI = new LoginUI(this);
+        theLoginUI.setLocationRelativeTo(null);
+        theLoginUI.setVisible(true);
     }
     
     public void requestNavigationCntl(){
-        theLoginUIv2.setVisible(false); 
+        theLoginUI.setVisible(false); 
         //theNavigationCntl = new NavigationCntl();
-        theNavigationCntl = new NavigationCntl(theLoginUIv2.getUsername());
+        theNavigationCntl = new NavigationCntl(theLoginUI.getUsername());
     }
     
     public boolean requestAuthenticate(String usernameToCheck, char[] passwordToCheck){
@@ -37,6 +37,6 @@ public class LoginCntl {
     }
     
     public String getUsername(){
-        return theLoginUIv2.getUsername();
+        return theLoginUI.getUsername();
     }
 }
