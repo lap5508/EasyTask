@@ -12,6 +12,13 @@ import java.util.ArrayList;
  * @author Kyle
  */
 public class ContactList {
-    private ArrayList<ContactModel> contactList;
+    private ArrayList<ContactModel> contactList = null;
+
+    /**
+     * @return the contactList
+     */
+    public ArrayList<ContactModel> getContactList() {
+        return contactList;
+    }
     
 }
