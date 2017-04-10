@@ -21,9 +21,10 @@ public class ContactModel {
     private int cellNum;
     private int homeNum;
     private String photoID;
+    private String group;
     
     
-    public ContactModel(String first, String last, int contactID){
+    public ContactModel(String first, String last, String groupN){
         fName = first;
         this.mName = mName;
         lName = last;
@@ -34,6 +35,7 @@ public class ContactModel {
         this.cellNum = cellNum;
         this.homeNum = homeNum;
         this.photoID = photoID;
+        group = groupN;
         
     }
 
@@ -175,6 +177,20 @@ public class ContactModel {
      */
     public void setPhotoID(String photoID) {
         this.photoID = photoID;
+    }
+
+    /**
+     * @return the group
+     */
+    public String getGroup() {
+        return group;
+    }
+
+    /**
+     * @param group the group to set
+     */
+    public void setGroup(String group) {
+        this.group = group;
     }
     
 }

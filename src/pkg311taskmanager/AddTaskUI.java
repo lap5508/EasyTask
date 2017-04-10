@@ -87,15 +87,15 @@ public class AddTaskUI extends JFrame{
         locationLabel = new JLabel("Location: ");
         descriptionLabel = new JLabel("Description: ");
         
-        titleField = new JTextField(17);
+        titleField = new JTextField(12);
             titleField.setEditable(true);
-        dateField = new JTextField(17);
+        dateField = new JTextField(12);
             dateField.setEditable(true);
-        timeField = new JTextField(17);
+        timeField = new JTextField(12);
             timeField.setEditable(true);
-        locationField = new JTextField(17);
+        locationField = new JTextField(12);
             locationField.setEditable(true);
-        descriptionField = new JTextField(17);
+        descriptionField = new JTextField(12);
             descriptionField.setEditable(true);
         
         if(hasInfo){
