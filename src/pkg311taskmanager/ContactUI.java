@@ -6,13 +6,16 @@
 package pkg311taskmanager;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 
@@ -37,6 +40,8 @@ public class ContactUI extends JFrame{
     private JButton notificationButton;
     private JButton addContact;
     private JButton helpButton;
+    private JTable contactTable;
+    private JScrollPane theScrollPane;
     
 public ContactUI(ContactController newc_control){    
     
@@ -55,24 +60,51 @@ public void createLabelPanel(){
 }
 public void createListPanel(){
     JPanel listPanel = new JPanel();
-    JTextArea contactArea = new JTextArea();
-    contactArea.setColumns(50);
-    contactArea.setRows(50);
-    contactArea.setText("Contacts go here" + "\n" + "maybe");
-    contactArea.setEditable(false);
+    contactTable = new JTable(this.c_control.getContactTableModel());
+            contactTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+            contactTable.getColumnModel().getColumn(1).setPreferredWidth(20);
+            contactTable.getColumnModel().getColumn(2).setPreferredWidth(20);
+            contactTable.getColumnModel().getColumn(3).setPreferredWidth(20); 
+            contactTable.getColumnModel().getColumn(4).setPreferredWidth(20);
+            contactTable.getColumnModel().getColumn(5).setPreferredWidth(20);
+            contactTable.getColumnModel().getColumn(6).setPreferredWidth(20);
+            contactTable.getColumnModel().getColumn(7).setPreferredWidth(20);
     
-    //listPanel.add(contactArea);
-    JScrollPane scrollPane = new JScrollPane(contactArea);
-    scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-    listPanel.add(scrollPane);
+    
+    theScrollPane = new JScrollPane(contactTable);
+            theScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            theScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+            theScrollPane.setPreferredSize(new Dimension(500, 320));
+            contactTable.setFillsViewportHeight(true);
+    listPanel.add(theScrollPane);
     add(listPanel, BorderLayout.CENTER);
 }
 public void createNavigationPanel(){
     JPanel navPanel = new JPanel();
     JButton menuButton = new JButton("Menu");
+    menuButton.addActionListener(new java.awt.event.ActionListener(){
+                public void actionPerformed(java.awt.event.ActionEvent evt){
+                    menuButtonPerformed(evt);
+                }
+            });
     JButton calendarButton = new JButton("Calendar");
+    calendarButton.addActionListener(new java.awt.event.ActionListener(){
+                public void actionPerformed(java.awt.event.ActionEvent evt){
+                    calendarButtonPerformed(evt);
+                }
+            });
     JButton taskButton = new JButton("Task");
+    taskButton.addActionListener(new java.awt.event.ActionListener(){
+                public void actionPerformed(java.awt.event.ActionEvent evt){
+                    taskButtonPerformed(evt);
+                }
+            });
     JButton notificationButton = new JButton("Notification");
+    notificationButton.addActionListener(new java.awt.event.ActionListener(){
+                public void actionPerformed(java.awt.event.ActionEvent evt){
+                    notificationButtonPerformed(evt);
+                }
+            });
     navPanel.setLayout(new GridLayout(1, 3));
     navPanel.add(menuButton);
     navPanel.add(calendarButton);
@@ -83,10 +115,69 @@ public void createNavigationPanel(){
 public void createOptionsPanel(){
     JPanel optionsPanel = new JPanel();
     JButton addContact = new JButton("Add Contact");
-    JButton helpButton = new JButton("Help");
-    optionsPanel.setLayout(new GridLayout(2,1));
+    addContact.addActionListener(new java.awt.event.ActionListener(){
+                public void actionPerformed(java.awt.event.ActionEvent evt){
+                    addContactButtonPerformed(evt);
+                }
+            });
+    JButton editButton = new JButton("Edit Contact");
+    editButton.addActionListener(new java.awt.event.ActionListener(){
+                public void actionPerformed(java.awt.event.ActionEvent evt){
+                    editButtonPerformed(evt);
+                }
+            });
+    JButton deleteContact = new JButton("Delete Contact");
+    deleteContact.addActionListener(new java.awt.event.ActionListener(){
+                public void actionPerformed(java.awt.event.ActionEvent evt){
+                    deleteButtonPerformed(evt);
+                }
+            });
+    optionsPanel.setLayout(new GridLayout(3,1));
     optionsPanel.add(addContact);
-    optionsPanel.add(helpButton);
+    optionsPanel.add(editButton);
+    optionsPanel.add(deleteContact);
     add(optionsPanel, BorderLayout.EAST);
+}
+private void addContactButtonPerformed(java.awt.event.ActionEvent evt) {
+    ContactUI.this.c_control.getAddContactUIblank();
+    System.out.print("work");
+}
+private void editButtonPerformed(java.awt.event.ActionEvent evt) {
+    if(contactTable.getSelectedRow() == -1){
+            
+           ContactUI.this.c_control.keepContactUI();
+           JOptionPane.showMessageDialog(null, "Please select a Contact!");        
+        }
+        else{
+        int selectedTableRow = contactTable.getSelectedRow();
+        int selectedModelRow = contactTable.convertRowIndexToModel(selectedTableRow);
+        ContactUI.this.c_control.getAddContactUI(selectedModelRow);
+        }
+}
+private void menuButtonPerformed(java.awt.event.ActionEvent evt) {
+    this.setVisible(false);
+    ContactUI.this.c_control.requestNavigationCntl();
+    
+}
+private void taskButtonPerformed(java.awt.event.ActionEvent evt) {
+    this.setVisible(false);
+    ContactUI.this.c_control.requestTaskCntl();
+}
+private void notificationButtonPerformed(java.awt.event.ActionEvent evt) {
+    this.setVisible(false);
+    ContactUI.this.c_control.requestNotificationCntl();
+}
+private void calendarButtonPerformed(java.awt.event.ActionEvent evt) {
+    this.setVisible(false);
+    ContactUI.this.c_control.requestCalendarCntl();
+}
+private void deleteButtonPerformed(java.awt.event.ActionEvent evt) {
+    int selectedTableRow = contactTable.getSelectedRow();
+    int selectedModelRow = contactTable.convertRowIndexToModel(selectedTableRow);
+    ContactUI.this.c_control.getContactList().getTheContactList().remove(selectedModelRow);
+        //SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getMediaList().getListOfMedia().remove(selectedModelRow);
+        //SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+    this.c_control.getContactTableModel().fireTableDataChanged();
+    System.out.print("happened");
 }
 }

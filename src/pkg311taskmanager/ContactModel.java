@@ -17,26 +17,35 @@ public class ContactModel {
     private String hAddress;
     private String wAddress;
     private String email;
-    private int workNum;
-    private int cellNum;
-    private int homeNum;
+    private String workNum;
+    private String cellNum;
+    private String homeNum;
     private String photoID;
     private String group;
     
     
-    public ContactModel(String first, String last, String groupN){
+    public ContactModel(String first,String newmName, String last,String newHomeNum, String newWorkNum,String newCellNum, String newHAddress, String newWAddress){
         fName = first;
-        this.mName = mName;
+        mName = newmName;
         lName = last;
-        this.contactID = contactID;
-        this.hAddress = hAddress;
-        this.wAddress = wAddress;
-        this.workNum = workNum;
-        this.cellNum = cellNum;
-        this.homeNum = homeNum;
-        this.photoID = photoID;
-        group = groupN;
+        homeNum = newHomeNum;
+        workNum = newWorkNum;
+        cellNum = newCellNum;
+        hAddress = newHAddress;
+        wAddress = newWAddress;        
+        //photoID = newPhotoID;
+        //group = groupN;
         
+    }
+    public void changeInfo(String first,String newmName, String last,String newHomeNum, String newWorkNum,String newCellNum, String newHAddress, String newWAddress){
+        this.fName = first;
+        this.mName = newmName;
+        this.lName = last;
+        this.homeNum = newHomeNum;
+        this.workNum = newWorkNum;
+        this.cellNum = newCellNum;
+        this.hAddress = newHAddress;
+        this.wAddress = newWAddress;
     }
 
     /**
@@ -126,72 +135,24 @@ public class ContactModel {
     /**
      * @return the workNum
      */
-    public int getWorkNum() {
+    public String getWorkNum() {
         return workNum;
-    }
-
-    /**
-     * @param workNum the workNum to set
-     */
-    public void setWorkNum(int workNum) {
-        this.workNum = workNum;
     }
 
     /**
      * @return the cellNum
      */
-    public int getCellNum() {
+    public String getCellNum() {
         return cellNum;
-    }
-
-    /**
-     * @param cellNum the cellNum to set
-     */
-    public void setCellNum(int cellNum) {
-        this.cellNum = cellNum;
     }
 
     /**
      * @return the homeNum
      */
-    public int getHomeNum() {
+    public String getHomeNum() {
         return homeNum;
     }
 
-    /**
-     * @param homeNum the homeNum to set
-     */
-    public void setHomeNum(int homeNum) {
-        this.homeNum = homeNum;
-    }
-
-    /**
-     * @return the photoID
-     */
-    public String getPhotoID() {
-        return photoID;
-    }
-
-    /**
-     * @param photoID the photoID to set
-     */
-    public void setPhotoID(String photoID) {
-        this.photoID = photoID;
-    }
-
-    /**
-     * @return the group
-     */
-    public String getGroup() {
-        return group;
-    }
-
-    /**
-     * @param group the group to set
-     */
-    public void setGroup(String group) {
-        this.group = group;
-    }
-    
+ 
 }
 

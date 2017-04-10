@@ -12,7 +12,7 @@ import javax.swing.table.*;
  * @author kkc5141
  */
 public class ContactTableModel extends AbstractTableModel {
-    private static String[] columnNames = {"First Name","Middle Name","Last Name","Group"};
+    private static String[] columnNames = {"First Name","Middle Name","Last Name","Home Number", "Cell Number", "Work Number", "Home Address", "Work Address"};
     private ArrayList<ContactModel> contactTableData;
     
     public ContactTableModel(ArrayList<ContactModel> theContactTableData){
@@ -35,8 +35,12 @@ public class ContactTableModel extends AbstractTableModel {
         switch(col){
             case 0: objectToReturn = contactTableData.get(row).getfName();break;
             case 1: objectToReturn = contactTableData.get(row).getmName();break;
-            case 2: objectToReturn = contactTableData.get(row).getCellNum();break;
-            case 3: objectToReturn = contactTableData.get(row).getGroup();break;
+            case 2: objectToReturn = contactTableData.get(row).getlName();break;
+            case 3: objectToReturn = contactTableData.get(row).getHomeNum();break;
+            case 4: objectToReturn = contactTableData.get(row).getCellNum();break;
+            case 5: objectToReturn = contactTableData.get(row).getWorkNum();break;
+            case 6: objectToReturn = contactTableData.get(row).gethAddress();break;
+            case 7: objectToReturn = contactTableData.get(row).getwAddress();break;
         }
         return objectToReturn;
     }
