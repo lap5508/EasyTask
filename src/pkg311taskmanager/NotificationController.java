@@ -12,18 +12,17 @@ package pkg311taskmanager;
 public class NotificationController {
     
     
-    
-    
+    private NotificationList theNotificationList;
+    private NotificationListModel listModel;
+    private NotificationModel newNotification;
     private NavigationCntl theNavigationCntl = null;
     private NotificationUI theNotificationUI = null;
     private AddNotificationUI theAddNotificationUI = null;
-    //private NotificationList theContactList = null;
     private MainMenuUIv2 theMainMenuUI = null;
     
     public NotificationController(NavigationCntl parentNavCntl){
         System.out.println("MADE IT TO Notification CNTL");
         theNavigationCntl = parentNavCntl;
-        //theContactList = new ContactList();
         theNotificationUI = new NotificationUI(this);
         theNotificationUI.setVisible(true);
     }
@@ -47,6 +46,20 @@ public class NotificationController {
         theNotificationUI.setLocationRelativeTo(null);
         theNotificationUI.setVisible(true);
     }
+    
+    public void addNotificationButtonPressed(String task, String priority, String hour, String minute, String am_pm, String day, String month, String year){
+        NotificationModel newNotification = new NotificationModel(task, priority, hour, minute, am_pm, day, month, year);
+        theNotificationList.addNotification(newNotification);
+    }
+    
+    public NotificationList getNotificationList(){
+        return theNotificationList;
+    }
+    
+    public NotificationListModel getNotificationListModel(){
+        return listModel;
+    }
+    
     
     public void requestNavigationCntl(){
         theNotificationUI.setVisible(false);

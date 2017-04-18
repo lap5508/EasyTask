@@ -12,8 +12,10 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
 
 /**
@@ -26,11 +28,15 @@ public class NotificationUI extends JFrame{
     private JLabel title;
     private JPanel scrollPanel;
     private JScrollPane notifications;
+    private JList panelList;
     private JPanel buttonsPanel;
     private JButton mainMenuButton;
     private JButton addNotificationButton;
+    private JButton editNotificationButton;
     private JButton deleteNotificationButton;
     private NotificationController n_control = null;
+    private NotificationList list;
+    private JTable table;
     
     
     public NotificationUI(NotificationController newn_control)
@@ -51,10 +57,20 @@ public class NotificationUI extends JFrame{
         titlePanel.add(title);
         
         JPanel scrollPanel = new JPanel();
-        JScrollPane notifications = new JScrollPane();
+        
+        table = new JTable(this.n_control.getNotificationListModel());
+            table.getColumnModel().getColumn(0).setPreferredWidth(20);
+            table.getColumnModel().getColumn(1).setPreferredWidth(20);
+            table.getColumnModel().getColumn(2).setPreferredWidth(20);
+            table.getColumnModel().getColumn(3).setPreferredWidth(20); 
+            table.getColumnModel().getColumn(4).setPreferredWidth(20); 
+            table.getColumnModel().getColumn(5).setPreferredWidth(20);
+            table.getColumnModel().getColumn(6).setPreferredWidth(20);
+            table.getColumnModel().getColumn(7).setPreferredWidth(20);
+
+        JScrollPane notifications = new JScrollPane(table);
         notifications.setPreferredSize(new Dimension(450, 300));
         notifications.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPanel.add(notifications);
         
         JPanel buttonsPanel = new JPanel();
         
@@ -73,12 +89,15 @@ public class NotificationUI extends JFrame{
             });
         
         
+        JButton editNotificationButton = new JButton("Edit Notifiaction");
+        JButton deleteNotificationButton = new JButton("Delete Notification");
         
-        JButton deleteNotificationButton = new JButton("Delete Notifiaction");
+        scrollPanel.add(notifications);
         
         buttonsPanel.setLayout(new GridLayout(1,1));
         buttonsPanel.add(mainMenuButton);
         buttonsPanel.add(addNotificationButton);
+        buttonsPanel.add(editNotificationButton);
         buttonsPanel.add(deleteNotificationButton);
         
         add(titlePanel, BorderLayout.NORTH);

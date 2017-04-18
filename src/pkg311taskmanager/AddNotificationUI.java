@@ -56,6 +56,7 @@ public class AddNotificationUI extends JFrame{
         logo.setFont(new Font("Arial", Font.PLAIN,60));
         
         JPanel buttonsPanel = new JPanel();
+        
         JButton backButton = new JButton("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,6 +65,11 @@ public class AddNotificationUI extends JFrame{
         });
         
         JButton addNotificationButton = new JButton("Add");
+        addNotificationButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addNotificationButtonActionPerformed(evt);
+            }
+        });
         
         buttonsPanel.setLayout(new GridLayout(1,1));
         buttonsPanel.add(backButton);
@@ -136,5 +142,10 @@ public class AddNotificationUI extends JFrame{
         
         n_control.backButtonPressed();
     }
-    
+     
+     private void addNotificationButtonActionPerformed(java.awt.event.ActionEvent evt){
+        AddNotificationUI.this.n_control.addNotificationButtonPressed(tasks.getSelectedItem().toString(), priority.getSelectedItem().toString(), hour.getText(),minute.getText(),am_pm.getSelectedItem().toString(),day.getText(), month.getSelectedItem().toString(), Year.getText());
+    } 
+    //AddTaskUI.this.theTaskCntl.getTaskTableModel().fireTableDataChanged();
 }
+   

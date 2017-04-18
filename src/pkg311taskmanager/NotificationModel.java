@@ -13,14 +13,14 @@ public class NotificationModel {
     
     private String tasks;
     private String priority;
-    private int hour;
-    private int minute;
+    private String hour;
+    private String minute;
     private String am_pm;
     private String day;
     private String month;
     private String year;
     
-    public NotificationModel(String tasks, String priority, int hour, int minute, String am_pm, String day, String month, String year){
+    public NotificationModel(String tasks, String priority, String hour, String minute, String am_pm, String day, String month, String year){
         this.tasks = tasks;
         this.priority = priority;
         this.hour = hour;
@@ -30,6 +30,78 @@ public class NotificationModel {
         this.month = month;
         this.year = year;  
     }
+    
+     public String getTask() {
+        return tasks;
+    }
+
+    public void setTask(String tasks) {
+        this.tasks = tasks;
+    }
+    
+    
+     public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
+    
+    
+     public String getHour() {
+        return hour;
+    }
+
+    public void setHour(String hour) {
+        this.hour = hour;
+    }
+    
+    
+     public String getMinute() {
+        return minute;
+    }
+    
+    public void setMinute(String minute) {
+        this.minute = minute;
+    }
+    
+    
+     public String getAm_Pm() {
+        return am_pm;
+    }
+
+    public void setAm_Pm(String am_pm) {
+        this.am_pm = am_pm;
+    }
+    
+    
+     public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+    
+    
+     public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+    
+    
+     public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+    
     
 }
 
