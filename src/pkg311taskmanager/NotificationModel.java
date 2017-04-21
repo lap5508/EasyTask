@@ -20,15 +20,15 @@ public class NotificationModel {
     private String month;
     private String year;
     
-    public NotificationModel(String tasks, String priority, String hour, String minute, String am_pm, String day, String month, String year){
-        this.tasks = tasks;
-        this.priority = priority;
-        this.hour = hour;
-        this.minute = minute;
-        this.am_pm = am_pm;
-        this.day = day;
-        this.month = month;
-        this.year = year;  
+    public NotificationModel(String task, String apriority, String ahour, String aminute, String zam_pm, String zday, String zmonth, String zyear){
+        tasks = task;
+        priority = apriority;
+        hour = ahour;
+        minute = aminute;
+        am_pm = zam_pm;
+        day = zday;
+        month = zmonth;
+        year = zyear;  
     }
     
      public String getTask() {
@@ -102,15 +102,15 @@ public class NotificationModel {
         this.year = year;
     }
     
-    public void changeInfo(String task, String priority, String hour, String minute, String am_pm, String day, String month, String year){
+    public void changeInfo(String task, String zpriority, String zhour, String zminute, String zam_pm, String zday, String zmonth, String zyear){
         this.tasks = task;
-        this.priority = priority;
-        this.hour = hour;
-        this.minute = minute;
-        this.am_pm = am_pm;
-        this.day = day;
-        this.month = month;
-        this.year = year;
+        this.priority = zpriority;
+        this.hour = zhour;
+        this.minute = zminute;
+        this.am_pm = zam_pm;
+        this.day = zday;
+        this.month = zmonth;
+        this.year = zyear;
     }
     
 }

@@ -50,7 +50,7 @@ public ContactUI(ContactController newc_control){
     createListPanel();
     createNavigationPanel();
     createOptionsPanel();
-    setBounds(0, 0, 1151, 941);
+    setBounds(0, 0, 600, 500);
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 }
 public void createLabelPanel(){

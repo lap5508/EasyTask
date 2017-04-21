@@ -35,7 +35,7 @@ public class AddNotificationUI extends JFrame{
     private JTextField hour;
     private JTextField minute;
     private JComboBox am_pm;
-    private JTextField Year;
+    private JTextField year;
     private JLabel date;
     private JComboBox month;
     private JTextField day;
@@ -46,8 +46,9 @@ public class AddNotificationUI extends JFrame{
     
     public AddNotificationUI(NotificationController newn_control){
         n_control = newn_control;
+        setBounds(0, 0, 600, 500);
         this.setVisible(true);
-        createUI(true, 0);
+        createUI(false, 0);
     }
     
     public AddNotificationUI(NotificationController newn_control, int taskRow)
@@ -63,19 +64,19 @@ public class AddNotificationUI extends JFrame{
     private void createUI(boolean hasInfo, int songRow)
     {
         JPanel logoPanel = new JPanel();
-        JLabel logo = new JLabel("Add Notification");
+        logo = new JLabel("Add Notification");
         logo.setFont(new Font("Arial", Font.PLAIN,60));
         
         JPanel buttonsPanel = new JPanel();
         
-        JButton backButton = new JButton("Back");
+        backButton = new JButton("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
             }
         });
         
-        JButton addNotificationButton = new JButton("Save");
+        addNotificationButton = new JButton("Save");
         addNotificationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addNotificationButtonActionPerformed(evt);
@@ -86,26 +87,26 @@ public class AddNotificationUI extends JFrame{
         buttonsPanel.add(backButton);
         buttonsPanel.add(addNotificationButton);
        
-        JPanel comboBoxPanel = new JPanel();
-        JLabel taskLabel = new JLabel("Tasks:");
+        comboBoxPanel = new JPanel();
+        taskLabel = new JLabel("Tasks:");
         taskLabel.setFont(new Font("Arial", Font.PLAIN, 25));
-        JLabel priorityLabel = new JLabel("Priority:");
+        priorityLabel = new JLabel("Priority:");
         priorityLabel.setFont(new Font("Arial", Font.PLAIN, 25));
         
-        JTextField tasks = new JTextField();
-        JComboBox priority = new JComboBox();
+        tasks = new JTextField();
+        priority = new JComboBox();
         priority.addItem("Low");
         priority.addItem("Medium");
         priority.addItem("High");
         comboBoxPanel.setLayout(new GridLayout(6,2));
         
-        JLabel time = new JLabel("Time of reminder:");
+        time = new JLabel("Time of reminder:");
         time.setFont(new Font("Arial", Font.PLAIN, 25));
-        JTextField hour = new JTextField("Hour");
+        hour = new JTextField("Hour");
         hour.setFont(new Font("Arial", Font.PLAIN,20));
-        JTextField minute = new JTextField("Minute");
+        minute = new JTextField("Minute");
         minute.setFont(new Font("Arial", Font.PLAIN,20));
-        JComboBox am_pm = new JComboBox();
+        am_pm = new JComboBox();
         am_pm.addItem("AM");
         am_pm.addItem("PM");
         
@@ -116,11 +117,11 @@ public class AddNotificationUI extends JFrame{
                 comboBoxPanel.add(nextPanel);
             }
         
-        JLabel date = new JLabel("Date of Reminder:");
+        date = new JLabel("Date of Reminder:");
         date.setFont(new Font("Arial", Font.PLAIN, 25));
-        JTextField day = new JTextField("Day");
+        day = new JTextField("Day");
         day.setFont(new Font("Arial", Font.PLAIN,20));
-        JComboBox month = new JComboBox();
+        month = new JComboBox();
         month.addItem("January");
         month.addItem("February");
         month.addItem("March");
@@ -133,7 +134,7 @@ public class AddNotificationUI extends JFrame{
         month.addItem("October");
         month.addItem("November");
         month.addItem("December");
-        JTextField year = new JTextField("Year");
+        year = new JTextField("Year");
         year.setFont(new Font("Arial", Font.PLAIN,20));
                
         logoPanel.add(logo);
@@ -197,19 +198,20 @@ public class AddNotificationUI extends JFrame{
     
      private void backButtonActionPerformed(java.awt.event.ActionEvent evt){
         
-        n_control.backButtonPressed();
+        AddNotificationUI.this.n_control.returnNotificationUI();
+        this.setVisible(false);
     }
      
      private void addNotificationButtonActionPerformed(java.awt.event.ActionEvent evt){
         if(index == -1){
-            AddNotificationUI.this.n_control.addNotificationButtonPressed(tasks.getText(), priority.getSelectedItem().toString(), hour.getText(),minute.getText(),am_pm.getSelectedItem().toString(),day.getText(), month.getSelectedItem().toString(), Year.getText());
+            AddNotificationUI.this.n_control.addNotification(tasks.getText(), priority.getSelectedItem().toString(), hour.getText(),minute.getText(),am_pm.getSelectedItem().toString(),day.getText(), month.getSelectedItem().toString(), year.getText());
             AddNotificationUI.this.n_control.getNotificationListModel().fireTableDataChanged();
         } 
         else{
-            AddNotificationUI.this.n_control.editNotificationInfo(index, tasks.getText(), priority.getSelectedItem().toString(), hour.getText(),minute.getText(),am_pm.getSelectedItem().toString(),day.getText(), month.getSelectedItem().toString(), Year.getText());
+            AddNotificationUI.this.n_control.editNotificationInfo(index, tasks.getText(), priority.getSelectedItem().toString(), hour.getText(),minute.getText(),am_pm.getSelectedItem().toString(),day.getText(), month.getSelectedItem().toString(), year.getText());
             AddNotificationUI.this.n_control.getNotificationListModel().fireTableDataChanged();
         }
     AddNotificationUI.this.n_control.returnNotificationUI();
-        this.setVisible(false);
+    this.setVisible(false);
 }
 } 

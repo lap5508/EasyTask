@@ -121,7 +121,8 @@ public class NotificationUI extends JFrame{
     
     
     private void addNotificationButtonActionPerformed(java.awt.event.ActionEvent evt){
-        n_control.getBlankAddNotificationUI();
+        NotificationUI.this.n_control.getBlankAddNotificationUI();
+        System.out.println("worked");
     }
     
     private void editNotificationButtonActionPerformed(java.awt.event.ActionEvent evt){

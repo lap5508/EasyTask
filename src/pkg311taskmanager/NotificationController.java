@@ -49,6 +49,7 @@ public class NotificationController {
     
     public void getBlankAddNotificationUI(){
         theAddNotificationUI = new AddNotificationUI(this);
+        theAddNotificationUI.setBounds(0, 0, 600, 500);
     }
     
     public void keepNotificationUI(){
@@ -66,14 +67,14 @@ public class NotificationController {
         theNotificationUI.setVisible(true);
     }
     
-    public void addNotificationButtonPressed(String task, String priority, String hour, String minute, String am_pm, String day, String month, String year){
+    public void addNotification(String task, String priority, String hour, String minute, String am_pm, String day, String month, String year){
         NotificationModel newNotification = new NotificationModel(task, priority, hour, minute, am_pm, day, month, year);
         theNotificationList.getTheNotificationList().add(newNotification);
     }
     
     
     
-    public void addNotificationButtonPressed(NotificationModel newNotification){
+    public void addNotification(NotificationModel newNotification){
         tempNotification = theNotificationList.getTheNotificationList().get(tempIndex);
         theNotificationList.getTheNotificationList().add(tempNotification);
     }
