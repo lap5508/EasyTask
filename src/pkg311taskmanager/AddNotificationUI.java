@@ -27,7 +27,7 @@ public class AddNotificationUI extends JFrame{
     private JLabel priorityLabel;
     private JPanel buttonsPanel;
     private JPanel comboBoxPanel;
-    private JComboBox tasks;
+    private JTextField tasks;
     private JComboBox priority;
     private JButton backButton;
     private JButton addNotificationButton;
@@ -92,10 +92,7 @@ public class AddNotificationUI extends JFrame{
         JLabel priorityLabel = new JLabel("Priority:");
         priorityLabel.setFont(new Font("Arial", Font.PLAIN, 25));
         
-        JComboBox tasks = new JComboBox();
-//        for(Task inputTasks : taskList.getListOfTasks()) {
-//            tasks.addItem(inputTasks);
-//            }
+        JTextField tasks = new JTextField();
         JComboBox priority = new JComboBox();
         priority.addItem("Low");
         priority.addItem("Medium");
@@ -138,7 +135,7 @@ public class AddNotificationUI extends JFrame{
         month.addItem("December");
         JTextField year = new JTextField("Year");
         year.setFont(new Font("Arial", Font.PLAIN,20));
-        
+               
         logoPanel.add(logo);
         
         comboBoxPanel.add(taskLabel);
@@ -160,22 +157,22 @@ public class AddNotificationUI extends JFrame{
         
         if(hasInfo){
             String taskInfo;
-                taskInfo = n_control.getNotificationList().getNotificationList().get(index).getTask();
+                taskInfo = n_control.getNotificationList().getTheNotificationList().get(index).getTask();
             String priorityInfo;
-                priorityInfo = n_control.getNotificationList().getNotificationList().get(index).getPriority();
+                priorityInfo = n_control.getNotificationList().getTheNotificationList().get(index).getPriority();
             String hourInfo;
-                hourInfo = n_control.getNotificationList().getNotificationList().get(index).getHour();
+                hourInfo = n_control.getNotificationList().getTheNotificationList().get(index).getHour();
             String minuteInfo;
-                minuteInfo = n_control.getNotificationList().getNotificationList().get(index).getMinute();
+                minuteInfo = n_control.getNotificationList().getTheNotificationList().get(index).getMinute();
             String am_pmInfo;
-                am_pmInfo = n_control.getNotificationList().getNotificationList().get(index).getAm_Pm();
+                am_pmInfo = n_control.getNotificationList().getTheNotificationList().get(index).getAm_Pm();
             String dayInfo;
-                dayInfo = n_control.getNotificationList().getNotificationList().get(index).getDay();
+                dayInfo = n_control.getNotificationList().getTheNotificationList().get(index).getDay();
             String monthInfo;
-                monthInfo = n_control.getNotificationList().getNotificationList().get(index).getMonth();
+                monthInfo = n_control.getNotificationList().getTheNotificationList().get(index).getMonth();
             String yearInfo;
-                yearInfo = n_control.getNotificationList().getNotificationList().get(index).getYear();
-            tasks.setSelectedItem(taskInfo);
+                yearInfo = n_control.getNotificationList().getTheNotificationList().get(index).getYear();
+            tasks.setText(taskInfo);
             priority.setSelectedItem(priorityInfo);
             hour.setText(hourInfo);
             minute.setText(minuteInfo);
@@ -205,11 +202,11 @@ public class AddNotificationUI extends JFrame{
      
      private void addNotificationButtonActionPerformed(java.awt.event.ActionEvent evt){
         if(index == -1){
-            AddNotificationUI.this.n_control.addNotificationButtonPressed(tasks.getSelectedItem().toString(), priority.getSelectedItem().toString(), hour.getText(),minute.getText(),am_pm.getSelectedItem().toString(),day.getText(), month.getSelectedItem().toString(), Year.getText());
+            AddNotificationUI.this.n_control.addNotificationButtonPressed(tasks.getText(), priority.getSelectedItem().toString(), hour.getText(),minute.getText(),am_pm.getSelectedItem().toString(),day.getText(), month.getSelectedItem().toString(), Year.getText());
             AddNotificationUI.this.n_control.getNotificationListModel().fireTableDataChanged();
         } 
         else{
-            AddNotificationUI.this.n_control.editNotificationInfo(index, tasks.getSelectedItem().toString(), priority.getSelectedItem().toString(), hour.getText(),minute.getText(),am_pm.getSelectedItem().toString(),day.getText(), month.getSelectedItem().toString(), Year.getText());
+            AddNotificationUI.this.n_control.editNotificationInfo(index, tasks.getText(), priority.getSelectedItem().toString(), hour.getText(),minute.getText(),am_pm.getSelectedItem().toString(),day.getText(), month.getSelectedItem().toString(), Year.getText());
             AddNotificationUI.this.n_control.getNotificationListModel().fireTableDataChanged();
         }
     AddNotificationUI.this.n_control.returnNotificationUI();

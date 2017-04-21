@@ -139,7 +139,7 @@ public class NotificationUI extends JFrame{
     private void deleteNotificationButtonActionPerformed(java.awt.event.ActionEvent evt) {
     int selectedTableRow = table.getSelectedRow();
     int selectedModelRow = table.convertRowIndexToModel(selectedTableRow);
-    NotificationUI.this.n_control.getNotificationList().getNotificationList().remove(selectedModelRow);
+    NotificationUI.this.n_control.getNotificationList().getTheNotificationList().remove(selectedModelRow);
     this.n_control.getNotificationListModel().fireTableDataChanged();
     System.out.print("deleted");
 }

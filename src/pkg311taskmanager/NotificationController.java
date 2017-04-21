@@ -29,7 +29,7 @@ public class NotificationController {
         System.out.println("MADE IT TO Notification CNTL");
         theNavigationCntl = parentNavCntl;
         theNotificationList = new NotificationList();
-        listModel = new NotificationListModel(theNotificationList.getNotificationList());
+        listModel = new NotificationListModel(theNotificationList.getTheNotificationList());
         theNotificationUI = new NotificationUI(this);
         theNotificationUI.setVisible(true);
     }
@@ -68,19 +68,19 @@ public class NotificationController {
     
     public void addNotificationButtonPressed(String task, String priority, String hour, String minute, String am_pm, String day, String month, String year){
         NotificationModel newNotification = new NotificationModel(task, priority, hour, minute, am_pm, day, month, year);
-        theNotificationList.getNotificationList().add(newNotification);
+        theNotificationList.getTheNotificationList().add(newNotification);
     }
     
     
     
     public void addNotificationButtonPressed(NotificationModel newNotification){
-        tempNotification = theNotificationList.getNotificationList().get(tempIndex);
-        theNotificationList.getNotificationList().add(tempNotification);
+        tempNotification = theNotificationList.getTheNotificationList().get(tempIndex);
+        theNotificationList.getTheNotificationList().add(tempNotification);
     }
     
     
     public void editNotificationInfo(int index, String task, String priority, String hour, String minute, String am_pm, String day, String month, String year){
-        tempNotification = this.getNotificationList().getNotificationList().get(index);
+        tempNotification = this.getNotificationList().getTheNotificationList().get(index);
         tempNotification.changeInfo(task, priority, hour, minute, am_pm, day, month, year);
     }
     

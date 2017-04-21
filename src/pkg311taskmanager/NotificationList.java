@@ -41,7 +41,7 @@ public class NotificationList {
     }
     
     
-    public ArrayList<NotificationModel> getNotificationList(){
+    public ArrayList<NotificationModel> getTheNotificationList(){
         
         return notificationList;
     }
