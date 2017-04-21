@@ -102,6 +102,16 @@ public class NotificationModel {
         this.year = year;
     }
     
+    public void changeInfo(String task, String priority, String hour, String minute, String am_pm, String day, String month, String year){
+        this.tasks = task;
+        this.priority = priority;
+        this.hour = hour;
+        this.minute = minute;
+        this.am_pm = am_pm;
+        this.day = day;
+        this.month = month;
+        this.year = year;
+    }
     
 }
 

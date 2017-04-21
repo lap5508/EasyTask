@@ -5,6 +5,8 @@
  */
 package pkg311taskmanager;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author rober_000
@@ -17,12 +19,17 @@ public class NotificationController {
     private NotificationModel newNotification;
     private NavigationCntl theNavigationCntl = null;
     private NotificationUI theNotificationUI = null;
+    private ArrayList<NotificationModel> theListOfNotifications;
     private AddNotificationUI theAddNotificationUI = null;
     private MainMenuUIv2 theMainMenuUI = null;
+    int tempIndex = 0;
+    private NotificationModel tempNotification;
     
     public NotificationController(NavigationCntl parentNavCntl){
         System.out.println("MADE IT TO Notification CNTL");
         theNavigationCntl = parentNavCntl;
+        theNotificationList = new NotificationList();
+        listModel = new NotificationListModel(theNotificationList.getNotificationList());
         theNotificationUI = new NotificationUI(this);
         theNotificationUI.setVisible(true);
     }
@@ -34,9 +41,21 @@ public class NotificationController {
         theNotificationUI.setVisible(true);
     }
     
-    public void getAddNotificationUI(){
+    public void getAddNotificationUI(int taskRow){
         theNotificationUI.setVisible(false);
+        theAddNotificationUI = new AddNotificationUI(this, taskRow);
+        theAddNotificationUI.setBounds(0, 0, 600, 500);
+    }
+    
+    public void getBlankAddNotificationUI(){
         theAddNotificationUI = new AddNotificationUI(this);
+    }
+    
+    public void keepNotificationUI(){
+        theNotificationUI.setVisible(false);
+        theNotificationUI.dispose();
+        theNotificationUI = new NotificationUI(this);
+        theNotificationUI.setVisible(true);
     }
     
     public void backButtonPressed(){
@@ -49,7 +68,20 @@ public class NotificationController {
     
     public void addNotificationButtonPressed(String task, String priority, String hour, String minute, String am_pm, String day, String month, String year){
         NotificationModel newNotification = new NotificationModel(task, priority, hour, minute, am_pm, day, month, year);
-        theNotificationList.addNotification(newNotification);
+        theNotificationList.getNotificationList().add(newNotification);
+    }
+    
+    
+    
+    public void addNotificationButtonPressed(NotificationModel newNotification){
+        tempNotification = theNotificationList.getNotificationList().get(tempIndex);
+        theNotificationList.getNotificationList().add(tempNotification);
+    }
+    
+    
+    public void editNotificationInfo(int index, String task, String priority, String hour, String minute, String am_pm, String day, String month, String year){
+        tempNotification = this.getNotificationList().getNotificationList().get(index);
+        tempNotification.changeInfo(task, priority, hour, minute, am_pm, day, month, year);
     }
     
     public NotificationList getNotificationList(){
@@ -60,6 +92,15 @@ public class NotificationController {
         return listModel;
     }
     
+    public ArrayList<NotificationModel> getTheNotificationList(){
+        return theListOfNotifications;
+    }
+    
+    public void returnNotificationUI(){
+        theAddNotificationUI.setVisible(false);
+        theAddNotificationUI.dispose();
+        theNotificationUI.setVisible(true);
+    }
     
     public void requestNavigationCntl(){
         theNotificationUI.setVisible(false);

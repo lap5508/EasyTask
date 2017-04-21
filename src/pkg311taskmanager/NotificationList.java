@@ -19,7 +19,7 @@ public class NotificationList {
     
     public NotificationList(){
      if(notificationList == null){
-            buildTestNotificationList();
+        buildTestNotificationList();
         }    
     }
 
@@ -29,9 +29,9 @@ public class NotificationList {
             String tasks = "Task " +i;
             String priority = "Low";
             String hour = "3";
-            String minute = "15" + i;
+            String minute = "15";
             String am_pm = "PM";
-            String day = "1" + i;
+            String day = "14";
             String month = "April";
             String year = "2017";
             NotificationModel newTestNotification = new NotificationModel(tasks, priority, hour, minute, am_pm, day, month, year);
@@ -40,12 +40,6 @@ public class NotificationList {
         System.out.println(notificationList);
     }
     
-    
-    public void addNotification(NotificationModel incomingNotification){
-        
-        notificationList.add(incomingNotification);     
-            
-        }
     
     public ArrayList<NotificationModel> getNotificationList(){
         

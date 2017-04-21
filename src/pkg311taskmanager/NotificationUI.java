@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -71,6 +72,7 @@ public class NotificationUI extends JFrame{
         JScrollPane notifications = new JScrollPane(table);
         notifications.setPreferredSize(new Dimension(450, 300));
         notifications.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        table.setFillsViewportHeight(true);
         
         JPanel buttonsPanel = new JPanel();
         
@@ -90,7 +92,18 @@ public class NotificationUI extends JFrame{
         
         
         JButton editNotificationButton = new JButton("Edit Notifiaction");
+        editNotificationButton.addActionListener(new java.awt.event.ActionListener(){
+                public void actionPerformed(java.awt.event.ActionEvent evt){
+                    editNotificationButtonActionPerformed(evt);
+                }
+            });
+        
         JButton deleteNotificationButton = new JButton("Delete Notification");
+        deleteNotificationButton.addActionListener(new java.awt.event.ActionListener(){
+                public void actionPerformed(java.awt.event.ActionEvent evt){
+                    deleteNotificationButtonActionPerformed(evt);
+                }
+            });
         
         scrollPanel.add(notifications);
         
@@ -108,8 +121,28 @@ public class NotificationUI extends JFrame{
     
     
     private void addNotificationButtonActionPerformed(java.awt.event.ActionEvent evt){
-        n_control.getAddNotificationUI();
+        n_control.getBlankAddNotificationUI();
     }
+    
+    private void editNotificationButtonActionPerformed(java.awt.event.ActionEvent evt){
+        if(table.getSelectedRow() == -1){
+        NotificationUI.this.n_control.keepNotificationUI();
+        JOptionPane.showMessageDialog(null, "Please select a Notification!");
+        }
+        else{
+        int selectedTableRow = table.getSelectedRow();
+        int selectedModelRow = table.convertRowIndexToModel(selectedTableRow);
+        NotificationUI.this.n_control.getAddNotificationUI(selectedModelRow);
+        }
+    }
+    
+    private void deleteNotificationButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    int selectedTableRow = table.getSelectedRow();
+    int selectedModelRow = table.convertRowIndexToModel(selectedTableRow);
+    NotificationUI.this.n_control.getNotificationList().getNotificationList().remove(selectedModelRow);
+    this.n_control.getNotificationListModel().fireTableDataChanged();
+    System.out.print("deleted");
+}
     
     private void mainMenuButtonActionPerformed(java.awt.event.ActionEvent evt){
         n_control.requestNavigationCntl();
