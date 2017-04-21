@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,7 +18,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.RowSorter;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.SortOrder;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -68,7 +73,18 @@ public class NotificationUI extends JFrame{
             table.getColumnModel().getColumn(5).setPreferredWidth(20);
             table.getColumnModel().getColumn(6).setPreferredWidth(20);
             table.getColumnModel().getColumn(7).setPreferredWidth(20);
-
+            
+    TableRowSorter<TableModel> sorter = new TableRowSorter<>(this.n_control.getNotificationListModel());
+    table.setRowSorter(sorter);
+    ArrayList<RowSorter.SortKey> sortKeys = new ArrayList<>();
+    int columnIndexForDate = 1;
+    sortKeys.add(new RowSorter.SortKey(columnIndexForDate, SortOrder.ASCENDING));
+    int columnIndexForTime = 2;
+    sortKeys.add(new RowSorter.SortKey(columnIndexForTime, SortOrder.ASCENDING));
+    sorter.setSortKeys(sortKeys);
+    sorter.sort();
+            
+            
         JScrollPane notifications = new JScrollPane(table);
         notifications.setPreferredSize(new Dimension(450, 300));
         notifications.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);

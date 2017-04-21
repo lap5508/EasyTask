@@ -9,6 +9,9 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,7 +20,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
-import javax.swing.ScrollPaneConstants;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -50,7 +58,7 @@ public ContactUI(ContactController newc_control){
     createListPanel();
     createNavigationPanel();
     createOptionsPanel();
-    setBounds(0, 0, 600, 500);
+    setBounds(0, 0, 600, 600);
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 }
 public void createLabelPanel(){
@@ -69,7 +77,30 @@ public void createListPanel(){
             contactTable.getColumnModel().getColumn(5).setPreferredWidth(20);
             contactTable.getColumnModel().getColumn(6).setPreferredWidth(20);
             contactTable.getColumnModel().getColumn(7).setPreferredWidth(20);
-    
+    //contactTable.setAutoCreateRowSorter(true);
+    TableRowSorter<TableModel> sorter = new TableRowSorter<>(this.c_control.getContactTableModel());
+    contactTable.setRowSorter(sorter);
+    ArrayList<RowSorter.SortKey> sortKeys = new ArrayList<>();
+ 
+    int columnIndexToSort = 0;
+    sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.ASCENDING));
+ 
+    sorter.setSortKeys(sortKeys);
+    sorter.sort();
+    final JTextField filterText = new JTextField("           ");
+    listPanel.add(filterText, BorderLayout.SOUTH);
+    JButton filterButton = new JButton("Filter");
+    filterButton.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        String text = filterText.getText();
+        if (text.length() == 0) {
+          sorter.setRowFilter(null);
+        } else {
+          sorter.setRowFilter(RowFilter.regexFilter(text));
+        }
+      }
+    });
+    listPanel.add(filterButton, BorderLayout.SOUTH);
     
     theScrollPane = new JScrollPane(contactTable);
             theScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);

@@ -10,6 +10,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
+import java.util.ArrayList;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 /**
  *
  * @author Luke
@@ -83,7 +86,16 @@ public class TaskUI extends JFrame{
             taskTable.getColumnModel().getColumn(1).setPreferredWidth(20);
             taskTable.getColumnModel().getColumn(2).setPreferredWidth(20);
             taskTable.getColumnModel().getColumn(3).setPreferredWidth(20); 
-            taskTable.getColumnModel().getColumn(4).setPreferredWidth(20); 
+            taskTable.getColumnModel().getColumn(4).setPreferredWidth(20);
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(this.theTaskCntl.getTaskTableModel());
+        taskTable.setRowSorter(sorter);
+        ArrayList<RowSorter.SortKey> sortKeys = new ArrayList<>();
+        int columnIndexForDate = 1;
+        sortKeys.add(new RowSorter.SortKey(columnIndexForDate, SortOrder.ASCENDING));
+        int columnIndexForTime = 2;
+        sortKeys.add(new RowSorter.SortKey(columnIndexForTime, SortOrder.ASCENDING));
+        sorter.setSortKeys(sortKeys);
+        sorter.sort();
         
         //ScrollPane
         theScrollPane = new JScrollPane(taskTable);
