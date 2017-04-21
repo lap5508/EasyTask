@@ -94,7 +94,10 @@ public class AddNotificationUI extends JFrame{
         priorityLabel.setFont(new Font("Arial", Font.PLAIN, 25));
         
         tasks = new JTextField();
+        tasks.setColumns(12);
+        tasks.setFont(new Font("Arial", Font.PLAIN, 20));
         priority = new JComboBox();
+        priority.setFont(new Font("Arial", Font.PLAIN, 16));
         priority.addItem("Low");
         priority.addItem("Medium");
         priority.addItem("High");
@@ -104,9 +107,12 @@ public class AddNotificationUI extends JFrame{
         time.setFont(new Font("Arial", Font.PLAIN, 25));
         hour = new JTextField("Hour");
         hour.setFont(new Font("Arial", Font.PLAIN,20));
+        hour.setColumns(12);
         minute = new JTextField("Minute");
         minute.setFont(new Font("Arial", Font.PLAIN,20));
+        minute.setColumns(12);
         am_pm = new JComboBox();
+        am_pm.setFont(new Font("Arial", Font.PLAIN, 16));
         am_pm.addItem("AM");
         am_pm.addItem("PM");
         
@@ -121,7 +127,9 @@ public class AddNotificationUI extends JFrame{
         date.setFont(new Font("Arial", Font.PLAIN, 25));
         day = new JTextField("Day");
         day.setFont(new Font("Arial", Font.PLAIN,20));
+        day.setColumns(12);
         month = new JComboBox();
+        month.setFont(new Font("Arial", Font.PLAIN, 16));
         month.addItem("January");
         month.addItem("February");
         month.addItem("March");
@@ -136,6 +144,7 @@ public class AddNotificationUI extends JFrame{
         month.addItem("December");
         year = new JTextField("Year");
         year.setFont(new Font("Arial", Font.PLAIN,20));
+        year.setColumns(12);
                
         logoPanel.add(logo);
         

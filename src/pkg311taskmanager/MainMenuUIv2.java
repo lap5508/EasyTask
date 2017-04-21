@@ -40,7 +40,7 @@ public class MainMenuUIv2 extends javax.swing.JFrame {
         taskButton = new javax.swing.JButton();
         calendarButton = new javax.swing.JButton();
         contactButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        NotificationButton = new javax.swing.JButton();
         BackGround = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -82,7 +82,7 @@ public class MainMenuUIv2 extends javax.swing.JFrame {
             }
         });
         jPanel1.add(calendarButton);
-        calendarButton.setBounds(200, 250, 90, 25);
+        calendarButton.setBounds(330, 170, 90, 25);
 
         contactButton1.setBackground(new java.awt.Color(153, 153, 153));
         contactButton1.setFont(new java.awt.Font("Century Schoolbook", 0, 16)); // NOI18N
@@ -95,14 +95,15 @@ public class MainMenuUIv2 extends javax.swing.JFrame {
         jPanel1.add(contactButton1);
         contactButton1.setBounds(200, 200, 90, 29);
 
-        jButton2.setText("Notification");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        NotificationButton.setFont(new java.awt.Font("Century Schoolbook", 0, 10)); // NOI18N
+        NotificationButton.setText("Notification");
+        NotificationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                NotificationButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(330, 150, 100, 30);
+        jPanel1.add(NotificationButton);
+        NotificationButton.setBounds(200, 250, 90, 25);
 
         BackGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Easy Task BG.jpg"))); // NOI18N
         jPanel1.add(BackGround);
@@ -138,9 +139,9 @@ public class MainMenuUIv2 extends javax.swing.JFrame {
         MainMenuUIv2.this.parentNavCntl.requestContactCntl();
     }//GEN-LAST:event_contactButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void NotificationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NotificationButtonActionPerformed
         MainMenuUIv2.this.parentNavCntl.requestNotificationCntl();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_NotificationButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,10 +181,10 @@ public class MainMenuUIv2 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BackGround;
     private javax.swing.JLabel Logo;
+    private javax.swing.JButton NotificationButton;
     private javax.swing.JButton calendarButton;
     private javax.swing.JButton closeButton;
     private javax.swing.JButton contactButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton taskButton;
     // End of variables declaration//GEN-END:variables
