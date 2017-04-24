@@ -97,14 +97,18 @@ public class AddUserUI extends JFrame{
         return pw;
     }
     private void saveButtonActionPerformed(ActionEvent evt){
-        //for(int i = 0; i < AddUserUI.this.logCntl.getListOfUsers().size(); i++){
-            //if(uNameField.equals(AddUserUI.this.logCntl.getListOfUsers().get(i).getUsername())){
-              //  JOptionPane.showMessageDialog(null, "Please select a different Username!");
-           // } else {
+        boolean nah = false;
+        for(int i = 0; i < AddUserUI.this.logCntl.getUserList().getTheListOfUsers().size(); i++){
+            if(uNameField.getText() == AddUserUI.this.logCntl.getUserList().getTheListOfUsers().get(i).getUsername()){
+                nah = true;
+            } else {
                 AddUserUI.this.logCntl.addNewUser(uNameField.getText(), parsePW(pwField.getText()));
                 this.setVisible(false);
-            //}
-        //}
+           }
+        }
+        if(nah == true){
+            JOptionPane.showMessageDialog(null, "Please select a different UserName!");
+        }
     }
     
     private void backButtonActionPerformed(ActionEvent evt){
