@@ -278,12 +278,19 @@ public class TaskUI extends JFrame{
     }
     
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt){
+        if(taskTable.getSelectedRow() == -1){
+            
+           TaskUI.this.theTaskCntl.keepTaskUI();
+           JOptionPane.showMessageDialog(null, "Please select a Task!");        
+        }
+        else{
         int selectedTableRow = taskTable.getSelectedRow();
         int selectedModelRow = taskTable.convertRowIndexToModel(selectedTableRow);
         TaskUI.this.theTaskCntl.getTaskList().getListOfTasks().remove(selectedModelRow);
         //SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getMediaList().getListOfMedia().remove(selectedModelRow);
         //SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
         this.theTaskCntl.getTaskTableModel().fireTableDataChanged();
+        }
     }
     
     private void menuButtonActionPerformed(java.awt.event.ActionEvent evt){

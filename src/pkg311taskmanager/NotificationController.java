@@ -24,6 +24,7 @@ public class NotificationController {
     private MainMenuUIv2 theMainMenuUI = null;
     int tempIndex = 0;
     private NotificationModel tempNotification;
+    private ContactController cControl;
     
     public NotificationController(NavigationCntl parentNavCntl){
         System.out.println("MADE IT TO Notification CNTL");
@@ -106,6 +107,14 @@ public class NotificationController {
     public void requestNavigationCntl(){
         theNotificationUI.setVisible(false);
         theNavigationCntl.getNavigationCntl();
+    }
+    public void requestTaskCntl(){
+        theNotificationUI.setVisible(false);
+        theNavigationCntl.requestTaskCntl();
+    }
+    public void requestContactCntl(){
+        theNotificationUI.setVisible(false);
+        theNavigationCntl.requestContactCntl();
     }
     
 }

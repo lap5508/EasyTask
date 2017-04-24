@@ -58,7 +58,7 @@ public ContactUI(ContactController newc_control){
     createListPanel();
     createNavigationPanel();
     createOptionsPanel();
-    setBounds(0, 0, 600, 600);
+    setBounds(0, 0, 650, 600);
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 }
 public void createLabelPanel(){
@@ -69,25 +69,25 @@ public void createLabelPanel(){
 public void createListPanel(){
     JPanel listPanel = new JPanel();
     contactTable = new JTable(this.c_control.getContactTableModel());
-            contactTable.getColumnModel().getColumn(0).setPreferredWidth(20);
-            contactTable.getColumnModel().getColumn(1).setPreferredWidth(20);
-            contactTable.getColumnModel().getColumn(2).setPreferredWidth(20);
-            contactTable.getColumnModel().getColumn(3).setPreferredWidth(20); 
-            contactTable.getColumnModel().getColumn(4).setPreferredWidth(20);
-            contactTable.getColumnModel().getColumn(5).setPreferredWidth(20);
-            contactTable.getColumnModel().getColumn(6).setPreferredWidth(20);
-            contactTable.getColumnModel().getColumn(7).setPreferredWidth(20);
+            contactTable.getColumnModel().getColumn(0).setPreferredWidth(25);
+            contactTable.getColumnModel().getColumn(1).setPreferredWidth(25);
+            contactTable.getColumnModel().getColumn(2).setPreferredWidth(25);
+            contactTable.getColumnModel().getColumn(3).setPreferredWidth(25); 
+            contactTable.getColumnModel().getColumn(4).setPreferredWidth(25);
+            contactTable.getColumnModel().getColumn(5).setPreferredWidth(25);
+            contactTable.getColumnModel().getColumn(6).setPreferredWidth(25);
+            contactTable.getColumnModel().getColumn(7).setPreferredWidth(25);
     //contactTable.setAutoCreateRowSorter(true);
     TableRowSorter<TableModel> sorter = new TableRowSorter<>(this.c_control.getContactTableModel());
     contactTable.setRowSorter(sorter);
     ArrayList<RowSorter.SortKey> sortKeys = new ArrayList<>();
  
-    int columnIndexToSort = 0;
+    int columnIndexToSort = 2;
     sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.ASCENDING));
  
     sorter.setSortKeys(sortKeys);
     sorter.sort();
-    final JTextField filterText = new JTextField("           ");
+    final JTextField filterText = new JTextField("Search Contacts");
     listPanel.add(filterText, BorderLayout.SOUTH);
     JButton filterButton = new JButton("Filter");
     filterButton.addActionListener(new ActionListener() {
@@ -105,7 +105,7 @@ public void createListPanel(){
     theScrollPane = new JScrollPane(contactTable);
             theScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
             theScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-            theScrollPane.setPreferredSize(new Dimension(500, 320));
+            theScrollPane.setPreferredSize(new Dimension(500, 400));
             contactTable.setFillsViewportHeight(true);
     listPanel.add(theScrollPane);
     add(listPanel, BorderLayout.CENTER);
@@ -138,7 +138,7 @@ public void createNavigationPanel(){
             });
     navPanel.setLayout(new GridLayout(1, 3));
     navPanel.add(menuButton);
-    navPanel.add(calendarButton);
+    //navPanel.add(calendarButton);
     navPanel.add(taskButton);
     navPanel.add(notificationButton);
     add(navPanel, BorderLayout.SOUTH);
@@ -203,6 +203,12 @@ private void calendarButtonPerformed(java.awt.event.ActionEvent evt) {
     ContactUI.this.c_control.requestCalendarCntl();
 }
 private void deleteButtonPerformed(java.awt.event.ActionEvent evt) {
+    if(contactTable.getSelectedRow() == -1){
+            
+           ContactUI.this.c_control.keepContactUI();
+           JOptionPane.showMessageDialog(null, "Please select a Contact!");        
+        }
+        else{
     int selectedTableRow = contactTable.getSelectedRow();
     int selectedModelRow = contactTable.convertRowIndexToModel(selectedTableRow);
     ContactUI.this.c_control.getContactList().getTheContactList().remove(selectedModelRow);
@@ -210,5 +216,6 @@ private void deleteButtonPerformed(java.awt.event.ActionEvent evt) {
         //SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
     this.c_control.getContactTableModel().fireTableDataChanged();
     System.out.print("happened");
+    }
 }
 }
