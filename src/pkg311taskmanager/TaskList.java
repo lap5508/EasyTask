@@ -13,7 +13,8 @@ import java.io.Serializable;
  */
 public class TaskList implements Serializable{
     private ArrayList<Task> theListOfTasks = null;
-    
+    private ArrayList taskTitles;
+    private TaskCntl theTaskCntl;
     
     public TaskList (){
         if(theListOfTasks == null){
@@ -39,5 +40,12 @@ public class TaskList implements Serializable{
 
         return theListOfTasks;
     }
-
+    
+    public ArrayList getTitles(){
+        taskTitles = new ArrayList();
+    for(int i = 0; i < taskTitles.size(); i++){
+        taskTitles.add(i, theTaskCntl.getTaskList().getListOfTasks().get(i).getTitle());
+        }
+    return taskTitles;
+    }
 }
