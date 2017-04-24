@@ -16,6 +16,7 @@ public class NavigationCntl {
     private CalendarCntl theCalendarCntl = null;
     private ContactController theContactControl = null;
     private NotificationController theNotificationCntl = null;
+    private LoginCntl theLogInCntl = null;
     
     public NavigationCntl(String username){
         System.out.println("Made it to NavigationCntl");
@@ -32,6 +33,10 @@ public class NavigationCntl {
     public void requestContactCntl(){
         theMainMenuUI.setVisible(false);
         theContactControl = new ContactController(this);
+    }
+    public void requestLoginCntl(){
+        theMainMenuUI.setVisible(false);
+        theLogInCntl = new LoginCntl(this);
     }
     
     public void requestTaskCntl(){

@@ -42,6 +42,8 @@ public class MainMenuUI extends JFrame{
         theNavCntl = parentNavCntl;
         createLabelPanel();
         createNavigationPanel();
+        setBounds(0, 0, 650, 650);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     }
     
     public void createLabelPanel(){
@@ -73,11 +75,18 @@ public class MainMenuUI extends JFrame{
                         alarmButtonActionPerformed(evt);
                     }
                 });
+        JButton logOutButton = new JButton("Log out :(");
+            logOutButton.addActionListener(new java.awt.event.ActionListener(){
+                public void actionPerformed(java.awt.event.ActionEvent evt){
+                    logOutButtonPerformed(evt);
+                }
+            });
             
         navigationPanel.setLayout(new GridLayout(2, 1));
             navigationPanel.add(taskButton);
             navigationPanel.add(contactButton);
             navigationPanel.add(alarmButton);
+            navigationPanel.add(logOutButton);
             add(navigationPanel, BorderLayout.CENTER);
     }
     
@@ -94,5 +103,9 @@ public class MainMenuUI extends JFrame{
     private void alarmButtonActionPerformed(java.awt.event.ActionEvent evt) {
         this.setVisible(false);
         MainMenuUI.this.theNavCntl.requestNotificationCntl();
+    }
+    private void logOutButtonPerformed(java.awt.event.ActionEvent evt) {
+        this.setVisible(false);
+        MainMenuUI.this.theNavCntl.requestLoginCntl();
     }
 }

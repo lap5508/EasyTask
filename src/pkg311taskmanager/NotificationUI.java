@@ -57,6 +57,11 @@ public class NotificationUI extends JFrame{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     }
     
+    public void createDateTime(){
+        int day;
+        
+    }
+    
     public void createUI()
     {
         

@@ -16,7 +16,15 @@ public class LoginCntl {
     //private SerializedDataCntl theSerializedDataCntl;
     
     public LoginCntl(){
-
+        if(theUserList == null){
+            theUserList = new UserList();
+        }    
+        theLoginUI = new LoginUI(this);
+        theLoginUI.setLocationRelativeTo(null);
+        theLoginUI.setVisible(true);
+    }
+    public LoginCntl(NavigationCntl newNavCntl){
+        theNavigationCntl = newNavCntl;
         if(theUserList == null){
             theUserList = new UserList();
         }    
