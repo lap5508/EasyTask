@@ -6,11 +6,12 @@
 package pkg311taskmanager;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 /**
  *
  * @author Luke
  */
-public class Task extends ScheduledEvent{
+public class Task extends ScheduledEvent implements Serializable{
     
     private String taskTitle = "";
     private String taskLocation = "";
@@ -23,6 +24,24 @@ public class Task extends ScheduledEvent{
     
     public Task(){
         System.out.println("Called: Task()");
+    }
+    
+    public Task(String importTaskString){
+        //super(importTaskString);
+        String delimiter = "\\t";
+        String[] tempTaskArray = importTaskString.split(delimiter);
+        try{
+            this.taskTitle = tempTaskArray[0];
+            this.taskDate = tempTaskArray[1];
+            this.taskTime = tempTaskArray[2];
+            this.taskLocation = tempTaskArray[3];
+            this.taskDescription = tempTaskArray[4];
+            this.taskCategory = tempTaskArray[5];
+            this.taskPriority = tempTaskArray[6];
+            
+        }catch(ArrayIndexOutOfBoundsException e){
+            
+        }       
     }
     
     public Task(String newTitle, String newDate, String newTime, String newLocation, String newDescription){

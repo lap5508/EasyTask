@@ -21,6 +21,15 @@ public abstract class ScheduledEvent{
     public ScheduledEvent(){
         System.out.println("Called: ScheduledEvent()");
     }
+    /*
+    public ScheduledEvent(String importTaskString){
+        String delimiter = "\\t";
+        String[] tempTaskArray = importTaskString.split(delimiter);
+        this.title = tempTaskArray[0];
+        this.title = tempMediaArray[1];
+        this.year = tempMediaArray[3]; 
+        this.artist = tempMediaArray[2];
+    }*/
     
     public ScheduledEvent(Long newStartTime, Long newEndTime, Boolean newEnabled){
         this.startTime = newStartTime;
