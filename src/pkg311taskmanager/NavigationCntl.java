@@ -10,7 +10,7 @@ package pkg311taskmanager;
  * @author Luke
  */
 public class NavigationCntl {
-    private MainMenuUIv2 theMainMenuUIv2 = null;
+    private MainMenuUI theMainMenuUI = null;
     private String navUsername = "";
     private TaskCntl theTaskCntl = null;
     private CalendarCntl theCalendarCntl = null;
@@ -19,9 +19,9 @@ public class NavigationCntl {
     
     public NavigationCntl(String username){
         System.out.println("Made it to NavigationCntl");
-        theMainMenuUIv2 = new MainMenuUIv2(this);
-        theMainMenuUIv2.setLocationRelativeTo(null);
-        theMainMenuUIv2.setVisible(true);
+        theMainMenuUI = new MainMenuUI(this);
+        theMainMenuUI.setLocationRelativeTo(null);
+        theMainMenuUI.setVisible(true);
         navUsername = username;
     }
     
@@ -30,30 +30,30 @@ public class NavigationCntl {
     }
     
     public void requestContactCntl(){
-        theMainMenuUIv2.setVisible(false);
+        theMainMenuUI.setVisible(false);
         theContactControl = new ContactController(this);
     }
     
     public void requestTaskCntl(){
-        theMainMenuUIv2.setVisible(false);
+        theMainMenuUI.setVisible(false);
         theTaskCntl = new TaskCntl(this);
     }
     
     
     
     public void requestCalendarCntl(){
-        theMainMenuUIv2.setVisible(false);
+        theMainMenuUI.setVisible(false);
         //theCalendarCntl = new CalendarCntl(this);
     }
     
     public void requestNotificationCntl(){
-        theMainMenuUIv2.setVisible(false);
+        theMainMenuUI.setVisible(false);
         theNotificationCntl = new NotificationController(this);
     }
 
     public void getNavigationCntl(){
         
-        theMainMenuUIv2.setVisible(true);
+        theMainMenuUI.setVisible(true);
     
     }
 }
