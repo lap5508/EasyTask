@@ -51,6 +51,16 @@ public class TaskCntl {
         return theListOfTasks;
     }
     
+    public void requestContactCntl(){
+        theTaskUI.setVisible(false);
+        theNavigationCntl.requestContactCntl();
+    }
+    
+    public void requestNotificationCntl(){
+        theTaskUI.setVisible(false);
+        theNavigationCntl.requestNotificationCntl();
+    }
+    
     public void keepTaskUI(){
         theTaskUI.setVisible(false);
         theTaskUI.dispose();
