@@ -13,22 +13,84 @@ public class NotificationModel {
     
     private String tasks;
     private String priority;
-    private String hour;
-    private String minute;
-    private String am_pm;
-    private String day;
-    private String month;
-    private String year;
+    private int hour;
+    private String tempHour;
+    private int minute;
+    private String tempMinute;
+    private int am_pm;
+    private String tempAm_Pm;
+    private int day;
+    private String tempDay;
+    private int month;
+    private String tempMonth;
+    private int year;
+    private String tempYear;
     
     public NotificationModel(String task, String apriority, String ahour, String aminute, String zam_pm, String zday, String zmonth, String zyear){
-        tasks = task;
-        priority = apriority;
-        hour = ahour;
-        minute = aminute;
-        am_pm = zam_pm;
-        day = zday;
-        month = zmonth;
-        year = zyear;  
+        this.tasks = task;
+        this.priority = apriority;
+        hour = Integer.parseInt(ahour);
+        minute = Integer.parseInt(aminute);
+        if(zam_pm == "AM")
+        {
+        am_pm = 0;
+        }
+        if(zam_pm == "PM")
+        {
+        am_pm = 1;
+        }
+        day = Integer.parseInt(zday);
+   
+        if(zmonth == "January")
+        {
+        month = 1;
+        }
+        if(zmonth == "February")
+        {
+        month = 2;
+        }
+        if(zmonth == "March")
+        {
+        month = 3;
+        }
+        if(zmonth == "April")
+        {
+        month = 4;
+        }
+        if(zmonth == "May")
+        {
+        month = 5;
+        }
+        if(zmonth == "June")
+        {
+        month = 6;
+        }
+        if(zmonth == "July")
+        {
+        month = 7;
+        }
+        if(zmonth == "August")
+        {
+        month = 8;
+        }
+        if(zmonth == "September")
+        {
+        month = 9;
+        }
+        if(zmonth == "October")
+        {
+        month = 10;
+        }
+        if(zmonth == "November")
+        {
+        month = 11;
+        }
+        if(zmonth == "December")
+        {
+        month = 12;
+        }
+        
+        year = Integer.parseInt(zyear);  
     }
     
      public String getTask() {
@@ -50,67 +112,237 @@ public class NotificationModel {
     
     
      public String getHour() {
-        return hour;
+        tempHour = Integer.toString(hour);
+        return tempHour;
     }
 
-    public void setHour(String hour) {
-        this.hour = hour;
+    public void setHour(String newHour) {
+        hour = Integer.parseInt(newHour);
     }
     
     
      public String getMinute() {
-        return minute;
+        tempMinute = Integer.toString(minute);
+        return tempMinute;
+        
     }
     
-    public void setMinute(String minute) {
-        this.minute = minute;
+    public void setMinute(String newMinute) {
+        minute = Integer.parseInt(newMinute);
     }
     
     
      public String getAm_Pm() {
-        return am_pm;
+         if(am_pm == 0){
+         tempAm_Pm = "AM";
+         }
+         if(am_pm == 1){
+         tempAm_Pm = "PM";
+         }
+         return tempAm_Pm;
     }
 
-    public void setAm_Pm(String am_pm) {
-        this.am_pm = am_pm;
+    public void setAm_Pm(String newAm_pm) {
+        if(newAm_pm == "AM")
+        {
+        am_pm = 0;
+        }
+        if(newAm_pm == "PM")
+        {
+        am_pm = 1;
+        }
     }
     
     
      public String getDay() {
-        return day;
+        tempDay = Integer.toString(day);
+        return tempDay;
     }
 
-    public void setDay(String day) {
-        this.day = day;
+    public void setDay(String newDay) {
+        day = Integer.parseInt(newDay);
     }
     
     
      public String getMonth() {
-        return month;
+         if(month == 1)
+        {
+        tempMonth = "January";
+        }
+        if(month == 2)
+        {
+        tempMonth = "February";
+        }
+        if(month == 3)
+        {
+        tempMonth =  "March";
+        }
+        if(month == 4)
+        {
+        tempMonth = "April";
+        }
+        if(month == 5)
+        {
+        tempMonth = "May";
+        }
+        if(month == 6)
+        {
+        tempMonth = "June";
+        }
+        if(month == 7)
+        {
+        tempMonth = "July";
+        }
+        if(month == 8)
+        {
+        tempMonth =  "August";
+        }
+        if(month == 9)
+        {
+        tempMonth = "September";
+        }
+        if(month == 10)
+        {
+        tempMonth =  "October";
+        }
+        if(month == 11)
+        {
+        tempMonth = "November";
+        }
+        if(month == 12)
+        {
+        tempMonth = "December";
+        }
+        return tempMonth;
     }
 
-    public void setMonth(String month) {
-        this.month = month;
+    public void setMonth(String newMonth) {
+        if(newMonth == "January")
+        {
+        month = 1;
+        }
+        if(newMonth == "February")
+        {
+        month = 2;
+        }
+        if(newMonth == "March")
+        {
+        month = 3;
+        }
+        if(newMonth == "April")
+        {
+        month = 4;
+        }
+        if(newMonth == "May")
+        {
+        month = 5;
+        }
+        if(newMonth == "June")
+        {
+        month = 6;
+        }
+        if(newMonth == "July")
+        {
+        month = 7;
+        }
+        if(newMonth == "August")
+        {
+        month = 8;
+        }
+        if(newMonth == "September")
+        {
+        month = 9;
+        }
+        if(newMonth == "October")
+        {
+        month = 10;
+        }
+        if(newMonth == "November")
+        {
+        month = 11;
+        }
+        if(newMonth == "December")
+        {
+        month = 12;
+        }
+                
     }
     
     
      public String getYear() {
-        return year;
+        tempYear = Integer.toString(year);
+        return tempYear;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setYear(String newYear) {
+        year = Integer.parseInt(newYear);
     }
     
     public void changeInfo(String task, String zpriority, String zhour, String zminute, String zam_pm, String zday, String zmonth, String zyear){
         this.tasks = task;
         this.priority = zpriority;
-        this.hour = zhour;
-        this.minute = zminute;
-        this.am_pm = zam_pm;
-        this.day = zday;
-        this.month = zmonth;
-        this.year = zyear;
+        hour = Integer.parseInt(zhour);
+        minute = Integer.parseInt(zminute);
+        if(zam_pm == "AM")
+        {
+        am_pm = 0;
+        }
+        if(zam_pm == "PM")
+        {
+        am_pm = 1;
+        }
+        day = Integer.parseInt(zday);
+   
+        if(zmonth == "January")
+        {
+        month = 1;
+        }
+        if(zmonth == "February")
+        {
+        month = 2;
+        }
+        if(zmonth == "March")
+        {
+        month = 3;
+        }
+        if(zmonth == "April")
+        {
+        month = 4;
+        }
+        if(zmonth == "May")
+        {
+        month = 5;
+        }
+        if(zmonth == "June")
+        {
+        month = 6;
+        }
+        if(zmonth == "July")
+        {
+        month = 7;
+        }
+        if(zmonth == "August")
+        {
+        month = 8;
+        }
+        if(zmonth == "September")
+        {
+        month = 9;
+        }
+        if(zmonth == "October")
+        {
+        month = 10;
+        }
+        if(zmonth == "November")
+        {
+        month = 11;
+        }
+        if(zmonth == "December")
+        {
+        month = 12;
+        }
+        
+        year = Integer.parseInt(zyear);
     }
     
 }

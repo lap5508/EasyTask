@@ -25,7 +25,7 @@ public class NotificationList {
 
     public void buildTestNotificationList(){
         notificationList = new ArrayList();
-        for(int i = 0; i < 50; i++){
+        for(int i = 0; i < 10; i++){
             String tasks = "Task " +i;
             String priority = "Low";
             String hour = "3";
@@ -45,7 +45,7 @@ public class NotificationList {
         
         return notificationList;
     }
-    
+
     
     }
     

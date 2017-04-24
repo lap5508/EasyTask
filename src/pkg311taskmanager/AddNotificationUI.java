@@ -9,12 +9,15 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 
 /**
  *
@@ -27,22 +30,23 @@ public class AddNotificationUI extends JFrame{
     private JLabel priorityLabel;
     private JPanel buttonsPanel;
     private JPanel comboBoxPanel;
-    private JTextField tasks;
+    private JComboBox tasks;
     private JComboBox priority;
     private JButton backButton;
     private JButton addNotificationButton;
     private JLabel time;
-    private JTextField hour;
-    private JTextField minute;
+    private JComboBox hour;
+    private JComboBox minute;
     private JComboBox am_pm;
-    private JTextField year;
+    private JComboBox year;
     private JLabel date;
     private JComboBox month;
-    private JTextField day;
+    private JComboBox day;
     private JPanel[] cellNumbers;
     private int index = -1;
     private NotificationController n_control = null;
-    
+    private TaskList taskList;
+    private ArrayList<String> taskTitles = null;
     
     public AddNotificationUI(NotificationController newn_control){
         n_control = newn_control;
@@ -93,8 +97,14 @@ public class AddNotificationUI extends JFrame{
         priorityLabel = new JLabel("Priority:");
         priorityLabel.setFont(new Font("Arial", Font.PLAIN, 25));
         
-        tasks = new JTextField();
-        tasks.setColumns(12);
+        taskTitles = new ArrayList();
+        taskTitles.addAll(taskList.getTitles());
+        
+        tasks = new JComboBox();
+        for(int i = 0; i < taskTitles.size(); i++){
+        tasks.addItem(taskTitles.get(i));
+        }
+        
         tasks.setFont(new Font("Arial", Font.PLAIN, 20));
         priority = new JComboBox();
         priority.setFont(new Font("Arial", Font.PLAIN, 16));
@@ -105,12 +115,73 @@ public class AddNotificationUI extends JFrame{
         
         time = new JLabel("Time of reminder:");
         time.setFont(new Font("Arial", Font.PLAIN, 25));
-        hour = new JTextField("Hour");
-        hour.setFont(new Font("Arial", Font.PLAIN,20));
-        hour.setColumns(12);
-        minute = new JTextField("Minute");
-        minute.setFont(new Font("Arial", Font.PLAIN,20));
-        minute.setColumns(12);
+        
+        hour = new JComboBox();
+        hour.setFont(new Font("Arial", Font.PLAIN,16));
+        hour.addItem("1");
+        hour.addItem("2");
+        hour.addItem("3");
+        hour.addItem("4");
+        hour.addItem("5");
+        hour.addItem("6");
+        hour.addItem("7");
+        hour.addItem("8");
+        hour.addItem("9");
+        hour.addItem("10");
+        hour.addItem("11");
+        hour.addItem("12");
+        minute = new JComboBox();
+        minute.setFont(new Font("Arial", Font.PLAIN,16));
+        minute.addItem("1");
+        minute.addItem("2");
+        minute.addItem("3");
+        minute.addItem("4");
+        minute.addItem("5");
+        minute.addItem("6");
+        minute.addItem("7");
+        minute.addItem("8");
+        minute.addItem("9");
+        minute.addItem("10");
+        minute.addItem("11");
+        minute.addItem("12");
+        minute.addItem("13");
+        minute.addItem("14");
+        minute.addItem("15");
+        minute.addItem("16");
+        minute.addItem("17");
+        minute.addItem("18");
+        minute.addItem("19");
+        minute.addItem("20");
+        minute.addItem("21");
+        minute.addItem("22");
+        minute.addItem("23");
+        minute.addItem("24");
+        minute.addItem("25");
+        minute.addItem("26");
+        minute.addItem("27");
+        minute.addItem("28");
+        minute.addItem("29");
+        minute.addItem("30");
+        minute.addItem("40");
+        minute.addItem("41");
+        minute.addItem("42");
+        minute.addItem("43");
+        minute.addItem("44");
+        minute.addItem("45");
+        minute.addItem("46");
+        minute.addItem("47");
+        minute.addItem("48");
+        minute.addItem("49");
+        minute.addItem("50");
+        minute.addItem("51");
+        minute.addItem("52");
+        minute.addItem("53");
+        minute.addItem("54");
+        minute.addItem("55");
+        minute.addItem("56");
+        minute.addItem("57");
+        minute.addItem("58");
+        minute.addItem("59");
         am_pm = new JComboBox();
         am_pm.setFont(new Font("Arial", Font.PLAIN, 16));
         am_pm.addItem("AM");
@@ -123,11 +194,19 @@ public class AddNotificationUI extends JFrame{
                 comboBoxPanel.add(nextPanel);
             }
         
+        
+            
         date = new JLabel("Date of Reminder:");
         date.setFont(new Font("Arial", Font.PLAIN, 25));
-        day = new JTextField("Day");
-        day.setFont(new Font("Arial", Font.PLAIN,20));
-        day.setColumns(12);
+        day = new JComboBox();
+        day.setFont(new Font("Arial", Font.PLAIN,16));
+        day.addItem("Sunday");
+        day.addItem("Monday");
+        day.addItem("Tuesday");
+        day.addItem("Wednesday");
+        day.addItem("Thursday");
+        day.addItem("Friday");
+        day.addItem("Saturday");
         month = new JComboBox();
         month.setFont(new Font("Arial", Font.PLAIN, 16));
         month.addItem("January");
@@ -142,9 +221,21 @@ public class AddNotificationUI extends JFrame{
         month.addItem("October");
         month.addItem("November");
         month.addItem("December");
-        year = new JTextField("Year");
-        year.setFont(new Font("Arial", Font.PLAIN,20));
-        year.setColumns(12);
+        year = new JComboBox();
+        year.setFont(new Font("Arial", Font.PLAIN,16));
+        year.addItem("2017");
+        year.addItem("2018");
+        year.addItem("2019");
+        year.addItem("2020");
+        year.addItem("2021");
+        year.addItem("2023");
+        year.addItem("2024");
+        year.addItem("2025");
+        year.addItem("2026");
+        year.addItem("2027");
+        year.addItem("2028");
+        year.addItem("2029");
+        year.addItem("2030");
                
         logoPanel.add(logo);
         
@@ -182,14 +273,14 @@ public class AddNotificationUI extends JFrame{
                 monthInfo = n_control.getNotificationList().getTheNotificationList().get(index).getMonth();
             String yearInfo;
                 yearInfo = n_control.getNotificationList().getTheNotificationList().get(index).getYear();
-            tasks.setText(taskInfo);
+            tasks.setSelectedItem(taskInfo);
             priority.setSelectedItem(priorityInfo);
-            hour.setText(hourInfo);
-            minute.setText(minuteInfo);
+            hour.setSelectedItem(hourInfo);
+            minute.setSelectedItem(minuteInfo);
             am_pm.setSelectedItem(am_pmInfo);  
-            day.setText(dayInfo);  
+            day.setSelectedItem(dayInfo);  
             month.setSelectedItem(monthInfo);  
-            year.setText(yearInfo);  
+            year.setSelectedItem(yearInfo);  
         }
         cellNumbers[0].add(taskLabel);
         cellNumbers[1].add(tasks);
@@ -213,11 +304,11 @@ public class AddNotificationUI extends JFrame{
      
      private void addNotificationButtonActionPerformed(java.awt.event.ActionEvent evt){
         if(index == -1){
-            AddNotificationUI.this.n_control.addNotification(tasks.getText(), priority.getSelectedItem().toString(), hour.getText(),minute.getText(),am_pm.getSelectedItem().toString(),day.getText(), month.getSelectedItem().toString(), year.getText());
+            AddNotificationUI.this.n_control.addNotification(tasks.getSelectedItem().toString(), priority.getSelectedItem().toString(), hour.getSelectedItem().toString(),minute.getSelectedItem().toString(),am_pm.getSelectedItem().toString(),day.getSelectedItem().toString(), month.getSelectedItem().toString(), year.getSelectedItem().toString());
             AddNotificationUI.this.n_control.getNotificationListModel().fireTableDataChanged();
         } 
         else{
-            AddNotificationUI.this.n_control.editNotificationInfo(index, tasks.getText(), priority.getSelectedItem().toString(), hour.getText(),minute.getText(),am_pm.getSelectedItem().toString(),day.getText(), month.getSelectedItem().toString(), year.getText());
+            AddNotificationUI.this.n_control.editNotificationInfo(index, tasks.getSelectedItem().toString(), priority.getSelectedItem().toString(), hour.getSelectedItem().toString(),minute.getSelectedItem().toString(),am_pm.getSelectedItem().toString(),day.getSelectedItem().toString(), month.getSelectedItem().toString(), year.getSelectedItem().toString());
             AddNotificationUI.this.n_control.getNotificationListModel().fireTableDataChanged();
         }
     AddNotificationUI.this.n_control.returnNotificationUI();
