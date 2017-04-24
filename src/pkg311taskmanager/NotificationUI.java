@@ -8,10 +8,15 @@ package pkg311taskmanager;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,6 +30,8 @@ import javax.swing.RowFilter;
 import javax.swing.RowSorter;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SortOrder;
+import javax.swing.Timer;
+import javax.swing.WindowConstants;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -47,31 +54,88 @@ public class NotificationUI extends JFrame{
     private NotificationController n_control = null;
     private NotificationList list;
     private JTable table;
+    private int day;
+    private int month;
+    private int year;
+    private int second;
+    private int minute;
+    private int hour;
+    private JLabel date;
+    private JLabel time;
     
     
     public NotificationUI(NotificationController newn_control)
     {
         n_control = newn_control;
         createUI();
+        createDateTime();
         setBounds(0, 0, 650, 600);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     }
     
     public void createDateTime(){
-        int day;
+        JPanel dateTime = new JPanel();
+        dateTime.setLayout(new GridLayout(3,1));
+        GregorianCalendar currDate = new GregorianCalendar();
+        day = currDate.get(Calendar.DAY_OF_MONTH);
+        month = currDate.get(Calendar.MONTH);
+        year = currDate.get(Calendar.YEAR);
         
-    }
-    
-    public void createUI()
-    {
-        
-        JPanel titlePanel = new JPanel();
-        JLabel title = new JLabel("Notification Menu");
+        date = new JLabel("Current Date: " + (month+1) + "/" + day + "/" + year, JLabel.CENTER);
+        time = new JLabel(currentTime(), JLabel.CENTER);
+        date.setFont(new Font("Arial", Font.PLAIN,40));
+        time.setFont(new Font("Arial", Font.PLAIN,40));
+        JLabel title = new JLabel("Notification Menu", JLabel.CENTER);
         title.setFont(new Font("Arial", Font.PLAIN,60));
-        
-        titlePanel.add(title);
-        
-        
+        dateTime.add(title);
+        dateTime.add(date);
+        dateTime.add(time);
+        add(dateTime, BorderLayout.NORTH);
+        ActionListener secondCounter = new ActionListener(){
+            public void actionPerformed(ActionEvent evt) {
+                time.setText(currentTime());
+                if(currentTime().equals("5:22:00 PM")){
+                    popUp();
+                    System.out.println("worked");
+                } else {
+                }
+            }
+        };
+        Timer sec = new Timer(1000, secondCounter);
+        sec.start();
+    }
+    public String currentTime() {
+        Calendar calendar = Calendar.getInstance();
+        GregorianCalendar currDate = new GregorianCalendar();
+        int hours = currDate.get(Calendar.HOUR);
+        int minutes = currDate.get(Calendar.MINUTE);
+        int seconds = currDate.get(Calendar.SECOND);
+        int TOD = calendar.get(Calendar.AM_PM);
+        String currentTime = hours + ":" + checkTime(minutes) + ":"
+                + checkTime(seconds) + " " + ampm(TOD);
+        return currentTime;
+    }
+
+    public String checkTime(int t) {
+        String timerSec;
+        if (t < 10) {
+            timerSec = ("0" + t);
+        } else {
+            timerSec = ("" + t);
+        }
+        return timerSec;
+    }
+    public String ampm(int TOD) {
+        String amPm;
+        if (TOD == 0)
+            amPm = "AM";
+        else
+            amPm = "PM";
+        return amPm;
+    }
+    public void createUI()
+    {     
+     
         JPanel scrollPanel = new JPanel();
         
         table = new JTable(this.n_control.getNotificationListModel());
@@ -169,7 +233,6 @@ public class NotificationUI extends JFrame{
         buttonsPanel.add(editNotificationButton);
         buttonsPanel.add(deleteNotificationButton);
         
-        add(titlePanel, BorderLayout.NORTH);
         add(scrollPanel, BorderLayout.CENTER);
         add(navPanel, BorderLayout.SOUTH);
         add(buttonsPanel, BorderLayout.EAST);
@@ -221,5 +284,36 @@ public class NotificationUI extends JFrame{
         NotificationUI.this.n_control.requestTaskCntl();
         System.out.println("worked");
     }
-    
+    public void popUp(){
+    String message = "You got a new notification message. Isn't it awesome to have such a notification message.";
+    String header = "This is header of notification message";
+    JFrame frame = new JFrame();
+    frame.setSize(300,125);
+    frame.setLayout(new GridBagLayout());
+    GridBagConstraints constraints = new GridBagConstraints();
+    constraints.gridx = 0;
+    constraints.gridy = 0;
+    constraints.weightx = 1.0f;
+    constraints.weighty = 1.0f;
+    constraints.insets = new Insets(5, 5, 5, 5);
+    constraints.fill = GridBagConstraints.BOTH;
+    JLabel headingLabel = new JLabel(header);
+    headingLabel.setOpaque(false);
+    frame.add(headingLabel, constraints);
+    constraints.gridx++;
+    constraints.weightx = 0f;
+    constraints.weighty = 0f;
+    constraints.fill = GridBagConstraints.NONE;
+    constraints.anchor = GridBagConstraints.NORTH;
+    constraints.gridx = 0;
+    constraints.gridy++;
+    constraints.weightx = 1.0f;
+    constraints.weighty = 1.0f;
+    constraints.insets = new Insets(5, 5, 5, 5);
+    constraints.fill = GridBagConstraints.BOTH;
+    JLabel messageLabel = new JLabel("<HtMl>"+message);
+    frame.add(messageLabel, constraints);
+    frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    frame.setVisible(true);
+    }
 }
