@@ -27,7 +27,7 @@ public class UserList {
             String username = ("TestUser" + i);
             char[] password = {'t','e','s','t'};
             User newUser = new User(username, password);
-            theListOfUsers.add(newUser);
+            getTheListOfUsers().add(newUser);
         }
         System.out.println("made new losers");
     }
@@ -36,9 +36,9 @@ public class UserList {
         boolean authenticated = false;
         boolean nameMatch = false;
         boolean passwordMatch = false;
-        for (int i = 0; i < theListOfUsers.size(); i++){
-            nameMatch = usernameToCheck.equals(theListOfUsers.get(i).getUsername());
-            passwordMatch = String.valueOf(passwordToCheck).equals(String.valueOf(theListOfUsers.get(i).getPassword()));
+        for (int i = 0; i < getTheListOfUsers().size(); i++){
+            nameMatch = usernameToCheck.equals(getTheListOfUsers().get(i).getUsername());
+            passwordMatch = String.valueOf(passwordToCheck).equals(String.valueOf(getTheListOfUsers().get(i).getPassword()));
             if(nameMatch && passwordMatch){
                 authenticated = true;
                 break;
@@ -46,5 +46,12 @@ public class UserList {
         }
         
         return authenticated;
+    }
+
+    /**
+     * @return the theListOfUsers
+     */
+    public ArrayList<User> getTheListOfUsers() {
+        return theListOfUsers;
     }
 }

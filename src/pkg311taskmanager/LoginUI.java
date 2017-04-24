@@ -29,6 +29,7 @@ public class LoginUI extends JFrame {
     private JButton cancelButton;
     private JTextField usernameTextField;
     private JPasswordField passwordField;
+    private JButton addUser;
     
     String username = "";
     
@@ -66,8 +67,9 @@ public class LoginUI extends JFrame {
             passwordField.setPreferredSize( new Dimension(90, 24));
         JLabel usernameLabel = new JLabel("Username");
         JLabel passwordLabel = new JLabel("Password");
-        
-        
+        addUser = new JButton("Add User");
+        addUser.addActionListener(new AddListener());
+        buttonPanel.add(addUser);
         buttonPanel.add(submitButton);
         buttonPanel.add(cancelButton);
         //cellNumbers[18].add(cancelButton);
@@ -88,6 +90,11 @@ public class LoginUI extends JFrame {
         public void actionPerformed(ActionEvent event){
             JOptionPane.showMessageDialog(null, "Cancel button was clicked!");
             System.exit(0);
+        }
+    }
+    class AddListener implements ActionListener{
+        public void actionPerformed(ActionEvent event){
+            LoginUI.this.parentLoginCntl.requestAddUserUI();
         }
     }
     

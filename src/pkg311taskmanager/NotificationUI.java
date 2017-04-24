@@ -69,7 +69,7 @@ public class NotificationUI extends JFrame{
         n_control = newn_control;
         createUI();
         createDateTime();
-        setBounds(0, 0, 650, 600);
+        setBounds(0, 0, 750, 700);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     }
     

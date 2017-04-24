@@ -59,7 +59,7 @@ public class TaskUI extends JFrame{
         createListPanel();
         createOptionsPanel();
         createNavigationPanel();
-        setBounds(0, 0, 600, 600);
+        setBounds(0, 0, 750, 700);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         //initCustomComponents();
     }
@@ -89,8 +89,8 @@ public class TaskUI extends JFrame{
 
         sorter.setSortKeys(sortKeys);
         sorter.sort();
-        final JTextField filterText = new JTextField("           ");
-        tablePanel.add(filterText, BorderLayout.SOUTH);
+        final JTextField filterText = new JTextField("Search Task List");
+        tablePanel.add(filterText, BorderLayout.NORTH);
         JButton filterButton = new JButton("Filter");
         filterButton.addActionListener(new ActionListener() {
           public void actionPerformed(ActionEvent e) {
@@ -102,12 +102,12 @@ public class TaskUI extends JFrame{
             }
           }
         });
-        tablePanel.add(filterButton, BorderLayout.SOUTH);    
+        tablePanel.add(filterButton, BorderLayout.NORTH);    
             
         theScrollPane = new JScrollPane(taskTable);
             theScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
             theScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-            theScrollPane.setPreferredSize(new Dimension(500, 320));
+            theScrollPane.setPreferredSize(new Dimension(500, 400));
             taskTable.setFillsViewportHeight(true);
             
         tablePanel.add(theScrollPane);
