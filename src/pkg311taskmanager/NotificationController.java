@@ -32,6 +32,7 @@ public class NotificationController {
         theNotificationList = new NotificationList();
         listModel = new NotificationListModel(theNotificationList.getTheNotificationList());
         theNotificationUI = new NotificationUI(this);
+        theNotificationUI.setLocationRelativeTo(null);
         theNotificationUI.setVisible(true);
     }
     

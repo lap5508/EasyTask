@@ -28,6 +28,7 @@ public class TaskCntl {
         theTaskList = new TaskList();
         taskTableModel = new TaskTableModel(theTaskList.getListOfTasks());
         theTaskUI = new TaskUI(this);
+        theTaskUI.setLocationRelativeTo(null);
         theTaskUI.setVisible(true);
         
     }
@@ -65,6 +66,7 @@ public class TaskCntl {
         theTaskUI.setVisible(false);
         theTaskUI.dispose();
         theTaskUI = new TaskUI(this);
+        theTaskUI.setLocationRelativeTo(null);
         theTaskUI.setVisible(true);
     }
     
