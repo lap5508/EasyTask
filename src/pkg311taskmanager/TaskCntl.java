@@ -26,8 +26,9 @@ public class TaskCntl {
         System.out.println("MADE IT TO TaskCNTL"); //test line
         theNavigationCntl = parentNavCntl;
         theTaskList = new TaskList();
-        taskTableModel = new TaskTableModel(theTaskList.getListOfTasks());
+        taskTableModel = new TaskTableModel(SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks());
         theTaskUI = new TaskUI(this);
+        theTaskUI.setLocationRelativeTo(null);
         theTaskUI.setVisible(true);
         
     }
@@ -65,6 +66,7 @@ public class TaskCntl {
         theTaskUI.setVisible(false);
         theTaskUI.dispose();
         theTaskUI = new TaskUI(this);
+        theTaskUI.setLocationRelativeTo(null);
         theTaskUI.setVisible(true);
     }
     
@@ -95,11 +97,11 @@ public class TaskCntl {
     
     public void addNewTask(String newTitle, String newDate, String newTime, String newLocation, String newDescription){
         Task newTask = new Task(newTitle, newDate, newTime, newLocation, newDescription);
-        theTaskList.getListOfTasks().add(newTask);
+        SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().add(newTask);
     }
     
     public void editTaskInfo(int index, String newTitle, String newDate, String newTime, String newLocation, String newDescription){
-        tempTask = this.getTaskList().getListOfTasks().get(index);
+        tempTask = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().get(index);
         tempTask.changeInfo(newTitle, newDate, newTime, newLocation, newDescription);
     }
     
@@ -140,22 +142,7 @@ public class TaskCntl {
         System.out.print(theTaskList.getListOfTasks());
         
     }
-    /*
-    public void addNewRating(Rating newRating){
-        tempSong = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getMediaList().getListOfMedia().get(tempIndex);
-        tempSong.addRating(newRating);
-    }
-    */
     
-    
-
-    /*
-    public void getRatingUI(){
-        theMediaUI.setVisible(false);
-        theMediaUI.dispose();
-        theRatingUI = new RatingUI(this);
-        theRatingUI.setVisible(true);
-    }*/
     
     public void getTaskUIv2(){
         theTaskUI.setVisible(false);

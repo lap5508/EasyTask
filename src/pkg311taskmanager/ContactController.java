@@ -28,6 +28,7 @@ public class ContactController {
         contactList = new ContactList();
         contactTableModel = new ContactTableModel(contactList.getTheContactList());
         theContactUI = new ContactUI(this);
+        theContactUI.setLocationRelativeTo(null);
         theContactUI.setVisible(true);
     }
     
@@ -41,11 +42,13 @@ public class ContactController {
         theContactUI.setVisible(false);
         theContactUI.dispose();
         theContactUI = new ContactUI(this);
+        theContactUI.setLocationRelativeTo(null);
         theContactUI.setVisible(true);
     }
     public void returnContactUI(){
         theAddContactUI.setVisible(false);
         theAddContactUI.dispose();
+        theContactUI.setLocationRelativeTo(null);
         theContactUI.setVisible(true);
     }
     public void getAddContactUIblank(){

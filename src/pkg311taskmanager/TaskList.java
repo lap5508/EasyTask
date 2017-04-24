@@ -6,11 +6,12 @@
 package pkg311taskmanager;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 /**
  *
  * @author Luke
  */
-public class TaskList {
+public class TaskList implements Serializable{
     private ArrayList<Task> theListOfTasks = null;
     
     

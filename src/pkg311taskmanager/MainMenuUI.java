@@ -36,12 +36,14 @@ public class MainMenuUI extends JFrame{
     private JButton contactButton;
     private JButton alarmButton;
     private JButton closeButton;
+    private JButton logoutButton;
     
     public MainMenuUI(NavigationCntl parentNavCntl){
         
         theNavCntl = parentNavCntl;
         createLabelPanel();
         createNavigationPanel();
+        createClosePanel();
         setBounds(0, 0, 650, 650);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     }
@@ -75,6 +77,25 @@ public class MainMenuUI extends JFrame{
                         alarmButtonActionPerformed(evt);
                     }
                 });
+        
+            
+        navigationPanel.setLayout(new GridLayout(1, 2));
+            navigationPanel.add(taskButton);
+            navigationPanel.add(contactButton);
+            navigationPanel.add(alarmButton);
+            add(navigationPanel, BorderLayout.CENTER);
+    }
+    
+    public void createClosePanel(){
+        JPanel closePanel = new JPanel();
+        
+        JButton closeButton = new JButton("Exit");
+            closeButton.addActionListener(new java.awt.event.ActionListener(){
+                public void actionPerformed(java.awt.event.ActionEvent evt){
+                    closeButtonActionPerformed(evt);
+                }
+            });
+            
         JButton logOutButton = new JButton("Log out :(");
             logOutButton.addActionListener(new java.awt.event.ActionListener(){
                 public void actionPerformed(java.awt.event.ActionEvent evt){
@@ -82,12 +103,10 @@ public class MainMenuUI extends JFrame{
                 }
             });
             
-        navigationPanel.setLayout(new GridLayout(2, 1));
-            navigationPanel.add(taskButton);
-            navigationPanel.add(contactButton);
-            navigationPanel.add(alarmButton);
-            navigationPanel.add(logOutButton);
-            add(navigationPanel, BorderLayout.CENTER);
+        closePanel.setLayout(new GridLayout(0, 1));
+            closePanel.add(logOutButton);
+            closePanel.add(closeButton);
+            add(closePanel, BorderLayout.SOUTH);
     }
     
     private void taskButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,5 +126,9 @@ public class MainMenuUI extends JFrame{
     private void logOutButtonPerformed(java.awt.event.ActionEvent evt) {
         this.setVisible(false);
         MainMenuUI.this.theNavCntl.requestLoginCntl();
+    }
+    
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        System.exit(0);    
     }
 }
