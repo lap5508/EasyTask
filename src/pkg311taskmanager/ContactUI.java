@@ -212,8 +212,8 @@ private void deleteButtonPerformed(java.awt.event.ActionEvent evt) {
     int selectedTableRow = contactTable.getSelectedRow();
     int selectedModelRow = contactTable.convertRowIndexToModel(selectedTableRow);
     ContactUI.this.c_control.getContactList().getTheContactList().remove(selectedModelRow);
-        //SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getMediaList().getListOfMedia().remove(selectedModelRow);
-        //SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+    SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().remove(selectedModelRow);
+    SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
     this.c_control.getContactTableModel().fireTableDataChanged();
     System.out.print("happened");
     }

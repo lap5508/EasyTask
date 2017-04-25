@@ -20,9 +20,9 @@ public class LoginCntl {
     //private SerializedDataCntl theSerializedDataCntl;
     
     public LoginCntl(){
-        if(theUserList == null){
-            theUserList = new UserList();
-        }    
+        
+        
+        theUserList = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getUserList();
         theLoginUI = new LoginUI(this);
         theLoginUI.setLocationRelativeTo(null);
         theLoginUI.setVisible(true);
