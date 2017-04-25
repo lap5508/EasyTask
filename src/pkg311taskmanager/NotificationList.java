@@ -20,7 +20,7 @@ public class NotificationList implements Serializable{
     
     public NotificationList(){
      if(notificationList == null){
-        buildTestNotificationList();
+        //buildTestNotificationList();
         }    
     }
 

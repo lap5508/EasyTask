@@ -47,7 +47,7 @@ public class AddTaskUI extends JFrame{
         this.setVisible(true);
     }
     
-    public void initCustomComponents(boolean hasInfo, int songRow){
+    public void initCustomComponents(boolean hasInfo, int taskIndex){
         this.setSize(700, 300);
         this.setTitle("Task Info");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,16 +99,17 @@ public class AddTaskUI extends JFrame{
             descriptionField.setEditable(true);
         
         if(hasInfo){
+            System.out.println(taskIndex);
             String titleInfo;
-                titleInfo = theTaskCntl.getTaskList().getListOfTasks().get(index).getTitle();
+                titleInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().get(taskIndex).getTitle();
             String dateInfo;
-                dateInfo = theTaskCntl.getTaskList().getListOfTasks().get(index).getDate();
+                dateInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().get(taskIndex).getDate();
             String timeInfo;
-                timeInfo = theTaskCntl.getTaskList().getListOfTasks().get(index).getTime();
+                timeInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().get(taskIndex).getTime();
             String locationInfo;
-                locationInfo = theTaskCntl.getTaskList().getListOfTasks().get(index).getLocation();
+                locationInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().get(taskIndex).getLocation();
             String descriptionInfo;
-                descriptionInfo = theTaskCntl.getTaskList().getListOfTasks().get(index).getDescription();
+                descriptionInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().get(taskIndex).getDescription();
             titleField.setText(titleInfo);
             dateField.setText(dateInfo);
             timeField.setText(timeInfo);

@@ -5,11 +5,13 @@
  */
 package pkg311taskmanager;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Kyle
  */
-public class ContactModel {
+public class ContactModel implements Serializable{
     private String fName;
     private String mName;
     private String lName;
