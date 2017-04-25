@@ -25,6 +25,7 @@ public class NotificationController {
     int tempIndex = 0;
     private NotificationModel tempNotification;
     private ContactController cControl;
+    private TaskCntl t_control;
     
     public NotificationController(NavigationCntl parentNavCntl){
         System.out.println("MADE IT TO Notification CNTL");

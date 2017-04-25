@@ -49,6 +49,7 @@ public class AddNotificationUI extends JFrame{
     
     public AddNotificationUI(NotificationController newn_control){
         n_control = newn_control;
+        this.t_control = t_control;
         setBounds(0, 0, 600, 500);
         this.setVisible(true);
         createUI(false, 0);
@@ -98,7 +99,7 @@ public class AddNotificationUI extends JFrame{
         
         
         tasks = new JComboBox();
-        for(int i = 0; i < t_control.getTaskList().getListOfTasks().size(); i++){
+        for(int i = 0; i < AddNotificationUI.this.t_control.getTaskList().getListOfTasks().size(); i++){
         tasks.addItem(AddNotificationUI.this.t_control.getTaskList().getListOfTasks().get(i).getTitle());
         }
         
