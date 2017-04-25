@@ -45,6 +45,10 @@ public class NotificationController {
         ArrayList<Task> newTaskList = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks();
         return newTaskList;
     }
+    public ArrayList<NotificationModel> getNotList(){
+        ArrayList<NotificationModel> newNoteList = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList();
+        return newNoteList;
+    }
 //    public String getTitle(int i) {
 //        ArrayList<Task> newTaskList = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks();
 //        String title = newTaskList.get(i).getTitle();

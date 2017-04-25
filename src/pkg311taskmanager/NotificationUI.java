@@ -73,17 +73,19 @@ public class NotificationUI extends JFrame{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     }
     public void checkForNotification(){
-        
+        //ArrayList<NotificationModel> nList = NotificationUI.this.n_control.getTheNotificationList();
         ActionListener secondCounter = new ActionListener(){
             public void actionPerformed(ActionEvent evt) {
-//                for
-//                if(currentTime().equals("5:22:00 PM")){
-//                    popUp();
-//                    System.out.println("worked");
-//                } else {
-//                }
+                for(int i = 0;i < NotificationUI.this.n_control.getNotList().size(); i++){
+                    if(currentTime().equals(NotificationUI.this.n_control.getNotList().get(i).getHour())&& currentTime().equals(NotificationUI.this.n_control.getNotList().get(i).getMinute())){
+                        popUp();
+                        System.out.println("worked");
+                    } else {
+                }
             }
-        };
+            }
+         };
+        
         Timer sec = new Timer(1000, secondCounter);
         sec.start();
     }
@@ -108,6 +110,7 @@ public class NotificationUI extends JFrame{
         ActionListener secondCounter = new ActionListener(){
             public void actionPerformed(ActionEvent evt) {
                 time.setText(currentTime());
+                checkForNotification();
             }
         };
         Timer sec = new Timer(1000, secondCounter);
