@@ -74,6 +74,7 @@ public class NotificationController {
     public void getBlankAddNotificationUI(){
         theAddNotificationUI = new AddNotificationUI(this);
         theAddNotificationUI.setBounds(0, 0, 600, 500);
+        theAddNotificationUI.setLocationRelativeTo(null);
     }
     
     public void keepNotificationUI(){
@@ -93,7 +94,7 @@ public class NotificationController {
     
     public void addNotification(String task, String priority, String hour, String minute, String am_pm, String day, String month, String year){
         NotificationModel newNotification = new NotificationModel(task, priority, hour, minute, am_pm, day, month, year);
-        theNotificationList.getTheNotificationList().add(newNotification);
+        SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().add(newNotification);
     }
     
     
