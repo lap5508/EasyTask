@@ -26,7 +26,7 @@ public class ContactController {
         System.out.println("MADE IT TO CONTACT CNTL");
         theNavigationCntl = parentNavCntl;
         contactList = new ContactList();
-        contactTableModel = new ContactTableModel(contactList.getTheContactList());
+        contactTableModel = new ContactTableModel(SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList());
         theContactUI = new ContactUI(this);
         theContactUI.setLocationRelativeTo(null);
         theContactUI.setVisible(true);
@@ -86,7 +86,7 @@ public class ContactController {
     }
     public void addNewContact(String fName, String mName, String lName, String hNum, String cNum, String wNum, String hAddress, String wAddress){
         ContactModel newContact = new ContactModel(fName, mName, lName, hNum, cNum, wNum, hAddress, wAddress);
-        contactList.getTheContactList().add(newContact);
+        SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().add(newContact);
     }
     public void addNewContact(ContactModel newContact){
         tempContact = contactList.getTheContactList().get(tempIndex);

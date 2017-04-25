@@ -171,12 +171,12 @@ public class AddContactUI extends JFrame{
         if(index == -1){
             
             AddContactUI.this.cControl.addNewContact(fNameField.getText(),mNameField.getText(),lNameField.getText(),hNumField.getText(),cNumField.getText(), wNumField.getText(), hAddressField.getText(), wAddressField.getText());
-            //SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+            SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
             AddContactUI.this.cControl.getContactTableModel().fireTableDataChanged();
         }
         else{
             AddContactUI.this.cControl.editContactInfo(index, fNameField.getText(),mNameField.getText(),lNameField.getText(),hNumField.getText(),cNumField.getText(), wNumField.getText(), hAddressField.getText(), wAddressField.getText());
-            //SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+            SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
             AddContactUI.this.cControl.getContactTableModel().fireTableDataChanged();
 
         }

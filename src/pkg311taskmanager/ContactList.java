@@ -5,23 +5,24 @@
  */
 package pkg311taskmanager;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Kyle
  */
-public class ContactList {
+public class ContactList implements Serializable{
     private ArrayList<ContactModel> contactList = null;
 
     public ContactList(){
         if(contactList== null){
-            buildTestContactList();
+            //buildTestContactList();
         }
     }
     public void buildTestContactList(){
         contactList = new ArrayList();
-        for(int i = 0; i < 50; i++){
+        for(int i = 0; i < 5; i++){
             String fName = "Bob" + i;
             String mName = "Lee" + i;
             String lName = "Swagger" + i;
@@ -37,6 +38,9 @@ public class ContactList {
     }
     
     public ArrayList<ContactModel> getTheContactList() {
+        if(contactList == null){
+            contactList = new ArrayList<ContactModel>();
+        }
         return contactList;
     }
     
