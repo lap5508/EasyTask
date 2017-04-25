@@ -304,10 +304,12 @@ public class AddNotificationUI extends JFrame{
      private void addNotificationButtonActionPerformed(java.awt.event.ActionEvent evt){
         if(index == -1){
             AddNotificationUI.this.n_control.addNotification(tasks.getSelectedItem().toString(), priority.getSelectedItem().toString(), hour.getSelectedItem().toString(),minute.getSelectedItem().toString(),am_pm.getSelectedItem().toString(),day.getSelectedItem().toString(), month.getSelectedItem().toString(), year.getSelectedItem().toString());
+            SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
             AddNotificationUI.this.n_control.getNotificationListModel().fireTableDataChanged();
         } 
         else{
             AddNotificationUI.this.n_control.editNotificationInfo(index, tasks.getSelectedItem().toString(), priority.getSelectedItem().toString(), hour.getSelectedItem().toString(),minute.getSelectedItem().toString(),am_pm.getSelectedItem().toString(),day.getSelectedItem().toString(), month.getSelectedItem().toString(), year.getSelectedItem().toString());
+            SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
             AddNotificationUI.this.n_control.getNotificationListModel().fireTableDataChanged();
         }
     AddNotificationUI.this.n_control.returnNotificationUI();
