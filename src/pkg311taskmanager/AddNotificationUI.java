@@ -45,8 +45,7 @@ public class AddNotificationUI extends JFrame{
     private JPanel[] cellNumbers;
     private int index = -1;
     private NotificationController n_control = null;
-    private TaskList taskList;
-    private ArrayList<String> taskTitles = null;
+    private TaskCntl t_control;
     
     public AddNotificationUI(NotificationController newn_control){
         n_control = newn_control;
@@ -97,12 +96,10 @@ public class AddNotificationUI extends JFrame{
         priorityLabel = new JLabel("Priority:");
         priorityLabel.setFont(new Font("Arial", Font.PLAIN, 25));
         
-        taskTitles = new ArrayList();
-        taskTitles.addAll(taskList.getTitles());
         
         tasks = new JComboBox();
-        for(int i = 0; i < taskTitles.size(); i++){
-        tasks.addItem(taskTitles.get(i));
+        for(int i = 0; i < t_control.getTaskList().getListOfTasks().size(); i++){
+        tasks.addItem(t_control.getTaskList().getListOfTasks().get(i).getTitle());
         }
         
         tasks.setFont(new Font("Arial", Font.PLAIN, 20));
