@@ -99,7 +99,7 @@ public class AddNotificationUI extends JFrame{
         
         tasks = new JComboBox();
         for(int i = 0; i < t_control.getTaskList().getListOfTasks().size(); i++){
-        tasks.addItem(t_control.getTaskList().getListOfTasks().get(i).getTitle());
+        tasks.addItem(AddNotificationUI.this.t_control.getTaskList().getListOfTasks().get(i).getTitle());
         }
         
         tasks.setFont(new Font("Arial", Font.PLAIN, 20));

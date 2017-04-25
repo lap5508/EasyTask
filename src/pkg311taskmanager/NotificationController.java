@@ -30,7 +30,7 @@ public class NotificationController {
         System.out.println("MADE IT TO Notification CNTL");
         theNavigationCntl = parentNavCntl;
         theNotificationList = new NotificationList();
-        listModel = new NotificationListModel(theNotificationList.getTheNotificationList());
+        listModel = new NotificationListModel(SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList());
         theNotificationUI = new NotificationUI(this);
         theNotificationUI.setLocationRelativeTo(null);
         theNotificationUI.setVisible(true);

@@ -24,6 +24,9 @@ public class SerializedDataModel implements Serializable {
         if(theTaskList == null){
             theTaskList = new TaskList();
         }   
+        if(theNotificationList == null){
+            theNotificationList = new NotificationList();
+        }
     }
     
     public UserList getUserList(){

@@ -5,11 +5,13 @@
  */
 package pkg311taskmanager;
 
+import java.io.Serializable;
+
 /**
  *
  * @author rober_000
  */
-public class NotificationModel {
+public class NotificationModel implements Serializable{
     
     private String tasks;
     private String priority;

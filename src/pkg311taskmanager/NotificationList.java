@@ -5,6 +5,7 @@
  */
 package pkg311taskmanager;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * @author rober_000
  */
 
-public class NotificationList {
+public class NotificationList implements Serializable{
     
     private ArrayList<NotificationModel> notificationList = null;
     
@@ -25,7 +26,7 @@ public class NotificationList {
 
     public void buildTestNotificationList(){
         notificationList = new ArrayList();
-        for(int i = 0; i < 10; i++){
+        for(int i = 0; i < 5; i++){
             String tasks = "Task " +i;
             String priority = "Low";
             String hour = "3";
@@ -42,7 +43,9 @@ public class NotificationList {
     
     
     public ArrayList<NotificationModel> getTheNotificationList(){
-        
+        if(notificationList == null){
+            notificationList = new ArrayList<NotificationModel>();
+        }
         return notificationList;
     }
 

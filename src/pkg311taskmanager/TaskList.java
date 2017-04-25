@@ -22,7 +22,7 @@ public class TaskList implements Serializable{
 
     public void buildTestTaskList(){
         theListOfTasks = new ArrayList();
-        for(int i = 0; i < 50; i++){
+        for(int i = 0; i < 5; i++){
             String taskTitle = "Task " +i;
             String taskDate = "10/12/17";
             String taskTime = "3:00";
