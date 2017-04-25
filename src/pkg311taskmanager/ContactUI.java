@@ -50,16 +50,30 @@ public class ContactUI extends JFrame{
     private JButton helpButton;
     private JTable contactTable;
     private JScrollPane theScrollPane;
+    private JPanel helpPanel;
+
     
 public ContactUI(ContactController newc_control){    
     
     c_control = newc_control;
+    createContactHelpPanel();
     createLabelPanel();
     createListPanel();
     createNavigationPanel();
     createOptionsPanel();
     setBounds(0, 0, 750, 700);
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+}
+public void createContactHelpPanel(){
+    helpPanel = new JPanel();
+    helpButton = new JButton("Help");
+    helpButton.addActionListener(new java.awt.event.ActionListener(){
+                public void actionPerformed(java.awt.event.ActionEvent evt){
+                    contactHelpButtonPerformed(evt);
+                }
+            });
+    helpPanel.add(helpButton);
+    add(helpPanel, BorderLayout.LINE_START);
 }
 public void createLabelPanel(){
     contactLabel = new JLabel("Contact List", JLabel.CENTER);
@@ -184,6 +198,10 @@ private void editButtonPerformed(java.awt.event.ActionEvent evt) {
         int selectedModelRow = contactTable.convertRowIndexToModel(selectedTableRow);
         ContactUI.this.c_control.getAddContactUI(selectedModelRow);
         }
+}
+
+private void contactHelpButtonPerformed(java.awt.event.ActionEvent evt){
+    ContactUI.this.c_control.getContactHelpWindow();
 }
 private void menuButtonPerformed(java.awt.event.ActionEvent evt) {
     this.setVisible(false);

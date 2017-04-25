@@ -35,6 +35,8 @@ public class TaskUI extends JFrame{
     private JLabel notificationLabel;
     private JTable taskTable;
     private JScrollPane theScrollPane;
+    private JPanel helpPanel;
+    private JButton helpButton;
     
     /*
     private ContactController c_control = null;
@@ -55,6 +57,7 @@ public class TaskUI extends JFrame{
     
     public TaskUI(TaskCntl newParentTaskCntl) {
         theTaskCntl = newParentTaskCntl;
+        createContactHelpPanel();
         createLabelPanel();
         createListPanel();
         createOptionsPanel();
@@ -63,6 +66,18 @@ public class TaskUI extends JFrame{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         //initCustomComponents();
     }
+    
+    public void createContactHelpPanel(){
+    helpPanel = new JPanel();
+    helpButton = new JButton("Help");
+    helpButton.addActionListener(new java.awt.event.ActionListener(){
+                public void actionPerformed(java.awt.event.ActionEvent evt){
+                    taskHelpButtonPerformed(evt);
+                }
+            });
+    helpPanel.add(helpButton);
+    add(helpPanel, BorderLayout.LINE_START);
+}
     
     public void createLabelPanel(){
         taskLabel = new JLabel("Task List", JLabel.CENTER);
@@ -187,6 +202,10 @@ public class TaskUI extends JFrame{
     
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt){
         TaskUI.this.theTaskCntl.getAddTaskUINoInfo();
+    }
+    
+    private void taskHelpButtonPerformed(java.awt.event.ActionEvent evt){
+        TaskUI.this.theTaskCntl.getTaskHelpWindow();
     }
     
     private void contactButtonActionPerformed(java.awt.event.ActionEvent evt){

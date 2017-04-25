@@ -21,6 +21,7 @@ public class ContactController {
     private ArrayList<ContactModel> theContactList;
     int tempIndex = 0;
     private ContactModel tempContact;
+    private contactHelp contactHelp;
     
     public ContactController(NavigationCntl parentNavCntl){
         System.out.println("MADE IT TO CONTACT CNTL");
@@ -57,6 +58,9 @@ public class ContactController {
     public void getAddContactUI(int contactRowToGet){
         theContactUI.setVisible(false);
         theAddContactUI = new AddContactUI(this, contactRowToGet);
+    }
+    public void getContactHelpWindow(){
+        contactHelp = new contactHelp(this);
     }
     public ContactList getContactList(){
         return contactList;

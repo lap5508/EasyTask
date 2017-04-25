@@ -62,6 +62,8 @@ public class NotificationUI extends JFrame{
     private int hour;
     private JLabel date;
     private JLabel time;
+    private JButton helpButton;
+    private JPanel helpPanel;
     
     
     public NotificationUI(NotificationController newn_control)
@@ -148,6 +150,16 @@ public class NotificationUI extends JFrame{
     public void createUI()
     {     
      
+        helpPanel = new JPanel();
+        helpButton = new JButton("Help");
+        helpButton.addActionListener(new java.awt.event.ActionListener(){
+                public void actionPerformed(java.awt.event.ActionEvent evt){
+                    notificationHelpButtonPerformed(evt);
+                }
+            });
+        helpPanel.add(helpButton);
+        add(helpPanel, BorderLayout.LINE_START);
+        
         JPanel scrollPanel = new JPanel();
         
         table = new JTable(this.n_control.getNotificationListModel());
@@ -251,7 +263,9 @@ public class NotificationUI extends JFrame{
         
     }
     
-    
+    private void notificationHelpButtonPerformed(java.awt.event.ActionEvent evt){
+        NotificationUI.this.n_control.getNotificationHelpWindow();
+    }
     private void addNotificationButtonActionPerformed(java.awt.event.ActionEvent evt){
         NotificationUI.this.n_control.getBlankAddNotificationUI();
         System.out.println("worked");

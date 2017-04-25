@@ -29,6 +29,7 @@ public class NotificationController {
     private TaskCntl t_control = null;
     private TaskList theTaskList = null;
     private ArrayList<Task> newTaskList;
+    private notificationHelp notificationHelp;
     
     public NotificationController(NavigationCntl parentNavCntl, TaskCntl newTaskCntl){
         System.out.println("MADE IT TO Notification CNTL");
@@ -60,6 +61,10 @@ public class NotificationController {
         theNotificationUI.dispose();
         theNotificationUI.setLocationRelativeTo(null);
         theNotificationUI.setVisible(true);
+    }
+    
+    public void getNotificationHelpWindow(){
+        notificationHelp = new notificationHelp(this);
     }
     
     public void getAddNotificationUI(int taskRow){
