@@ -293,7 +293,7 @@ public class NotificationModel implements Serializable{
         {
         am_pm = 1;
         }
-        day = Integer.parseInt(zday);
+        //day = Integer.parseInt(zday);
    
         if(zmonth == "January")
         {

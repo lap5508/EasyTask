@@ -17,7 +17,8 @@ public class UserList implements Serializable{
     
     public UserList(){
         if(theListOfUsers == null){
-            buildTestUserList();
+            //buildTestUserList();
+            //SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
         }    
         
     }
