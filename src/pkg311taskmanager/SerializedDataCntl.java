@@ -73,7 +73,8 @@ public class SerializedDataCntl {
     
     public void writeSerializedDataModel(){
         try{
-            FileOutputStream fileOut = new FileOutputStream(EXTERNAL_DATA_PATH+EASYTASK_DATA_FILE_NAME);
+            System.out.println("easytask_data\\EasyTask.ser");
+            FileOutputStream fileOut = new FileOutputStream("easytask_data\\EasyTask.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(theSerializedDataModel);
             out.close();

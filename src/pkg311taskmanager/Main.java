@@ -22,8 +22,8 @@ public class Main {
             // Set System L&F
 //        UIManager.setLookAndFeel(
 //            UIManager.getSystemLookAndFeelClassName());
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            //UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+            //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
     } 
     catch (UnsupportedLookAndFeelException e) {
        // handle exception

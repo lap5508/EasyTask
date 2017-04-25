@@ -5,13 +5,14 @@
  */
 package pkg311taskmanager;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Luke
  */
-public class UserList {
+public class UserList implements Serializable{
     private ArrayList<User> theListOfUsers;
     
     public UserList(){

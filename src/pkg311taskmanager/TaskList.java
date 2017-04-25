@@ -35,7 +35,9 @@ public class TaskList implements Serializable{
     }
     
     public ArrayList<Task> getListOfTasks() {
-
+        if(theListOfTasks == null){
+            theListOfTasks = new ArrayList<Task>();
+        }
         return theListOfTasks;
     }
  

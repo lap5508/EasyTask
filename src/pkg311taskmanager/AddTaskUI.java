@@ -136,12 +136,12 @@ public class AddTaskUI extends JFrame{
         if(index == -1){
             
             AddTaskUI.this.theTaskCntl.addNewTask(titleField.getText(),dateField.getText(),timeField.getText(),locationField.getText(),descriptionField.getText());
-            //SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+            SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
             AddTaskUI.this.theTaskCntl.getTaskTableModel().fireTableDataChanged();
         }
         else{
             AddTaskUI.this.theTaskCntl.editTaskInfo(index, titleField.getText(),dateField.getText(),timeField.getText(),locationField.getText(),descriptionField.getText());
-            //SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+            SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
             AddTaskUI.this.theTaskCntl.getTaskTableModel().fireTableDataChanged();
 
         }

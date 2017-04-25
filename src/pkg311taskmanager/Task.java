@@ -18,8 +18,6 @@ public class Task extends ScheduledEvent implements Serializable{
     private String taskTime = "";
     private String taskDate = "";
     private String taskDescription = "";
-    private String taskCategory = "";
-    private String taskPriority = "";
     private ArrayList<String> actionSteps = new ArrayList();
     
     public Task(){
@@ -36,8 +34,6 @@ public class Task extends ScheduledEvent implements Serializable{
             this.taskTime = tempTaskArray[2];
             this.taskLocation = tempTaskArray[3];
             this.taskDescription = tempTaskArray[4];
-            this.taskCategory = tempTaskArray[5];
-            this.taskPriority = tempTaskArray[6];
             
         }catch(ArrayIndexOutOfBoundsException e){
             
@@ -77,25 +73,8 @@ public class Task extends ScheduledEvent implements Serializable{
         return taskDescription;
     }
     
-    public String getCategory(){
-        return taskCategory;
-    }
-    
-    public String getPriority(){
-        return taskPriority;
-    }
-    
-    public Long getStartTime(){
-        return super.getTaskStartTime();
-    }
-    
-    public Long getEndTime(){
-        return super.getTaskEndTime();
-    }
-    
-    public Boolean getEnabled(){
-        return super.getTaskEnabled();
-    }
+
+
     
     public void changeInfo(String newTitle, String newDate, String newTime, String newLocation, String newDescription){
         this.taskTitle = newTitle;

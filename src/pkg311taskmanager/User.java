@@ -5,11 +5,13 @@
  */
 package pkg311taskmanager;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Luke
  */
-public class User {
+public class User implements Serializable{
     private String username = null;
     private char[] password = null;
     

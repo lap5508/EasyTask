@@ -111,6 +111,7 @@ public class TaskUI extends JFrame{
             taskTable.setFillsViewportHeight(true);
             
         tablePanel.add(theScrollPane);
+        this.getRootPane().setDefaultButton(filterButton);
         add(tablePanel, BorderLayout.CENTER);
     }
     
@@ -207,9 +208,9 @@ public class TaskUI extends JFrame{
         else{
         int selectedTableRow = taskTable.getSelectedRow();
         int selectedModelRow = taskTable.convertRowIndexToModel(selectedTableRow);
-        TaskUI.this.theTaskCntl.getTaskList().getListOfTasks().remove(selectedModelRow);
-        //SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getMediaList().getListOfMedia().remove(selectedModelRow);
-        //SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+        //TaskUI.this.theTaskCntl.getTaskList().getListOfTasks().remove(selectedModelRow);
+        SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().remove(selectedModelRow);
+        SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
         this.theTaskCntl.getTaskTableModel().fireTableDataChanged();
         }
     }

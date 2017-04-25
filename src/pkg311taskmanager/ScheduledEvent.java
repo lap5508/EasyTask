@@ -13,9 +13,7 @@ import java.util.ArrayList;
  */
 public abstract class ScheduledEvent{
     
-    private long startTime = 0;
-    private long endTime = 0;
-    private boolean enabled = false;
+
     
     
     public ScheduledEvent(){
@@ -31,23 +29,13 @@ public abstract class ScheduledEvent{
         this.artist = tempMediaArray[2];
     }*/
     
-    public ScheduledEvent(Long newStartTime, Long newEndTime, Boolean newEnabled){
-        this.startTime = newStartTime;
-        this.endTime = newEndTime;
-        this.enabled = newEnabled;
-    }
+
     
-    public Long getTaskStartTime(){
-        return startTime;
-    }
+
     
-    public Long getTaskEndTime(){
-        return endTime;
-    }
+
     
-    public Boolean getTaskEnabled(){
-        return enabled;
-    }
+
     
  
 }
