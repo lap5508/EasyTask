@@ -58,6 +58,7 @@ public class LoginCntl {
     public void addNewUser(String uName, char[] pW){
         User newUser = new User(uName, pW);
         theUserList.getTheListOfUsers().add(newUser);
+        SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
     }
     public boolean requestAuthenticate(String usernameToCheck, char[] passwordToCheck){
         boolean authenticated = theUserList.authenticate(usernameToCheck, passwordToCheck);

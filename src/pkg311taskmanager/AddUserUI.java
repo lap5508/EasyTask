@@ -97,7 +97,10 @@ public class AddUserUI extends JFrame{
         return pw;
     }
     private void saveButtonActionPerformed(ActionEvent evt){
-        boolean nah = false;
+        //boolean nah = false;
+        AddUserUI.this.logCntl.addNewUser(uNameField.getText(), parsePW(pwField.getText()));
+        
+        /*
         for(int i = 0; i < AddUserUI.this.logCntl.getUserList().getTheListOfUsers().size(); i++){
             if(uNameField.getText() == AddUserUI.this.logCntl.getUserList().getTheListOfUsers().get(i).getUsername()){
                 nah = true;
@@ -108,7 +111,7 @@ public class AddUserUI extends JFrame{
         }
         if(nah == true){
             JOptionPane.showMessageDialog(null, "Please select a different UserName!");
-        }
+        }*/
     }
     
     private void backButtonActionPerformed(ActionEvent evt){
