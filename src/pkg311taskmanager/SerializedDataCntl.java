@@ -35,11 +35,11 @@ public class SerializedDataCntl {
     public SerializedDataModel getSerializedDataModel(){
         if(theSerializedDataModel == null){
             theSerializedDataModel = new SerializedDataModel();
-            writeSerializedDataModel();
+            //writeSerializedDataModel();
             readSerializedDataModel();
             if(theSerializedDataModel == null){
                 theSerializedDataModel = new SerializedDataModel();
-                //writeSerializedDataModel();
+                writeSerializedDataModel();
                 readSerializedDataModel();
                 
             }
