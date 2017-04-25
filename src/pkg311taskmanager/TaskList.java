@@ -16,7 +16,7 @@ public class TaskList implements Serializable{
     
     public TaskList (){
         if(theListOfTasks == null){
-            buildTestTaskList();
+            //buildTestTaskList();
         }
     }
 
