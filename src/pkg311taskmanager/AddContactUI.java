@@ -119,21 +119,21 @@ public class AddContactUI extends JFrame{
         if(hasInfo){
            
             String fName;
-                fName = cControl.getContactList().getTheContactList().get(index).getfName();
+                fName = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getfName();
             String mName;
-                mName = cControl.getContactList().getTheContactList().get(index).getmName();
+                mName = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getmName();
             String lName;
-                lName = cControl.getContactList().getTheContactList().get(index).getlName();
+                lName = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getlName();
             String hNum;
-                hNum = cControl.getContactList().getTheContactList().get(index).getHomeNum();
+                hNum = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getHomeNum();
             String cNum;
-                cNum = cControl.getContactList().getTheContactList().get(index).getCellNum();
+                cNum = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getCellNum();
             String wNum;
-                wNum = cControl.getContactList().getTheContactList().get(index).getWorkNum();
+                wNum = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getWorkNum();
             String hAddress;
-                hAddress = cControl.getContactList().getTheContactList().get(index).gethAddress();
+                hAddress = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).gethAddress();
             String wAddress;
-               wAddress = cControl.getContactList().getTheContactList().get(index).getwAddress();
+               wAddress = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getwAddress();
 
 
             fNameField.setText(fName);

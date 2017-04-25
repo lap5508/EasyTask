@@ -64,7 +64,7 @@ public class AddNotificationUI extends JFrame{
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     }
     
-    private void createUI(boolean hasInfo, int songRow)
+    private void createUI(boolean hasInfo, int row)
     {
         JPanel logoPanel = new JPanel();
         logo = new JLabel("Add Notification");
@@ -255,21 +255,21 @@ public class AddNotificationUI extends JFrame{
         
         if(hasInfo){
             String taskInfo;
-                taskInfo = n_control.getNotificationList().getTheNotificationList().get(index).getTask();
+                taskInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getTask();
             String priorityInfo;
-                priorityInfo = n_control.getNotificationList().getTheNotificationList().get(index).getPriority();
+                priorityInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getPriority();
             String hourInfo;
-                hourInfo = n_control.getNotificationList().getTheNotificationList().get(index).getHour();
+                hourInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getHour();
             String minuteInfo;
-                minuteInfo = n_control.getNotificationList().getTheNotificationList().get(index).getMinute();
+                minuteInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getMinute();
             String am_pmInfo;
-                am_pmInfo = n_control.getNotificationList().getTheNotificationList().get(index).getAm_Pm();
+                am_pmInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getAm_Pm();
             String dayInfo;
-                dayInfo = n_control.getNotificationList().getTheNotificationList().get(index).getDay();
+                dayInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getDay();
             String monthInfo;
-                monthInfo = n_control.getNotificationList().getTheNotificationList().get(index).getMonth();
+                monthInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getMonth();
             String yearInfo;
-                yearInfo = n_control.getNotificationList().getTheNotificationList().get(index).getYear();
+                yearInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getYear();
             tasks.setSelectedItem(taskInfo);
             priority.setSelectedItem(priorityInfo);
             hour.setSelectedItem(hourInfo);
