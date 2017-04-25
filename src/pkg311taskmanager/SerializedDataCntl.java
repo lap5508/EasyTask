@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class SerializedDataCntl {
     private SerializedDataModel theSerializedDataModel;
     private static SerializedDataCntl theSerializedDataCntl;
-    private final String EXTERNAL_DATA_PATH = "easytask_data\\";
+    private final String EXTERNAL_DATA_PATH = "src\\";
     private final String EASYTASK_DATA_FILE_NAME = "EasyTask.ser";
     //private MediaList theMediaList = null;
     
@@ -75,7 +75,7 @@ public class SerializedDataCntl {
     public void writeSerializedDataModel(){
         try{
             System.out.println("easytask_data\\EasyTask.ser");
-            FileOutputStream fileOut = new FileOutputStream("easytask_data\\EasyTask.ser");
+            FileOutputStream fileOut = new FileOutputStream("src\\EasyTask.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(theSerializedDataModel);
             out.close();

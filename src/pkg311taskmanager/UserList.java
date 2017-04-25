@@ -53,6 +53,9 @@ public class UserList implements Serializable{
      * @return the theListOfUsers
      */
     public ArrayList<User> getTheListOfUsers() {
+        if(theListOfUsers == null){
+            theListOfUsers = new ArrayList<User>();
+        }
         return theListOfUsers;
     }
 }
