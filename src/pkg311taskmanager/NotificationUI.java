@@ -72,7 +72,21 @@ public class NotificationUI extends JFrame{
         setBounds(0, 0, 750, 700);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     }
-    
+    public void checkForNotification(){
+        
+        ActionListener secondCounter = new ActionListener(){
+            public void actionPerformed(ActionEvent evt) {
+//                for
+//                if(currentTime().equals("5:22:00 PM")){
+//                    popUp();
+//                    System.out.println("worked");
+//                } else {
+//                }
+            }
+        };
+        Timer sec = new Timer(1000, secondCounter);
+        sec.start();
+    }
     public void createDateTime(){
         JPanel dateTime = new JPanel();
         dateTime.setLayout(new GridLayout(3,1));
@@ -94,11 +108,6 @@ public class NotificationUI extends JFrame{
         ActionListener secondCounter = new ActionListener(){
             public void actionPerformed(ActionEvent evt) {
                 time.setText(currentTime());
-                if(currentTime().equals("5:22:00 PM")){
-                    popUp();
-                    System.out.println("worked");
-                } else {
-                }
             }
         };
         Timer sec = new Timer(1000, secondCounter);

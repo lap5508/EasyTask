@@ -45,10 +45,11 @@ public class AddNotificationUI extends JFrame{
     private JPanel[] cellNumbers;
     private int index = -1;
     private NotificationController n_control = null;
-    private TaskCntl t_control;
+    private TaskCntl t_control = null;
     
     public AddNotificationUI(NotificationController newn_control){
         n_control = newn_control;
+        this.t_control = t_control;
         setBounds(0, 0, 600, 500);
         this.setVisible(true);
         createUI(false, 0);
@@ -98,8 +99,9 @@ public class AddNotificationUI extends JFrame{
         
         
         tasks = new JComboBox();
-        for(int i = 0; i < t_control.getTaskList().getListOfTasks().size(); i++){
-        tasks.addItem(AddNotificationUI.this.t_control.getTaskList().getListOfTasks().get(i).getTitle());
+        for(int i = 0; i < AddNotificationUI.this.n_control.getTaskList().size(); i++){
+        tasks.addItem(AddNotificationUI.this.n_control.getTaskList().get(i).getTitle());
+        System.out.println("worked");
         }
         
         tasks.setFont(new Font("Arial", Font.PLAIN, 20));

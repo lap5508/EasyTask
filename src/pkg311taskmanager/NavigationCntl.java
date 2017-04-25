@@ -53,7 +53,7 @@ public class NavigationCntl {
     
     public void requestNotificationCntl(){
         theMainMenuUI.setVisible(false);
-        theNotificationCntl = new NotificationController(this);
+        theNotificationCntl = new NotificationController(this, theTaskCntl);
     }
 
     public void getNavigationCntl(){
