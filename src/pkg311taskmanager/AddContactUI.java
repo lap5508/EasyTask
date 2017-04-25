@@ -117,6 +117,7 @@ public class AddContactUI extends JFrame{
             wAddressField.setEditable(true);
         
         if(hasInfo){
+           
             String fName;
                 fName = cControl.getContactList().getTheContactList().get(index).getfName();
             String mName;

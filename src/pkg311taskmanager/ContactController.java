@@ -97,7 +97,7 @@ public class ContactController {
         theContactList.add(tempContact);
     }
     public void editContactInfo(int index, String fName, String mName, String lName, String hNum, String cNum, String wNum, String hAddress, String wAddress){
-        tempContact = this.getContactList().getTheContactList().get(index);
+        tempContact = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(index);
         tempContact.changeInfo(fName, mName, lName, hNum, cNum, wNum, hAddress, wAddress);
     }
 }
