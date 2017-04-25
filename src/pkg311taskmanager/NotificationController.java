@@ -25,10 +25,15 @@ public class NotificationController {
     int tempIndex = 0;
     private NotificationModel tempNotification;
     private ContactController cControl;
-    private TaskCntl t_control;
+    private Task task = null;
+    private TaskCntl t_control = null;
+    private TaskList theTaskList = null;
+    private ArrayList<Task> newTaskList;
     
-    public NotificationController(NavigationCntl parentNavCntl){
+    public NotificationController(NavigationCntl parentNavCntl, TaskCntl newTaskCntl){
         System.out.println("MADE IT TO Notification CNTL");
+        t_control = newTaskCntl;
+        this.task = task;
         theNavigationCntl = parentNavCntl;
         theNotificationList = new NotificationList();
         listModel = new NotificationListModel(SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList());
@@ -36,6 +41,15 @@ public class NotificationController {
         theNotificationUI.setLocationRelativeTo(null);
         theNotificationUI.setVisible(true);
     }
+    public ArrayList<Task> getTaskList(){
+        ArrayList<Task> newTaskList = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks();
+        return newTaskList;
+    }
+//    public String getTitle(int i) {
+//        ArrayList<Task> newTaskList = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks();
+//        String title = newTaskList.get(i).getTitle();
+//        return title;
+//    }
     
     public void getNotificationUI(){
         theNotificationUI.setVisible(false);
