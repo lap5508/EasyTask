@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  *
  * @author rober_000
  */
-public class notificationHelp extends JFrame{
+public class NotificationHelpUI extends JFrame{
       
     private NotificationController n_control;
     private JPanel panel;
@@ -29,7 +29,7 @@ public class notificationHelp extends JFrame{
     private JLabel line3;
     private JLabel line4;
     
-    public notificationHelp(NotificationController newN_control){
+    public NotificationHelpUI(NotificationController newN_control){
         n_control = newN_control;
         setBounds(0, 0, 600, 380);
         panel = new JPanel();

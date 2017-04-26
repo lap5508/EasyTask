@@ -11,29 +11,34 @@ import java.util.ArrayList;
  *
  * @author Luke
  */
-public class TaskCntl {
-    private NavigationCntl theNavigationCntl = null;
+public class TaskController {
+    private NavigationController theNavigationCntl = null;
     private TaskUI theTaskUI = null;
-    private TaskList theTaskList = null;
-    private MainMenuUIv2 theMainMenuUI = null;
+    private TaskListModel theTaskList = null;
     private AddTaskUI theAddTaskUI = null;
-    private ArrayList<Task> theListOfTasks;
-    private Task tempTask;
+    private ArrayList<TaskModel> theListOfTasks;
+    private TaskModel tempTask;
     private int tempIndex = 0;
     private TaskTableModel taskTableModel = null;
+    private TaskHelpUI theTaskHelpUI = null;
     
-    public TaskCntl(NavigationCntl parentNavCntl){
+    public TaskController(NavigationController parentNavCntl){
         System.out.println("MADE IT TO TaskCNTL"); //test line
         theNavigationCntl = parentNavCntl;
-        theTaskList = new TaskList();
-        taskTableModel = new TaskTableModel(SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks());
+        theTaskList = new TaskListModel();
+        taskTableModel = new TaskTableModel(SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks());
         theTaskUI = new TaskUI(this);
         theTaskUI.setLocationRelativeTo(null);
         theTaskUI.setVisible(true);
         
     }
     
-    public TaskList getTaskList(){
+    public void getTaskHelpWindow(){
+        theTaskHelpUI = new TaskHelpUI(this);
+        theTaskHelpUI.setLocationRelativeTo(null);
+    }
+    
+    public TaskListModel getTaskList(){
         return theTaskList;
     }
     
@@ -48,7 +53,7 @@ public class TaskCntl {
         theTaskUI.setVisible(true);
     }
     
-    public ArrayList<Task> getTheListOfTasks() {
+    public ArrayList<TaskModel> getTheListOfTasks() {
         return theListOfTasks;
     }
     
@@ -81,7 +86,7 @@ public class TaskCntl {
     
     public String returnListOfTitles(){
         String theTitle = "";
-        ArrayList<Task> list = theTaskList.getListOfTasks();
+        ArrayList<TaskModel> list = theTaskList.getListOfTasks();
         System.out.println("Got to list of tasks");
         for(int i=0; i < list.size(); i++){
             
@@ -96,18 +101,18 @@ public class TaskCntl {
     }
     
     public void addNewTask(String newTitle, String newDate, String newTime, String newLocation, String newDescription){
-        Task newTask = new Task(newTitle, newDate, newTime, newLocation, newDescription);
-        SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().add(newTask);
+        TaskModel newTask = new TaskModel(newTitle, newDate, newTime, newLocation, newDescription);
+        SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().add(newTask);
     }
     
     public void editTaskInfo(int index, String newTitle, String newDate, String newTime, String newLocation, String newDescription){
-        tempTask = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().get(index);
+        tempTask = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().get(index);
         tempTask.changeInfo(newTitle, newDate, newTime, newLocation, newDescription);
     }
     
     public String computeListOfTasks(){
         String taskOutput = "";
-        ArrayList<Task> list = theTaskList.getListOfTasks();
+        ArrayList<TaskModel> list = theTaskList.getListOfTasks();
         System.out.println(list);
         
         for(int i=0; i < list.size(); i++){
@@ -128,13 +133,13 @@ public class TaskCntl {
     
 
     
-    public void setTheListOfTasks(Task newTask) {
+    public void setTheListOfTasks(TaskModel newTask) {
         tempTask = newTask;
         theListOfTasks.add(tempTask);
         System.out.print(theListOfTasks);
     }
     
-    public void addNewTask(Task newTask){
+    public void addNewTask(TaskModel newTask){
         //Task newTask = new Task(newTitle, newDescription, newCategory, newStartTime, newEndTime, newEnabled);
         //TaskList theTaskList = new TaskList();
         tempTask = theTaskList.getListOfTasks().get(tempIndex);

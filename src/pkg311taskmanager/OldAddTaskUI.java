@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class OldAddTaskUI extends javax.swing.JFrame{
     
     //private TaskList theTaskList = null;
-    private TaskCntl parentTaskCntl = null;
+    private TaskController parentTaskCntl = null;
     private JButton backgroundButton;
     private JButton cancelButton;
     private JTextField dateField;
@@ -35,9 +35,9 @@ public class OldAddTaskUI extends javax.swing.JFrame{
     private JLabel timeLabel;
     private JTextField titleField;
     private JLabel titleLabel;
-    TaskList tasklist = null;
+    TaskListModel tasklist = null;
     
-    public OldAddTaskUI(TaskCntl newParentTaskCntl) {
+    public OldAddTaskUI(TaskController newParentTaskCntl) {
         parentTaskCntl = newParentTaskCntl;
         initComponents();
     }

@@ -11,9 +11,9 @@ import java.util.ArrayList;
  *
  * @author lap5508
  */
-public class SerializedDataCntl {
+public class SerializedDataController {
     private SerializedDataModel theSerializedDataModel;
-    private static SerializedDataCntl theSerializedDataCntl;
+    private static SerializedDataController theSerializedDataCntl;
     private final String EXTERNAL_DATA_PATH = "src\\";
     private final String EASYTASK_DATA_FILE_NAME = "EasyTask.ser";
     //private MediaList theMediaList = null;
@@ -21,13 +21,13 @@ public class SerializedDataCntl {
     
     //SAME, ALGORTHYM_FILE_NAME
             
-    private SerializedDataCntl(){
+    private SerializedDataController(){
       getSerializedDataModel();
     }
     
-    public static SerializedDataCntl getSerializedDataCntl(){
+    public static SerializedDataController getSerializedDataCntl(){
         if(theSerializedDataCntl == null){
-            theSerializedDataCntl = new SerializedDataCntl();
+            theSerializedDataCntl = new SerializedDataController();
         }
         return theSerializedDataCntl;
     }

@@ -12,22 +12,21 @@ import java.util.ArrayList;
  * @author Kyle
  */
 public class ContactController {
-    private NavigationCntl theNavigationCntl = null;
+    private NavigationController theNavigationCntl = null;
     private ContactUI theContactUI = null;
-    private ContactList contactList = null;
-    private MainMenuUIv2 theMainMenuUI = null;
+    private ContactListModel contactList = null;
     private AddContactUI theAddContactUI = null;
     private ContactTableModel contactTableModel;
     private ArrayList<ContactModel> theContactList;
     int tempIndex = 0;
     private ContactModel tempContact;
-    private contactHelp contactHelp;
+    private ContactHelpUI contactHelp;
     
-    public ContactController(NavigationCntl parentNavCntl){
+    public ContactController(NavigationController parentNavCntl){
         System.out.println("MADE IT TO CONTACT CNTL");
         theNavigationCntl = parentNavCntl;
-        contactList = new ContactList();
-        contactTableModel = new ContactTableModel(SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList());
+        contactList = new ContactListModel();
+        contactTableModel = new ContactTableModel(SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList());
         theContactUI = new ContactUI(this);
         theContactUI.setLocationRelativeTo(null);
         theContactUI.setVisible(true);
@@ -60,9 +59,10 @@ public class ContactController {
         theAddContactUI = new AddContactUI(this, contactRowToGet);
     }
     public void getContactHelpWindow(){
-        contactHelp = new contactHelp(this);
+        contactHelp = new ContactHelpUI(this);
+        contactHelp.setLocationRelativeTo(null);
     }
-    public ContactList getContactList(){
+    public ContactListModel getContactList(){
         return contactList;
     }
     public ArrayList<ContactModel> getTheContactList(){
@@ -90,7 +90,7 @@ public class ContactController {
     }
     public void addNewContact(String fName, String mName, String lName, String hNum, String cNum, String wNum, String hAddress, String wAddress){
         ContactModel newContact = new ContactModel(fName, mName, lName, hNum, cNum, wNum, hAddress, wAddress);
-        SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().add(newContact);
+        SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().add(newContact);
     }
     public void addNewContact(ContactModel newContact){
         tempContact = contactList.getTheContactList().get(tempIndex);
@@ -101,7 +101,7 @@ public class ContactController {
         theContactList.add(tempContact);
     }
     public void editContactInfo(int index, String fName, String mName, String lName, String hNum, String cNum, String wNum, String hAddress, String wAddress){
-        tempContact = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(index);
+        tempContact = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(index);
         tempContact.changeInfo(fName, mName, lName, hNum, cNum, wNum, hAddress, wAddress);
     }
 }

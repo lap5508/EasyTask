@@ -11,12 +11,12 @@ import java.util.ArrayList;
  *
  * @author Luke
  */
-public abstract class ScheduledEvent{
+public abstract class ScheduledEventModel{
     
 
     
     
-    public ScheduledEvent(){
+    public ScheduledEventModel(){
         System.out.println("Called: ScheduledEvent()");
     }
     /*

@@ -26,10 +26,10 @@ public class AddUserUI extends JFrame{
     private JPanel buttonPanel;
     private JPanel cellNumbers[];
     private JPanel infoPanel;
-    private LoginCntl logCntl;
+    private LoginController logCntl;
    
     
-    public AddUserUI(LoginCntl newLogCntl){
+    public AddUserUI(LoginController newLogCntl){
         logCntl = newLogCntl;
         this.setVisible(true);
         initCustomComponents();

@@ -11,11 +11,11 @@ import java.io.Serializable;
  *
  * @author Luke
  */
-public class User implements Serializable{
+public class UserModel implements Serializable{
     private String username = null;
     private char[] password = null;
     
-    public User(String newUsername, char[] newPassword){
+    public UserModel(String newUsername, char[] newPassword){
         username = newUsername;
         password = newPassword;
     }

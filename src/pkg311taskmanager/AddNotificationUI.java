@@ -45,7 +45,7 @@ public class AddNotificationUI extends JFrame{
     private JPanel[] cellNumbers;
     private int index = -1;
     private NotificationController n_control = null;
-    private TaskCntl t_control = null;
+    private TaskController t_control = null;
     
     public AddNotificationUI(NotificationController newn_control){
         n_control = newn_control;
@@ -257,21 +257,21 @@ public class AddNotificationUI extends JFrame{
         
         if(hasInfo){
             String taskInfo;
-                taskInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getTask();
+                taskInfo = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getTask();
             String priorityInfo;
-                priorityInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getPriority();
+                priorityInfo = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getPriority();
             String hourInfo;
-                hourInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getHour();
+                hourInfo = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getHour();
             String minuteInfo;
-                minuteInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getMinute();
+                minuteInfo = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getMinute();
             String am_pmInfo;
-                am_pmInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getAm_Pm();
+                am_pmInfo = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getAm_Pm();
             String dayInfo;
-                dayInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getDay();
+                dayInfo = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getDay();
             String monthInfo;
-                monthInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getMonth();
+                monthInfo = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getMonth();
             String yearInfo;
-                yearInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getYear();
+                yearInfo = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(row).getYear();
             tasks.setSelectedItem(taskInfo);
             priority.setSelectedItem(priorityInfo);
             hour.setSelectedItem(hourInfo);
@@ -304,12 +304,12 @@ public class AddNotificationUI extends JFrame{
      private void addNotificationButtonActionPerformed(java.awt.event.ActionEvent evt){
         if(index == -1){
             AddNotificationUI.this.n_control.addNotification(tasks.getSelectedItem().toString(), priority.getSelectedItem().toString(), hour.getSelectedItem().toString(),minute.getSelectedItem().toString(),am_pm.getSelectedItem().toString(),day.getSelectedItem().toString(), month.getSelectedItem().toString(), year.getSelectedItem().toString());
-            SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+            SerializedDataController.getSerializedDataCntl().writeSerializedDataModel();
             AddNotificationUI.this.n_control.getNotificationListModel().fireTableDataChanged();
         } 
         else{
             AddNotificationUI.this.n_control.editNotificationInfo(index, tasks.getSelectedItem().toString(), priority.getSelectedItem().toString(), hour.getSelectedItem().toString(),minute.getSelectedItem().toString(),am_pm.getSelectedItem().toString(),day.getSelectedItem().toString(), month.getSelectedItem().toString(), year.getSelectedItem().toString());
-            SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+            SerializedDataController.getSerializedDataCntl().writeSerializedDataModel();
             AddNotificationUI.this.n_control.getNotificationListModel().fireTableDataChanged();
         }
     AddNotificationUI.this.n_control.returnNotificationUI();

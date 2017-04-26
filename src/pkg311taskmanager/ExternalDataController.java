@@ -16,13 +16,13 @@ import java.util.ArrayList;
  *
  * @author lap5508
  */
-public class ExternalDataCntl {
+public class ExternalDataController {
     private final String EXTERNAL_DATA_PATH = "easytask_data\\";
     private final String TASK_FILE_NAME = "tasklist.TSV";
     private final String CONTACT_FILE_NAME = "contactlist.TSV";
     private final String NOTIFICATION_FILE_NAME = "notificationlist.TSV";
     
-    public ExternalDataCntl(){
+    public ExternalDataController(){
         if(confirmImport()){
             getTaskList();
         }
@@ -34,7 +34,7 @@ public class ExternalDataCntl {
             Scanner in = new Scanner(externalDataFile);
             
        
-            ArrayList<Task> tempTaskList = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks();
+            ArrayList<TaskModel> tempTaskList = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks();
             String dontUse = in.nextLine();
             if(!tempTaskList.isEmpty()){
                 tempTaskList.clear();
@@ -44,7 +44,7 @@ public class ExternalDataCntl {
                 
                 String tempStr = in.nextLine();
                 System.out.println(tempStr);
-                Task tempTask = new Task(tempStr);
+                TaskModel tempTask = new TaskModel(tempStr);
                 
                 tempTaskList.add(tempTask);
                 System.out.println("Madeittohere");
@@ -52,8 +52,8 @@ public class ExternalDataCntl {
             }
             System.out.println(count);
             //System.out.println(tempMediaList);
-            SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
-            SerializedDataCntl.getSerializedDataCntl().readSerializedDataModel();
+            SerializedDataController.getSerializedDataCntl().writeSerializedDataModel();
+            SerializedDataController.getSerializedDataCntl().readSerializedDataModel();
             
             
         } catch (FileNotFoundException fne) {

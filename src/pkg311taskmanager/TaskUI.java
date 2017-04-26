@@ -18,7 +18,7 @@ import javax.swing.table.TableRowSorter;
  * @author Luke
  */
 public class TaskUI extends JFrame{
-    private TaskCntl theTaskCntl = null;
+    private TaskController theTaskCntl = null;
     private JButton addTask;
     private JButton deleteButton;
     private JButton editTask;
@@ -55,7 +55,7 @@ public class TaskUI extends JFrame{
     */
     
     
-    public TaskUI(TaskCntl newParentTaskCntl) {
+    public TaskUI(TaskController newParentTaskCntl) {
         theTaskCntl = newParentTaskCntl;
         createContactHelpPanel();
         createLabelPanel();
@@ -228,8 +228,8 @@ public class TaskUI extends JFrame{
         int selectedTableRow = taskTable.getSelectedRow();
         int selectedModelRow = taskTable.convertRowIndexToModel(selectedTableRow);
         //TaskUI.this.theTaskCntl.getTaskList().getListOfTasks().remove(selectedModelRow);
-        SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().remove(selectedModelRow);
-        SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+        SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().remove(selectedModelRow);
+        SerializedDataController.getSerializedDataCntl().writeSerializedDataModel();
         this.theTaskCntl.getTaskTableModel().fireTableDataChanged();
         }
     }

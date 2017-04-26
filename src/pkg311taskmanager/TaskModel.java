@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author Luke
  */
-public class Task extends ScheduledEvent implements Serializable{
+public class TaskModel extends ScheduledEventModel implements Serializable{
     
     private String taskTitle = "";
     private String taskLocation = "";
@@ -20,11 +20,11 @@ public class Task extends ScheduledEvent implements Serializable{
     private String taskDescription = "";
     private ArrayList<String> actionSteps = new ArrayList();
     
-    public Task(){
+    public TaskModel(){
         System.out.println("Called: Task()");
     }
     
-    public Task(String importTaskString){
+    public TaskModel(String importTaskString){
         //super(importTaskString);
         String delimiter = "\\t";
         String[] tempTaskArray = importTaskString.split(delimiter);
@@ -40,7 +40,7 @@ public class Task extends ScheduledEvent implements Serializable{
         }       
     }
     
-    public Task(String newTitle, String newDate, String newTime, String newLocation, String newDescription){
+    public TaskModel(String newTitle, String newDate, String newTime, String newLocation, String newDescription){
         //super(newStartTime, newEndTime, newEnabled);
         taskTitle = newTitle;
         taskDate = newDate;

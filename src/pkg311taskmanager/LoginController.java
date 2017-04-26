@@ -11,26 +11,26 @@ import java.util.ArrayList;
  *
  * @author Luke
  */
-public class LoginCntl {
-    private UserList theUserList;
+public class LoginController {
+    private UserListModel theUserList;
     private LoginUI theLoginUI;
-    private NavigationCntl theNavigationCntl;
-    private ArrayList<User> theListOfUsers;
+    private NavigationController theNavigationCntl;
+    private ArrayList<UserModel> theListOfUsers;
     private AddUserUI theAddUserUI;
     //private SerializedDataCntl theSerializedDataCntl;
     
-    public LoginCntl(){
+    public LoginController(){
         
         
-        theUserList = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getUserList();
+        theUserList = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getUserList();
         theLoginUI = new LoginUI(this);
         theLoginUI.setLocationRelativeTo(null);
         theLoginUI.setVisible(true);
     }
-    public LoginCntl(NavigationCntl newNavCntl){
+    public LoginController(NavigationController newNavCntl){
         theNavigationCntl = newNavCntl;
         if(theUserList == null){
-            theUserList = new UserList();
+            theUserList = new UserListModel();
         }    
         theLoginUI = new LoginUI(this);
         theLoginUI.setLocationRelativeTo(null);
@@ -46,19 +46,19 @@ public class LoginCntl {
     public void requestNavigationCntl(){
         theLoginUI.setVisible(false); 
         //theNavigationCntl = new NavigationCntl();
-        theNavigationCntl = new NavigationCntl(theLoginUI.getUsername());
+        theNavigationCntl = new NavigationController(theLoginUI.getUsername());
     }
-    public ArrayList<User> getListOfUsers(){
+    public ArrayList<UserModel> getListOfUsers(){
         return theListOfUsers;
     }
     
-    public UserList getUserList(){
+    public UserListModel getUserList(){
         return theUserList;
     }
     public void addNewUser(String uName, char[] pW){
-        User newUser = new User(uName, pW);
+        UserModel newUser = new UserModel(uName, pW);
         theUserList.getTheListOfUsers().add(newUser);
-        SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+        SerializedDataController.getSerializedDataCntl().writeSerializedDataModel();
     }
     public boolean requestAuthenticate(String usernameToCheck, char[] passwordToCheck){
         boolean authenticated = theUserList.authenticate(usernameToCheck, passwordToCheck);

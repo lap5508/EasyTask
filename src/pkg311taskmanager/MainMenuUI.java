@@ -27,18 +27,18 @@ import javax.swing.JTextField;
  */
 public class MainMenuUI extends JFrame{
     
-    private NavigationCntl theNavCntl;
+    private NavigationController theNavCntl;
     private JLabel menuLabel;
     private JScrollPane theScrollPane;
     private JPanel navigationPanel;
     private JPanel closePanel;
     private JButton taskButton;
     private JButton contactButton;
-    private JButton alarmButton;
+    private JButton notificationButton;
     private JButton closeButton;
     private JButton logoutButton;
     
-    public MainMenuUI(NavigationCntl parentNavCntl){
+    public MainMenuUI(NavigationController parentNavCntl){
         
         theNavCntl = parentNavCntl;
         createLabelPanel();
@@ -71,10 +71,10 @@ public class MainMenuUI extends JFrame{
                     }
                 });
             
-        JButton alarmButton = new JButton("Alarm");
-            alarmButton.addActionListener(new java.awt.event.ActionListener(){
+        JButton notificationButton = new JButton("Notification");
+            notificationButton.addActionListener(new java.awt.event.ActionListener(){
                     public void actionPerformed(java.awt.event.ActionEvent evt){
-                        alarmButtonActionPerformed(evt);
+                        notificationButtonActionPerformed(evt);
                     }
                 });
         
@@ -82,7 +82,7 @@ public class MainMenuUI extends JFrame{
         navigationPanel.setLayout(new GridLayout(1, 2));
             navigationPanel.add(taskButton);
             navigationPanel.add(contactButton);
-            navigationPanel.add(alarmButton);
+            navigationPanel.add(notificationButton);
             add(navigationPanel, BorderLayout.CENTER);
     }
     
@@ -119,7 +119,7 @@ public class MainMenuUI extends JFrame{
         MainMenuUI.this.theNavCntl.requestContactCntl();
     }
     
-    private void alarmButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void notificationButtonActionPerformed(java.awt.event.ActionEvent evt) {
         this.setVisible(false);
         MainMenuUI.this.theNavCntl.requestNotificationCntl();
     }

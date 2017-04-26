@@ -17,44 +17,39 @@ public class NotificationController {
     private NotificationList theNotificationList;
     private NotificationListModel listModel;
     private NotificationModel newNotification;
-    private NavigationCntl theNavigationCntl = null;
+    private NavigationController theNavigationCntl = null;
     private NotificationUI theNotificationUI = null;
     private ArrayList<NotificationModel> theListOfNotifications;
     private AddNotificationUI theAddNotificationUI = null;
-    private MainMenuUIv2 theMainMenuUI = null;
     int tempIndex = 0;
     private NotificationModel tempNotification;
     private ContactController cControl;
-    private Task task = null;
-    private TaskCntl t_control = null;
-    private TaskList theTaskList = null;
-    private ArrayList<Task> newTaskList;
-    private notificationHelp notificationHelp;
+    private TaskModel task = null;
+    private TaskController t_control = null;
+    private TaskListModel theTaskList = null;
+    private ArrayList<TaskModel> newTaskList;
+    private NotificationHelpUI notificationHelp;
     
-    public NotificationController(NavigationCntl parentNavCntl, TaskCntl newTaskCntl){
+    public NotificationController(NavigationController parentNavCntl, TaskController newTaskCntl){
         System.out.println("MADE IT TO Notification CNTL");
         t_control = newTaskCntl;
         this.task = task;
         theNavigationCntl = parentNavCntl;
         theNotificationList = new NotificationList();
-        listModel = new NotificationListModel(SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList());
+        listModel = new NotificationListModel(SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList());
         theNotificationUI = new NotificationUI(this);
         theNotificationUI.setLocationRelativeTo(null);
         theNotificationUI.setVisible(true);
     }
-    public ArrayList<Task> getTaskList(){
-        ArrayList<Task> newTaskList = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks();
+    public ArrayList<TaskModel> getTaskList(){
+        ArrayList<TaskModel> newTaskList = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks();
         return newTaskList;
     }
     public ArrayList<NotificationModel> getNotList(){
-        ArrayList<NotificationModel> newNoteList = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList();
+        ArrayList<NotificationModel> newNoteList = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList();
         return newNoteList;
     }
-//    public String getTitle(int i) {
-//        ArrayList<Task> newTaskList = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks();
-//        String title = newTaskList.get(i).getTitle();
-//        return title;
-//    }
+
     
     public void getNotificationUI(){
         theNotificationUI.setVisible(false);
@@ -64,7 +59,8 @@ public class NotificationController {
     }
     
     public void getNotificationHelpWindow(){
-        notificationHelp = new notificationHelp(this);
+        notificationHelp = new NotificationHelpUI(this);
+        notificationHelp.setLocationRelativeTo(null);
     }
     
     public void getAddNotificationUI(int taskRow){
@@ -99,7 +95,7 @@ public class NotificationController {
     
     public void addNotification(String task, String priority, String hour, String minute, String am_pm, String day, String month, String year){
         NotificationModel newNotification = new NotificationModel(task, priority, hour, minute, am_pm, day, month, year);
-        SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().add(newNotification);
+        SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().add(newNotification);
     }
     
     
@@ -111,7 +107,7 @@ public class NotificationController {
     
     
     public void editNotificationInfo(int index, String task, String priority, String hour, String minute, String am_pm, String day, String month, String year){
-        tempNotification = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(index);
+        tempNotification = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().get(index);
         tempNotification.changeInfo(task, priority, hour, minute, am_pm, day, month, year);
     }
     

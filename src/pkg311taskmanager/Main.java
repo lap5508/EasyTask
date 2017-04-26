@@ -37,7 +37,7 @@ public class Main {
     catch (IllegalAccessException e) {
        // handle exception
     }
-        LoginCntl theLoginCntl = new LoginCntl();
+        LoginController theLoginCntl = new LoginController();
 
     }
     

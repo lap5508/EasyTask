@@ -13,9 +13,9 @@ import javax.swing.table.*;
  */
 public class TaskTableModel extends AbstractTableModel{
     private static String[] columnNames={"Task","Date","Time","Location","Description"};
-    private ArrayList<Task> taskTableData;
+    private ArrayList<TaskModel> taskTableData;
     
-    public TaskTableModel(ArrayList<Task> theTaskTableData){
+    public TaskTableModel(ArrayList<TaskModel> theTaskTableData){
         this.taskTableData = theTaskTableData;
     }
     

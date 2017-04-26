@@ -39,7 +39,7 @@ public class AddContactUI extends JFrame{
     private JPanel infoPanel;
     private JPanel[] cellNumbers;
     private int index = -1;
-    private TaskCntl theTaskCntl = null;
+    private TaskController theTaskCntl = null;
     private ContactController cControl = null;
     
     public AddContactUI(ContactController newcCntl){
@@ -119,21 +119,21 @@ public class AddContactUI extends JFrame{
         if(hasInfo){
            
             String fName;
-                fName = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getfName();
+                fName = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getfName();
             String mName;
-                mName = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getmName();
+                mName = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getmName();
             String lName;
-                lName = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getlName();
+                lName = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getlName();
             String hNum;
-                hNum = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getHomeNum();
+                hNum = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getHomeNum();
             String cNum;
-                cNum = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getCellNum();
+                cNum = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getCellNum();
             String wNum;
-                wNum = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getWorkNum();
+                wNum = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getWorkNum();
             String hAddress;
-                hAddress = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).gethAddress();
+                hAddress = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).gethAddress();
             String wAddress;
-               wAddress = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getwAddress();
+               wAddress = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getContactList().getTheContactList().get(row).getwAddress();
 
 
             fNameField.setText(fName);
@@ -172,12 +172,12 @@ public class AddContactUI extends JFrame{
         if(index == -1){
             
             AddContactUI.this.cControl.addNewContact(fNameField.getText(),mNameField.getText(),lNameField.getText(),hNumField.getText(),cNumField.getText(), wNumField.getText(), hAddressField.getText(), wAddressField.getText());
-            SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+            SerializedDataController.getSerializedDataCntl().writeSerializedDataModel();
             AddContactUI.this.cControl.getContactTableModel().fireTableDataChanged();
         }
         else{
             AddContactUI.this.cControl.editContactInfo(index, fNameField.getText(),mNameField.getText(),lNameField.getText(),hNumField.getText(),cNumField.getText(), wNumField.getText(), hAddressField.getText(), wAddressField.getText());
-            SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+            SerializedDataController.getSerializedDataCntl().writeSerializedDataModel();
             AddContactUI.this.cControl.getContactTableModel().fireTableDataChanged();
 
         }

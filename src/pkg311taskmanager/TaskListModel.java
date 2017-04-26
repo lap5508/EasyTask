@@ -11,10 +11,10 @@ import java.io.Serializable;
  *
  * @author Luke
  */
-public class TaskList implements Serializable{
-    private ArrayList<Task> theListOfTasks = null;
+public class TaskListModel implements Serializable{
+    private ArrayList<TaskModel> theListOfTasks = null;
     
-    public TaskList (){
+    public TaskListModel (){
         if(theListOfTasks == null){
             //buildTestTaskList();
         }
@@ -28,15 +28,15 @@ public class TaskList implements Serializable{
             String taskTime = "3:00";
             String taskLocation = "IST" + i;
             String taskDescription = "" + i;
-            Task newTask = new Task(taskTitle, taskDate, taskTime, taskLocation, taskDescription);
+            TaskModel newTask = new TaskModel(taskTitle, taskDate, taskTime, taskLocation, taskDescription);
             theListOfTasks.add(newTask);
         }
         System.out.println(theListOfTasks);
     }
     
-    public ArrayList<Task> getListOfTasks() {
+    public ArrayList<TaskModel> getListOfTasks() {
         if(theListOfTasks == null){
-            theListOfTasks = new ArrayList<Task>();
+            theListOfTasks = new ArrayList<TaskModel>();
         }
         return theListOfTasks;
     }

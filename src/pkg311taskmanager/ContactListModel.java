@@ -12,10 +12,10 @@ import java.util.ArrayList;
  *
  * @author Kyle
  */
-public class ContactList implements Serializable{
+public class ContactListModel implements Serializable{
     private ArrayList<ContactModel> contactList = null;
 
-    public ContactList(){
+    public ContactListModel(){
         if(contactList== null){
             //buildTestContactList();
         }

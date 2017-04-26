@@ -31,15 +31,15 @@ public class AddTaskUI extends JFrame{
     private JPanel infoPanel;
     private JPanel[] cellNumbers;
     private int index = -1;
-    private TaskCntl theTaskCntl = null;
+    private TaskController theTaskCntl = null;
     
-    public AddTaskUI(TaskCntl newTaskCntl){
+    public AddTaskUI(TaskController newTaskCntl){
         theTaskCntl = newTaskCntl;
         this.setVisible(true);
         initCustomComponents(false, 0);
     }
     
-    public AddTaskUI(TaskCntl newTaskCntl, int taskRow){
+    public AddTaskUI(TaskController newTaskCntl, int taskRow){
         theTaskCntl = newTaskCntl;
         index = taskRow;
         initCustomComponents(true, taskRow);
@@ -101,15 +101,15 @@ public class AddTaskUI extends JFrame{
         if(hasInfo){
             System.out.println(taskIndex);
             String titleInfo;
-                titleInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().get(taskIndex).getTitle();
+                titleInfo = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().get(taskIndex).getTitle();
             String dateInfo;
-                dateInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().get(taskIndex).getDate();
+                dateInfo = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().get(taskIndex).getDate();
             String timeInfo;
-                timeInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().get(taskIndex).getTime();
+                timeInfo = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().get(taskIndex).getTime();
             String locationInfo;
-                locationInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().get(taskIndex).getLocation();
+                locationInfo = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().get(taskIndex).getLocation();
             String descriptionInfo;
-                descriptionInfo = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().get(taskIndex).getDescription();
+                descriptionInfo = SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getTaskList().getListOfTasks().get(taskIndex).getDescription();
             titleField.setText(titleInfo);
             dateField.setText(dateInfo);
             timeField.setText(timeInfo);
@@ -137,12 +137,12 @@ public class AddTaskUI extends JFrame{
         if(index == -1){
             
             AddTaskUI.this.theTaskCntl.addNewTask(titleField.getText(),dateField.getText(),timeField.getText(),locationField.getText(),descriptionField.getText());
-            SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+            SerializedDataController.getSerializedDataCntl().writeSerializedDataModel();
             AddTaskUI.this.theTaskCntl.getTaskTableModel().fireTableDataChanged();
         }
         else{
             AddTaskUI.this.theTaskCntl.editTaskInfo(index, titleField.getText(),dateField.getText(),timeField.getText(),locationField.getText(),descriptionField.getText());
-            SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+            SerializedDataController.getSerializedDataCntl().writeSerializedDataModel();
             AddTaskUI.this.theTaskCntl.getTaskTableModel().fireTableDataChanged();
 
         }

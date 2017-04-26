@@ -12,35 +12,35 @@ import java.io.Serializable;
  * @author lap5508
  */
 public class SerializedDataModel implements Serializable {
-    private UserList theUserList;
-    private TaskList theTaskList;
-    private ContactList theContactList;
+    private UserListModel theUserList;
+    private TaskListModel theTaskList;
+    private ContactListModel theContactList;
     private NotificationList theNotificationList;
     
     public SerializedDataModel(){
         if(theUserList == null){
-            theUserList = new UserList();
+            theUserList = new UserListModel();
         }    
         if(theTaskList == null){
-            theTaskList = new TaskList();
+            theTaskList = new TaskListModel();
         }   
         if(theNotificationList == null){
             theNotificationList = new NotificationList();
         }
         if(theContactList == null){
-            theContactList = new ContactList();
+            theContactList = new ContactListModel();
         }
     }
     
-    public UserList getUserList(){
+    public UserListModel getUserList(){
         return theUserList;
     }
     
-    public TaskList getTaskList(){
+    public TaskListModel getTaskList(){
         return theTaskList;
     }
     
-    public ContactList getContactList(){
+    public ContactListModel getContactList(){
         return theContactList;
     }
     
@@ -48,15 +48,15 @@ public class SerializedDataModel implements Serializable {
         return theNotificationList;
     }
     
-    public void setTaskList(TaskList newTaskList){
+    public void setTaskList(TaskListModel newTaskList){
         theTaskList = newTaskList;
     }
     
-    public void setUserList(UserList newUserList){
+    public void setUserList(UserListModel newUserList){
         theUserList = newUserList;
     } 
     
-    public void setContactList(ContactList newContactList){
+    public void setContactList(ContactListModel newContactList){
         theContactList = newContactList;
     }
     

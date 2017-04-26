@@ -21,7 +21,7 @@ import java.awt.event.*;
  */
 public class LoginUI extends JFrame {
     
-    private LoginCntl parentLoginCntl = null;
+    private LoginController parentLoginCntl = null;
     private JPanel thePanel;
     private JPanel buttonPanel;
     private JPanel[] cellNumbers;
@@ -33,7 +33,7 @@ public class LoginUI extends JFrame {
     
     String username = "";
     
-    public LoginUI(LoginCntl newParentLoginCntl){
+    public LoginUI(LoginController newParentLoginCntl){
         
         parentLoginCntl = newParentLoginCntl;
         

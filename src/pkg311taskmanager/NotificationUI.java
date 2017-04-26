@@ -181,7 +181,7 @@ public class NotificationUI extends JFrame{
     sortKeys.add(new RowSorter.SortKey(columnIndexForTime, SortOrder.ASCENDING));
     sorter.setSortKeys(sortKeys);
     sorter.sort();
-    final JTextField filterText = new JTextField("Search Contacts");
+    final JTextField filterText = new JTextField("Search Notifications");
     scrollPanel.add(filterText, BorderLayout.SOUTH);
     JButton filterButton = new JButton("Filter");
     filterButton.addActionListener(new ActionListener() {
@@ -292,9 +292,9 @@ public class NotificationUI extends JFrame{
         else{
     int selectedTableRow = table.getSelectedRow();
     int selectedModelRow = table.convertRowIndexToModel(selectedTableRow);
-    NotificationUI.this.n_control.getNotificationList().getTheNotificationList().remove(selectedModelRow);
+    SerializedDataController.getSerializedDataCntl().getSerializedDataModel().getNotificationList().getTheNotificationList().remove(selectedModelRow);
+    SerializedDataController.getSerializedDataCntl().writeSerializedDataModel();
     this.n_control.getNotificationListModel().fireTableDataChanged();
-    System.out.print("deleted");
         }
 }
     
